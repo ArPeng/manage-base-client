@@ -64,7 +64,9 @@
           '/static/images/signIn/sign_in_7.jpg'
         ],
         item: 0,
-        loading: false
+        loading: false,
+        username: '',
+        password: ''
       }
     },
     methods: {
@@ -75,7 +77,7 @@
           } else {
             this.item = 0
           }
-        }, 4000)
+        }, 10000)
       },
       submit () {
         this.loading = true
@@ -88,10 +90,6 @@
       this.slider()
     },
     mounted () {
-      let inputs = document.getElementsByTagName('input')
-      for (let i in inputs) {
-        console.log(inputs[i], inputs.hasOwnProperty(inputs[i]))
-      }
     }
   }
 </script>
