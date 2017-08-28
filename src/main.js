@@ -7,10 +7,11 @@ import router from './router'
 import MuseUi from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
 Vue.use(MuseUi)
+import Lang from '@config/lang'
+// 加载系统语言处理插件
+Vue.use(Lang)
 // 加载公共样式
 import '@styl/common.styl'
-
-
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
