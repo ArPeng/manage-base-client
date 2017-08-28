@@ -3,6 +3,13 @@
 import Vue from 'vue'
 import App from '@/views/App'
 import router from './router'
+/* 引入muse-ui组件 */
+import MuseUi from 'muse-ui'
+import 'muse-ui/dist/muse-ui.css'
+Vue.use(MuseUi)
+// 加载公共样式
+import '@styl/common.styl'
+
 
 Vue.config.productionTip = false
 
