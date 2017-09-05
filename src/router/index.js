@@ -15,11 +15,13 @@ export default new Router({
     {
       path: '/',
       name: 'sign_index',
+      desc: '首页模块',
       component: SignIndex
     },
     {
       path: '/sign_in',
       name: 'sign_in',
+      desc: '登录页',
       component: SignIn
     }
   ]

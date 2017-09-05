@@ -13,7 +13,9 @@ Vue.use(Lang)
 // 加载公共样式
 import '@styl/common.styl'
 Vue.config.productionTip = false
-
+// 加载Animate.css
+// import '@css/animate.css'
+// import 'animate.css'
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

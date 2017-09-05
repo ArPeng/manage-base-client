@@ -1,22 +1,35 @@
 <template>
   <div class="body">
-    首页
+    
   </div>
 </template>
 <script>
   export default {
     data () {
-      return {}
-    },
-    methods: {},
-    created () {
+      return {
+        open: false,
+        trigger: null,
+        anchorOrigin: {
+          vertical: 'bottom',
+          horizontal: 'right'
+        },
+        targetOrigin: {
+          vertical: 'top',
+          horizontal: 'right'
+        }
+      }
     },
     mounted () {
+      this.trigger = this.$refs.button.$el
     },
-    updated () {
+    methods: {
+      toggle () {
+        this.open = !this.open
+      },
+      handleClose (e) {
+        this.open = false
+      }
     }
   }
 </script>
-<style lang="css">
-
-</style>
+<style scoped lang="stylus" src="@styl/modules/sign/index.styl"></style>
