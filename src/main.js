@@ -1,21 +1,23 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import App from '@/views/App'
+Vue.config.productionTip = false
+import App from '@views/App'
 import router from './router'
 /* 引入muse-ui组件 */
 import MuseUi from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
 Vue.use(MuseUi)
-import Lang from '@config/lang'
-// 加载系统语言处理插件
-Vue.use(Lang)
-// 加载公共样式
+// 加载多语言处理插件
+import Language from '@utils/language'
+Vue.use(Language)
+// 加载公共css
 import '@styl/common.styl'
-Vue.config.productionTip = false
-// 加载Animate.css
-// import '@css/animate.css'
-// import 'animate.css'
+// 加载工具插件
+// import Tool from '@utils/tools'
+// Vue.use(Tool)
+// 加载material-design-icons
+import './permission'
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

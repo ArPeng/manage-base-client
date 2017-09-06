@@ -1,4 +1,5 @@
 var path = require('path')
+var fs = require('fs')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
@@ -23,15 +24,19 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
-      '@styl': resolve('src/assets/styl'),
-      '@views': resolve('src/views'),
-      '@components': resolve('src/views/components'),
-      '@modules': resolve('src/views/modules'),
+      '@styles': resolve('src/styles'),
+      '@styl': resolve('src/styles/stylus'),
+      '@css': resolve('src/styles/css'),
       '@router': resolve('src/router'),
-      '@model': resolve('src/model'),
-      '@config': resolve('src/config'),
-      '@css': resolve('src/assets/css')
-    }
+      '@utils': resolve('src/utils'),
+      '@views': resolve('src/views'),
+      '@models': resolve('src/models'),
+      '@assets': resolve('src/assets'),
+      '@vendor': resolve('src/vendor'),
+      '@filter': resolve('src/filter'),
+      '@config': resolve('src/config')
+    },
+    symlinks: false
   },
   module: {
     rules: [
