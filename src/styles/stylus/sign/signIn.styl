@@ -3,6 +3,7 @@
   width 100%
   height 100%
   position relative
+  background-color $bg-light-dark
   .slider
     width 100%
     height 100%
@@ -33,8 +34,8 @@
       height 300px
       width 30%
       max-width 30rem
-      background-color #ffffff
-      box-shadow 0 0 20px #fff
+      background-color $bg-light
+      box-shadow 0 0 20px $bg-light-dark
       min-width 25rem
       border-radius 5px
       overflow hidden
@@ -45,11 +46,25 @@
         border-top-right-radius 5px
         border-top-left-radius 5px
         box-shadow 0 2px 10px $bg-dark-light
+        display flex
+        align-items center
+        padding 0 20px
+        >span.title
+          font-size 20px
+          color $font-light
       .box-body
         width calc(100% - 20px)
         margin 0 auto
         height 220px
         margin-top 10px
+        display flex
+        flex-direction column
+        .buttons
+          width 100%
+          flex 1
+          display flex
+          align-items center
+          flex-direction row-reverse
 
 /**
 ************    过渡动画

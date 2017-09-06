@@ -7,7 +7,12 @@ export default new Router({
   mode: 'history',
   routes: [
     {
-      path: '/',
+      path: '/dashboard',
+      name: '控制面板',
+      component: _import('dashboard/index')
+    },
+    {
+      path: '/sign_in',
       name: '登录',
       component: _import('sign/signIn')
     }
