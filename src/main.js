@@ -11,6 +11,13 @@ Vue.use(MuseUi)
 // 加载多语言处理插件
 import Language from '@utils/language'
 Vue.use(Language)
+// 加载公共css
+import '@styl/common.styl'
+// 加载工具插件
+// import Tool from '@utils/tools'
+// Vue.use(Tool)
+// 加载material-design-icons
+import './permission'
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
