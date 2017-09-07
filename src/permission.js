@@ -1,3 +1,6 @@
+/**
+ * 权限检测
+ */
 import router from '@router'
 // 加载进度条
 import NProgress from 'nprogress'

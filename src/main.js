@@ -17,6 +17,9 @@ import '@styl/common.styl'
 // import Tool from '@utils/tools'
 // Vue.use(Tool)
 // 加载material-design-icons
+// 自定义指令
+import './directives'
+// 权限检测
 import './permission'
 /* eslint-disable no-new */
 new Vue({

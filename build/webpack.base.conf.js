@@ -34,7 +34,8 @@ module.exports = {
       '@assets': resolve('src/assets'),
       '@vendor': resolve('src/vendor'),
       '@filter': resolve('src/filter'),
-      '@config': resolve('src/config')
+      '@config': resolve('src/config'),
+      '@directive': resolve('src/directive')
     },
     symlinks: false
   },

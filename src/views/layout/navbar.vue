@@ -1,5 +1,5 @@
 <template>
-
+  <div class="navbar-container"></div>
 </template>
 <script>
   export default {
@@ -8,4 +8,4 @@
     }
   }
 </script>
-<style scoped lang=stylus></style>
+<style scoped lang="stylus" src="@styl/layout/navbar.styl"></style>

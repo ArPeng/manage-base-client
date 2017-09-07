@@ -1,5 +1,5 @@
 <template>
-
+  <div v-waves class="sidebar-container mini"></div>
 </template>
 <script>
   export default {
@@ -8,4 +8,4 @@
     }
   }
 </script>
-<style scoped lang=stylus></style>
+<style scoped lang="stylus" src="@styl/layout/sidebar.styl"></style>
