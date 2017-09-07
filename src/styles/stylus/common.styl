@@ -3,9 +3,11 @@
 */
 @import "basic/functions.styl"
 @import "reset_muse_ui.styl"
-html,body
+@import "btn"
+html,body,.body
   min-width 100%
   min-height 100%
+  font-family Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Arial,sans-serif
 /*
 ** 去除chrome浏览器input自动填充之后的黄色背景
  */
@@ -15,3 +17,8 @@ input:-webkit-autofill
 html,body,.body
   width 100%
   height 100%
+ul
+  margin 0
+  padding 0
+  li
+    list-style none

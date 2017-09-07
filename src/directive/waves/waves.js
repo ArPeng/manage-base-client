@@ -2,6 +2,7 @@ import './waves.styl'
 
 export default {
   bind (el, binding) {
+    let autoRemove
     el.addEventListener('click', e => {
       const customOpts = Object.assign({}, binding.value)
       const opts = Object.assign({
@@ -34,6 +35,12 @@ export default {
         }
         ripple.style.backgroundColor = opts.color
         ripple.className = 'waves-ripple z-active'
+        if (!autoRemove) {
+          return false
+        }
+        autoRemove = setTimeout(() => {
+          target.removeChild(ripple)
+        }, 1200)
         return false
       }
     }, false)

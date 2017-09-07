@@ -1,8 +1,145 @@
 @import "../basic/index.styl"
 .sidebar-container
   width 180px
-  min-height 100%
+  height 100%
   background-color $bg-dark-light
   transition all .3s
+  overflow hidden
   &.mini
     width 50px
+  .menu
+    width @width + 15px
+    height @height
+    overflow-y auto
+    ul
+      width @width - 15px
+      height auto
+      transition all .3s
+      >li.item
+        width 100%
+        height auto
+        cursor pointer
+        >.item-content
+          width 100%
+          height 56px
+          display flex
+          align-items center
+          transition background-color 0.5s
+          color $sidebar-font-color
+          &:hover
+            background-color $bg-dark-light-hover
+          >.icon
+            width 56px
+            height 56px
+            font-size 16px
+            display flex
+            align-items center
+            justify-content center
+          >.text
+            flex 1
+            height 56px
+            font-size 13px
+            display flex
+            justify-content center
+            text-overflow(1)
+          >.triangle
+            width 2rem
+            font-size 14px
+            text-align center
+            transform rotate(90deg)
+            transition all 0.3s
+        &.open
+          >.item-content
+            >.triangle
+              transform rotate(270deg)
+          >ul
+            height auto
+        >ul
+          width 100%
+          height 0
+          overflow hidden
+          transition height 0.3s
+          background-color $bg-dark
+          >li.item
+            width 100%
+            height auto
+            cursor pointer
+            >.item-content
+              width 100%
+              height 56px
+              display flex
+              align-items center
+              transition background-color 0.5s
+              color $sidebar-font-color
+              background-color $bg-dark
+              padding-left 10px
+              &:hover
+                background-color $bg-dark-light-hover
+              >.icon
+                width 56px
+                height 56px
+                font-size 16px
+                display flex
+                align-items center
+                justify-content center
+              >.text
+                flex 1
+                height 56px
+                font-size 13px
+                display flex
+                justify-content center
+                text-overflow(1)
+              >.triangle
+                width 2rem
+                font-size 14px
+                text-align center
+                transform rotate(90deg)
+                transition all 0.3s
+            &.open
+              >.item-content
+                >.triangle
+                  transform rotate(270deg)
+              >ul
+                height auto
+            >ul
+              width 100%
+              height 0
+              overflow hidden
+              transition height 0.3s
+              background-color $bg-dark
+              >li.item
+                width 100%
+                height auto
+                cursor pointer
+                position relative
+                >.item-content
+                  width 100%
+                  height 56px
+                  display flex
+                  align-items center
+                  transition background-color 0.5s
+                  color $sidebar-font-color
+                  background-color $bg-dark
+                  padding-left 20px
+                  &:hover
+                    background-color $bg-dark-light-hover
+                  >.icon
+                    width 56px
+                    height 56px
+                    font-size 16px
+                    display flex
+                    align-items center
+                    justify-content center
+                  >.text
+                    flex 1
+                    height 56px
+                    font-size 13px
+                    display flex
+                    justify-content center
+                    text-overflow(1)
+                  >.triangle
+                    width 2rem
+                    font-size 14px
+                    text-align center
+                    transform rotate(90deg)
+                    transition all 0.3s
