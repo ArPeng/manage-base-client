@@ -11,6 +11,8 @@ Vue.use(MuseUi)
 // 加载多语言处理插件
 import Language from '@utils/language'
 Vue.use(Language)
+// 加载store
+import store from '@store'
 // 加载公共css
 import '@styl/common.styl'
 // 加载工具插件
@@ -25,6 +27,7 @@ import './permission'
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })

@@ -19,13 +19,13 @@
         <div class="box-body">
           <mu-text-field
             icon=" "
-            iconClass="an-mall-font icon-username"
+            iconClass="an-mall-icon icon-username"
             :label="$lang('手机号码/用户名')"
             labelFloat
             fullWidth/>
           <mu-text-field
             icon=" "
-            iconClass="an-mall-font icon-password"
+            iconClass="an-mall-icon icon-password"
             labelFocusClass="label-focus-class"
             :label="$lang('密码')"
             labelFloat

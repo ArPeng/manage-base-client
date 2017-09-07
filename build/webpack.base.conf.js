@@ -30,7 +30,7 @@ module.exports = {
       '@router': resolve('src/router'),
       '@utils': resolve('src/utils'),
       '@views': resolve('src/views'),
-      '@models': resolve('src/models'),
+      '@store': resolve('src/store'),
       '@assets': resolve('src/assets'),
       '@vendor': resolve('src/vendor'),
       '@filter': resolve('src/filter'),
