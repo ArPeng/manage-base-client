@@ -13,6 +13,8 @@ import Language from '@utils/language'
 Vue.use(Language)
 // 加载store
 import store from '@store'
+// 加载animate.css
+import 'vue2-animate/dist/vue2-animate.min.css'
 // 加载公共css
 import '@styl/common.styl'
 // 加载工具插件
