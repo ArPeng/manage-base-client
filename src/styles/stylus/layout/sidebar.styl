@@ -7,16 +7,136 @@
   overflow hidden
   &.mini
     width 50px
+    .menu-mini
+      width @width + 15px
+      height @height
+      overflow-y scroll
+      >ul
+        width @width - 15px
+        height auto
+        >li.item
+          width @width
+          height 56px
+          .item-content
+            width @width
+            height @height
+            display flex
+            align-items center
+            justify-content center
+            transition all .5s
+            cursor pointer
+            >.icon
+              font-size 16px
+              color $sidebar-font-color
+            &:hover
+              background-color $bg-dark-light-hover
+      .second-menu
+        position fixed
+        width 180px
+        height auto
+        background-color $bg-dark
+        top 0
+        transition top .3s
+        z-index 10
+        left 60px
+        display none
+        overflow hidden
+        >ul
+          width 100%
+          height auto
+          overflow hidden
+          >li.item
+            width @width
+            height 56px
+            cursor pointer
+            >.item-content
+              width 100%
+              height @height
+              display flex
+              align-items center
+              transition background-color 0.5s
+              color $sidebar-font-color
+              padding-left 20px
+              &:hover
+                background-color $bg-dark-light-hover
+              >.icon
+                width 30px
+                height 56px
+                font-size 16px
+                display flex
+                align-items center
+                justify-content center
+              >.text
+                flex 1
+                height 56px
+                font-size 13px
+                display flex
+                justify-content center
+                text-overflow(1)
+              >.triangle
+                width 2rem
+                font-size 12px
+                text-align center
+                transition all 0.3s
+      .third-menu
+        position fixed
+        width 180px
+        height auto
+        background-color $bg-dark
+        top 0
+        transition top .3s
+        z-index 10
+        left 250px
+        display none
+        overflow hidden
+        >ul
+          width 100%
+          height auto
+          overflow hidden
+          >li.item
+            width @width
+            height 56px
+            cursor pointer
+            >.item-content
+              width 100%
+              height @height
+              display flex
+              align-items center
+              transition background-color 0.5s
+              color $sidebar-font-color
+              padding-left 20px
+              &:hover
+                background-color $bg-dark-light-hover
+              >.icon
+                width 30px
+                height 56px
+                font-size 16px
+                display flex
+                align-items center
+                justify-content center
+              >.text
+                flex 1
+                height 56px
+                font-size 13px
+                display flex
+                justify-content center
+                text-overflow(1)
+              >.triangle
+                width 2rem
+                font-size 12px
+                text-align center
+                transition all 0.3s
+
   .menu
-    width @width + 15px
+    width @width
     height @height
     overflow-y auto
     ul
-      width @width - 15px
+      width @width
       height auto
       transition all .3s
       >li.item
-        width 100%
+        width @width
         height auto
         cursor pointer
         >.item-content
@@ -26,10 +146,11 @@
           align-items center
           transition background-color 0.5s
           color $sidebar-font-color
+          padding-left 10px
           &:hover
             background-color $bg-dark-light-hover
           >.icon
-            width 56px
+            width 30px
             height 56px
             font-size 16px
             display flex
@@ -44,7 +165,7 @@
             text-overflow(1)
           >.triangle
             width 2rem
-            font-size 14px
+            font-size 12px
             text-align center
             transform rotate(90deg)
             transition all 0.3s
@@ -72,11 +193,11 @@
               transition background-color 0.5s
               color $sidebar-font-color
               background-color $bg-dark
-              padding-left 10px
+              padding-left 20px
               &:hover
                 background-color $bg-dark-light-hover
               >.icon
-                width 56px
+                width 30px
                 height 56px
                 font-size 16px
                 display flex
@@ -91,7 +212,7 @@
                 text-overflow(1)
               >.triangle
                 width 2rem
-                font-size 14px
+                font-size 12px
                 text-align center
                 transform rotate(90deg)
                 transition all 0.3s
@@ -119,12 +240,12 @@
                   align-items center
                   transition background-color 0.5s
                   color $sidebar-font-color
-                  background-color $bg-dark
-                  padding-left 20px
+                  background-color $bg-third-menu
+                  padding-left 30px
                   &:hover
                     background-color $bg-dark-light-hover
                   >.icon
-                    width 56px
+                    width 30px
                     height 56px
                     font-size 16px
                     display flex
@@ -139,7 +260,7 @@
                     text-overflow(1)
                   >.triangle
                     width 2rem
-                    font-size 14px
+                    font-size 12px
                     text-align center
                     transform rotate(90deg)
                     transition all 0.3s
