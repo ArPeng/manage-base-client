@@ -10,9 +10,8 @@ Lang.config = {}
 Lang.install = function (Vue, options) {
   Vue.prototype.$lang = function (field) {
     let res = language.default[field]
-
     if (typeof res === 'undefined') {
-      throw new Error(`language [${field}] is undefined`)
+      return field
     }
     return res
   }

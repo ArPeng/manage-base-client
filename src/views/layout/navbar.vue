@@ -5,6 +5,11 @@
       @click="$store.dispatch('ToggleSidebar')"
       class="an-mall-icon hamburger-icon"
       :class="{mini: sidebarStatus}">&#xe65f;</div>
+    <mu-breadcrumb class="breadcrumbs">
+      <mu-breadcrumb-item href="/">Home</mu-breadcrumb-item>
+      <mu-breadcrumb-item href="/">VideoGame</mu-breadcrumb-item>
+      <mu-breadcrumb-item>Download</mu-breadcrumb-item>
+    </mu-breadcrumb>
   </div>
 </template>
 <script>
