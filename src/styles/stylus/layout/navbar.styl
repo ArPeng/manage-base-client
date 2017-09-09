@@ -1,8 +1,9 @@
-@import "../basic/index.styl"
+@import "../basic"
 .navbar-container
   width 100%
   height 50px
   background-color $bg-light-dark
+  position relative
   display flex
   .hamburger-icon
     height @height
@@ -19,3 +20,10 @@
   .breadcrumbs
     display flex
     align-items center
+    span>a
+      color $font-gray
+  .user-info
+    height @height
+    position absolute
+    top 0
+    right 0

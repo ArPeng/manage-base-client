@@ -1,7 +1,8 @@
+@import "reset.styl"
 /*
 ** 公共样式
 */
-@import "basic/functions.styl"
+@import "../basic/functions.styl"
 @import "reset_muse_ui.styl"
 @import "btn"
 html,body,.body
@@ -22,3 +23,11 @@ ul
   padding 0
   li
     list-style none
+/* 可以设置不同的进入和离开动画 */
+/* 设置持续时间和动画函数 */
+.fade-in-enter-active
+  transition opacity  .3s ease
+.fade-in-leave-active
+  transition opacity  0s ease
+.fade-in-enter, .fade-in-leave-to
+  opacity: 0

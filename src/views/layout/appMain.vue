@@ -1,5 +1,9 @@
 <template>
-  <div class="main-container"></div>
+  <div class="main-container">
+    <transition name="fade-in" appear>
+      <router-view></router-view>
+    </transition>
+  </div>
 </template>
 <script>
   export default {

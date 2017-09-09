@@ -16,7 +16,7 @@ import store from '@store'
 // 加载animate.css
 import 'vue2-animate/dist/vue2-animate.min.css'
 // 加载公共css
-import '@styl/common.styl'
+import '@styl/common'
 // 加载工具插件
 // import Tool from '@utils/tools'
 // Vue.use(Tool)
@@ -25,6 +25,9 @@ import '@styl/common.styl'
 import './directives'
 // 权限检测
 import './permission'
+// 导入公共组件
+import '@components'
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

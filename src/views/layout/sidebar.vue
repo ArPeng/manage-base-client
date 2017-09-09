@@ -158,106 +158,112 @@
         thirdMenuTop: 0, // 三级级菜单Y轴定位距离
         menu: [
           {
-            name: '控制面板12',
+            name: '管理员',
             open: false
-          },
-          {
-            name: '控制面板',
-            open: false,
-            children: [
-              {
-                name: '测试1',
-                open: false,
-                children: [
-                  {
-                    name: '测试2'
-                  },
-                  {
-                    name: '测试3'
-                  },
-                  {
-                    name: '测试4'
-                  },
-                  {
-                    name: '测试5'
-                  },
-                  {
-                    name: '测试6'
-                  }
-                ]
-              },
-              {
-                name: '测试7',
-                open: false,
-                children: [
-                  {
-                    name: '测试7'
-                  },
-                  {
-                    name: '测试8'
-                  },
-                  {
-                    name: '测试9'
-                  },
-                  {
-                    name: '测试10'
-                  },
-                  {
-                    name: '测试11'
-                  }
-                ]
-              },
-              {
-                name: '测试8'
-              },
-              {
-                name: '测试9'
-              },
-              {
-                name: '测试10'
-              }
-            ]
-          },
-          {
-            name: '控制面板11',
-            open: false,
-            children: [
-              {
-                name: '测试',
-                open: false,
-                children: [
-                  {
-                    name: '测试'
-                  },
-                  {
-                    name: '测试'
-                  },
-                  {
-                    name: '测试'
-                  },
-                  {
-                    name: '测试'
-                  },
-                  {
-                    name: '测试'
-                  }
-                ]
-              },
-              {
-                name: '测试'
-              },
-              {
-                name: '测试'
-              },
-              {
-                name: '测试'
-              },
-              {
-                name: '测试'
-              }
-            ]
           }
         ]
+//        menu: [
+//          {
+//            name: '控制面板12',
+//            open: false
+//          },
+//          {
+//            name: '控制面板',
+//            open: false,
+//            children: [
+//              {
+//                name: '测试1',
+//                open: false,
+//                children: [
+//                  {
+//                    name: '测试2'
+//                  },
+//                  {
+//                    name: '测试3'
+//                  },
+//                  {
+//                    name: '测试4'
+//                  },
+//                  {
+//                    name: '测试5'
+//                  },
+//                  {
+//                    name: '测试6'
+//                  }
+//                ]
+//              },
+//              {
+//                name: '测试7',
+//                open: false,
+//                children: [
+//                  {
+//                    name: '测试7'
+//                  },
+//                  {
+//                    name: '测试8'
+//                  },
+//                  {
+//                    name: '测试9'
+//                  },
+//                  {
+//                    name: '测试10'
+//                  },
+//                  {
+//                    name: '测试11'
+//                  }
+//                ]
+//              },
+//              {
+//                name: '测试8'
+//              },
+//              {
+//                name: '测试9'
+//              },
+//              {
+//                name: '测试10'
+//              }
+//            ]
+//          },
+//          {
+//            name: '控制面板11',
+//            open: false,
+//            children: [
+//              {
+//                name: '测试',
+//                open: false,
+//                children: [
+//                  {
+//                    name: '测试'
+//                  },
+//                  {
+//                    name: '测试'
+//                  },
+//                  {
+//                    name: '测试'
+//                  },
+//                  {
+//                    name: '测试'
+//                  },
+//                  {
+//                    name: '测试'
+//                  }
+//                ]
+//              },
+//              {
+//                name: '测试'
+//              },
+//              {
+//                name: '测试'
+//              },
+//              {
+//                name: '测试'
+//              },
+//              {
+//                name: '测试'
+//              }
+//            ]
+//          }
+//        ]
       }
     },
     methods: {

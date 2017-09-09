@@ -5,15 +5,25 @@
       @click="$store.dispatch('ToggleSidebar')"
       class="an-mall-icon hamburger-icon"
       :class="{mini: sidebarStatus}">&#xe65f;</div>
-    <mu-breadcrumb class="breadcrumbs">
-      <mu-breadcrumb-item href="/">Home</mu-breadcrumb-item>
-      <mu-breadcrumb-item href="/">VideoGame</mu-breadcrumb-item>
-      <mu-breadcrumb-item>Download</mu-breadcrumb-item>
-    </mu-breadcrumb>
+    <ui-breadcrumbs>
+      <template>
+        <ui-breadcrumbs-item
+          :value="$lang('控制台')"
+          to="/dashboard"
+        ></ui-breadcrumbs-item>
+      </template>
+    </ui-breadcrumbs>
+    <div class="user-info">
+      <ui-user-info color="#48576a"></ui-user-info>
+    </div>
   </div>
 </template>
 <script>
+  import uiUserInfo from '@views/dashboard/userInfo.vue'
   export default {
+    components: {
+      uiUserInfo
+    },
     props: {
       sidebarStatus: {
         type: Boolean,
@@ -21,7 +31,8 @@
       }
     },
     data () {
-      return {}
+      return {
+      }
     }
   }
 </script>

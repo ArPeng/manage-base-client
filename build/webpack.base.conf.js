@@ -35,7 +35,8 @@ module.exports = {
       '@vendor': resolve('src/vendor'),
       '@filter': resolve('src/filter'),
       '@config': resolve('src/config'),
-      '@directive': resolve('src/directive')
+      '@directive': resolve('src/directive'),
+      '@components': resolve('src/views/components')
     },
     symlinks: false
   },

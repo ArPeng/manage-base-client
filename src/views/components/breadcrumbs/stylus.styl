@@ -1,0 +1,29 @@
+@import "../../../styles/stylus/basic"
+.breadcrumbs
+  width auto
+  padding 0 10px
+  height 100%
+  display flex
+  align-items center
+  .breadcrumbs-item
+    display inline
+    cursor pointer
+    .breadcrumbs-item-text
+      font-size 14px
+      color $font-dark
+      transition color .5s
+      &:hover
+        color $main-ele-color
+    .breadcrumbs-item-delimiter
+      color #bfcbd9
+      margin 0 8px
+      font-size 14px
+    &.disabled
+      cursor default
+      .breadcrumbs-item-text
+        color $font-gray
+      .breadcrumbs-item-delimiter
+        display none
+    &:last-child
+      .breadcrumbs-item-delimiter
+        display none

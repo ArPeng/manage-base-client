@@ -10,7 +10,15 @@ export default new Router({
     {
       path: '/',
       name: '',
-      component: layout
+      redirect: '/dashboard',
+      component: layout,
+      children: [
+        {
+          path: 'administrator',
+          name: '管理员',
+          component: _import('administrator/index')
+        }
+      ]
     },
     {
       path: '/dashboard',
@@ -21,6 +29,11 @@ export default new Router({
       path: '/sign_in',
       name: '登录',
       component: _import('sign/signIn')
+    },
+    {
+      path: '*',
+      name: '404',
+      component: _import('errorPage/404')
     }
   ]
 })

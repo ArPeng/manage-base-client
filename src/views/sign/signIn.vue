@@ -82,7 +82,7 @@
       submit () {
         this.loading = true
         setTimeout(() => {
-          this.loading = false
+          this.$router.push('/dashboard')
         }, 3000)
       }
     },
