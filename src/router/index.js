@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 const _import = require('./_import_' + process.env.NODE_ENV)
 import layout from '@views/layout/layout.vue'
+import view from '@views/layout/view.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -16,7 +17,24 @@ export default new Router({
         {
           path: 'administrator',
           name: '管理员',
-          component: _import('administrator/index')
+          component: view,
+          children: [
+            {
+              path: '',
+              name: '管理员',
+              component: _import('administrator/index')
+            },
+            {
+              path: 'group',
+              name: '管理组',
+              component: _import('administrator/group')
+            },
+            {
+              path: 'rule',
+              name: '管理组',
+              component: _import('administrator/rule')
+            }
+          ]
         }
       ]
     },

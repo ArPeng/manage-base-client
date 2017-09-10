@@ -10,7 +10,8 @@
           <li
             v-for="item in menu"
             class="item"
-            :class="{open:item.open}">
+            :class="{open:item.open}"
+            @click="to(item.path)">
             <div
               v-waves
               @click="item.open = !item.open"
@@ -29,7 +30,8 @@
               <li
                 v-for="child in item.children"
                 class="item"
-                :class="{open: child.open}">
+                :class="{open: child.open}"
+                @click="to(child.path)">
                 <div
                   v-waves
                   @click="child.open = !child.open"
@@ -48,7 +50,10 @@
                   typeof child.children.length !== 'undefined' &&
                   child.children.length > 0"
                   >
-                  <li class="item" v-for="lastItem in child.children">
+                  <li
+                    class="item"
+                    v-for="lastItem in child.children"
+                    @click="to(lastItem.path)">
                     <div v-waves class="item-content">
                       <div class="an-mall-icon icon"></div>
                       <div class="text">{{lastItem.name}}</div>
@@ -74,7 +79,7 @@
             @mouseleave="mouseLeave"
             class="item"
             :ref="'first_'+idx"
-          >
+            @click="to(item.path)">
             <div
               v-waves class="item-content">
               <span class="an-mall-icon icon">&#xe61c;</span>
@@ -100,7 +105,8 @@
               idx,
               typeof menu.children !== 'undefined'
               && menu.children.length > 0 ? menu.children : null)"
-              class="item">
+              class="item"
+              @click="to(menu.path)">
               <div
                 v-waves class="item-content">
                 <!--<span class="an-mall-icon icon">&#xe61c;</span>-->
@@ -159,7 +165,18 @@
         menu: [
           {
             name: '管理员',
-            open: false
+            open: false,
+            path: '/administrator'
+          },
+          {
+            name: '管理组',
+            open: false,
+            path: '/administrator/group'
+          },
+          {
+            name: '权限',
+            open: false,
+            path: '/administrator/rule'
           }
         ]
 //        menu: [
@@ -267,6 +284,13 @@
       }
     },
     methods: {
+      // 调整
+      to (path) {
+        if (!path) {
+          return false
+        }
+        this.$router.push(path)
+      },
       // 鼠标移入第一级菜单列表
       mouseEnter (idx, item) {
         let dom = this.$refs['first_' + idx][0]

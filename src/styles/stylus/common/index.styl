@@ -4,7 +4,7 @@
 */
 @import "../basic/functions.styl"
 @import "reset_muse_ui.styl"
-@import "btn"
+@import "btn.styl"
 html,body,.body
   min-width 100%
   min-height 100%
@@ -31,3 +31,19 @@ ul
   transition opacity  0s ease
 .fade-in-enter, .fade-in-leave-to
   opacity: 0
+/**
+**   main body
+ */
+.app-container
+  width 100%
+  min-height 100%
+  padding 20px
+  .app-header
+    width 100%
+    height 60px
+    display flex
+    align-items center
+  .app-content
+    width 100%
+    height auto
+    overflow hidden
