@@ -10,6 +10,8 @@ Vue.mixin(Mixins)
 import MuseUi from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
 Vue.use(MuseUi)
+import Auxiliary from 'vue-auxiliary'
+Vue.use(Auxiliary)
 // 加载多语言处理插件
 import Language from '@utils/language'
 Vue.use(Language)
