@@ -41,7 +41,7 @@
               <mu-circular-progress
                 v-show="loading"
                 color="#888888"
-                :size="26"/>
+                :size="22"/>
               <mu-icon
                 v-show="!loading"
                 value="keyboard_return"></mu-icon>
