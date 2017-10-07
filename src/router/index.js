@@ -52,6 +52,11 @@ export default new Router({
       path: '*',
       name: '404',
       component: _import('errorPage/404')
+    },
+    {
+      path: '/test',
+      name: 'test',
+      component: _import('test')
     }
   ]
 })
