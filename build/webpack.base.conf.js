@@ -10,7 +10,7 @@ function resolve (dir) {
 
 module.exports = {
   entry: {
-    app: './src/main.js'
+    app: './src/app.js'
   },
   output: {
     path: config.build.assetsRoot,
@@ -25,10 +25,12 @@ module.exports = {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
       '@styles': resolve('src/styles'),
+      '@api': resolve('src/api'),
       '@styl': resolve('src/styles/stylus'),
       '@css': resolve('src/styles/css'),
       '@router': resolve('src/router'),
       '@utils': resolve('src/utils'),
+      '@mixins': resolve('src/mixins'),
       '@views': resolve('src/views'),
       '@store': resolve('src/store'),
       '@assets': resolve('src/assets'),
