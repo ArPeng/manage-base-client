@@ -4,6 +4,8 @@ import Vue from 'vue'
 Vue.config.productionTip = false
 import App from '@views/App'
 import router from './router'
+import Mixins from '@mixins'
+Vue.mixin(Mixins)
 /* 引入muse-ui组件 */
 import MuseUi from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
@@ -11,6 +13,9 @@ Vue.use(MuseUi)
 // 加载多语言处理插件
 import Language from '@utils/language'
 Vue.use(Language)
+// 导入接口api
+import Api from '@api/plugin'
+Vue.use(Api)
 // 加载store
 import store from '@store'
 // 加载animate.css
