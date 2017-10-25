@@ -1,5 +1,45 @@
+import config from '@config'
 export default {
   methods: {
+    /**
+     * toast提示
+     * @param message 提示信息
+     * @param time 显示时长
+     * @param callback 关闭之后的回调函数
+     */
+    $toast (message = '', time = 3, callback) {
+      let _time = 3000
+      let _callback = callback
+      if (typeof time === 'function') {
+        _callback = time
+      }
+      if (typeof time === 'number') {
+        _time = parseInt(Number(time) * 1000)
+      }
+      let data = {
+        message: message,
+        callback: _callback
+      }
+      this.$store.dispatch('toast', data)
+      setTimeout(() => {
+        this.$store.dispatch('closeToast')
+      }, _time)
+    },
+    /**
+     * 多语言处理
+     * @param msg
+     */
+    $lang (msg = '') {
+      let lang = config.language
+      let language = require(`@config/lang/${lang}`)
+      if (language.default) {
+        language = language.default
+      }
+      if (!language[msg]) {
+        return msg
+      }
+      return language[msg]
+    },
     /**
      * 判断一个对象是否为空对象 `{}`
      * @param obj

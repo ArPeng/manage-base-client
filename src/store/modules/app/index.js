@@ -15,5 +15,8 @@ export default {
     ToggleSidebar ({ commit }) {
       commit('TOGGLE_SIDEBAR')
     }
+  },
+  getters: {
+    sidebar: state => state.sidebar
   }
 }

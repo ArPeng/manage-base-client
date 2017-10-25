@@ -337,7 +337,6 @@
       },
       // 鼠标移出二级菜单列表
       secondMouseLeave () {
-        console.log('鼠标移出二级菜单列表')
         this.autoCloseThirdMenu = setTimeout(() => {
           this.$refs.thirdMenu.style.display = 'none'
         }, 500)

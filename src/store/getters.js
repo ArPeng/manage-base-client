@@ -1,4 +1,3 @@
-const getters = {
-  sidebar: state => state.app.sidebar
+export default {
+  token: state => state.token
 }
-export default getters

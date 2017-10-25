@@ -3,25 +3,20 @@
 import Vue from 'vue'
 Vue.config.productionTip = false
 import App from '@views/App'
-import router from './router'
+import router from '@router'
 import Mixins from '@mixins'
 Vue.mixin(Mixins)
 /* 引入muse-ui组件 */
 import MuseUi from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
 Vue.use(MuseUi)
-import Auxiliary from 'vue-auxiliary'
-Vue.use(Auxiliary)
-// 加载多语言处理插件
-import Language from '@utils/language'
-Vue.use(Language)
 // 导入接口api
 import Api from '@api/plugin'
 Vue.use(Api)
 // 加载store
 import store from '@store'
 // 加载animate.css
-import 'vue2-animate/dist/vue2-animate.min.css'
+// import 'vue2-animate/dist/vue2-animate.min.css'
 // 加载公共css
 import '@styl/common'
 // 加载工具插件
