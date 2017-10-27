@@ -1,7 +1,9 @@
 <template>
   <div class="userinfo" :style="{color:color}" ref="button" @click="open = !open">
     <div class="avatar">
-      <img :src="require('@assets/avatar.gif')">
+      <img
+        :onerror="`javascript:this.src='${require('@assets/defaultAvatar.jpg')}'`"
+        :src="userInfo.avatar">
     </div>
     <div class="username">杨陈鹏</div>
     <div
@@ -23,6 +25,7 @@
   </div>
 </template>
 <script>
+  import {mapGetters} from 'vuex'
   export default {
     name: 'userInfo',
     props: ['color'],
@@ -31,6 +34,11 @@
         open: false,
         trigger: null
       }
+    },
+    computed: {
+      ...mapGetters([
+        'userInfo'
+      ])
     },
     mounted () {
       this.trigger = this.$refs.button

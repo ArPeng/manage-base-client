@@ -21,7 +21,7 @@
           </mu-tr>
         </mu-thead>
         <mu-tbody>
-          <template v-for="i in 50">
+          <template v-for="i in 2">
             <mu-tr>
               <mu-td>1</mu-td>
               <mu-td>编辑</mu-td>

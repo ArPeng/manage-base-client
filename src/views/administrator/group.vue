@@ -4,7 +4,7 @@
       <mu-float-button icon="add" class="mall-btn-success" />
     </div>
     <div class="app-content">
-      <mu-table :selectable="false" :showCheckbox="false" :fixedHeader="true">
+      <mu-table>
         <mu-thead>
           <mu-tr>
             <mu-th>用户组ID</mu-th>
@@ -18,7 +18,7 @@
           </mu-tr>
         </mu-thead>
         <mu-tbody>
-          <template v-for="i in 50">
+          <template v-for="i in 2">
             <mu-tr>
               <mu-td>1</mu-td>
               <mu-td>编辑</mu-td>

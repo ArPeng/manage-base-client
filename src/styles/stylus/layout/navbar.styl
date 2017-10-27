@@ -5,6 +5,44 @@
   background-color $bg-light-dark
   position relative
   display flex
+  .tabs
+    flex 1
+    height 50px
+    overflow-x auto
+    align-items center
+    display block
+    padding-left 20px
+    .tab
+      display flex
+      width auto
+      height 25px
+      padding-left 10px
+      margin 12.5px 10px 0 0
+      align-items center
+      border 1px solid #666666
+      float left
+      border-radius 5px
+      cursor pointer
+      transition all .5s
+      .text
+        font-size 12px
+        color #666666
+        transition all .3s
+      .icon
+        width 25px
+        height 25px
+        font-size 15px
+        display flex
+        justify-content center
+        color #666666
+        font-weight bold
+        transition all .5s
+      &.active
+      &:hover
+        border-color #30b08f
+        .text
+        .icon
+          color #30b08f
   .hamburger-icon
     height @height
     padding 0 10px
@@ -23,7 +61,5 @@
     span>a
       color $font-gray
   .user-info
+    width auto
     height @height
-    position absolute
-    top 0
-    right 0

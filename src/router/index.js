@@ -23,7 +23,7 @@ export default new Router({
           },
           children: [
             {
-              path: 'list',
+              path: '',
               name: 'administrator.list',
               meta: {
                 title: '管理员列表'

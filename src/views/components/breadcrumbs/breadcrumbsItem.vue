@@ -3,14 +3,14 @@
       class="breadcrumbs-item"
       :class="{disabled:disabled}"
       @click="jump(to)">
-      <span class="breadcrumbs-item-text">{{value}}</span>
+      <span class="breadcrumbs-item-text">{{title}}</span>
       <span class="breadcrumbs-item-delimiter">{{delimiter}}</span>
     </div>
 </template>
 <script>
   export default {
     props: {
-      value: {
+      title: {
         type: String,
         default: ''
       },

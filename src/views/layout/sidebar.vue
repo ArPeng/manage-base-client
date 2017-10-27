@@ -166,7 +166,7 @@
           {
             name: '管理员',
             open: false,
-            path: '/administrator/list'
+            path: '/administrator'
           },
           {
             name: '管理组',
