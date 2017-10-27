@@ -7,8 +7,8 @@
     <mu-circular-progress
       v-if="!message"
       :size="60"
-      color="#cccccc"
-      :strokeWidth="5">
+      color="#30b08f"
+      :strokeWidth="6">
     </mu-circular-progress>
     <div v-else class="loading-message">
       <div class="animation">
@@ -50,7 +50,7 @@
     display flex
     align-items center
     justify-content center
-    background-color rgba(0,0,0,0.5)
+    background-color rgba(255,255,255,0.5)
     .loading-message
       width auto
       height 60px

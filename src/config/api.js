@@ -6,5 +6,9 @@ export default {
     verificationToken: '/sign.verification_token',
     // 退出时清除token
     clearToken: '/sign.clear_token'
+  },
+  user: {
+    // 创建管理员
+    create: '/user.create'
   }
 }

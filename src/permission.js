@@ -24,7 +24,7 @@ router.beforeEach((to, from, next) => {
         token) {
         let loading = setTimeout(() => {
           $vue.$utils.loading()
-        }, 1000)
+        }, 100)
         $vue
           .$api
           .sign

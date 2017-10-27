@@ -112,12 +112,8 @@
           .then(r => {
             this.loading = true
             this.setToken(r.token)
-            this.$utils.toast(
-              this.$lang('登录成功, 马上跳转...!'),
-              2,
-              () => {
-                this.$router.push('/dashboard')
-              })
+            this.$utils.toast(this.$lang('登录成功!'))
+            this.$router.push('/dashboard')
           }).catch(() => {
             this.loading = false
           })

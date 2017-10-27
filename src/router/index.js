@@ -10,12 +10,12 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: '',
+      name: 'layout',
       redirect: '/dashboard',
       component: layout,
       children: [
         {
-          path: 'administrator',
+          path: '/administrator',
           name: 'administrator',
           component: view,
           meta: {
