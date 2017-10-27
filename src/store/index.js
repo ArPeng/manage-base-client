@@ -5,11 +5,8 @@ import getters from '@store/getters'
 import actions from '@store/actions'
 import mutations from '@store/mutations'
 import app from '@store/modules/app'
-import tool from '@store/modules/tool'
 
 Vue.use(Vuex)
-
-const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
   state,
@@ -17,8 +14,7 @@ export default new Vuex.Store({
   getters,
   mutations,
   modules: {
-    app,
-    tool
+    app
   },
-  strict: debug
+  strict: true
 })

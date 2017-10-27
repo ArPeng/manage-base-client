@@ -4,5 +4,7 @@
 export default {
   baseUri: '/api/',
   // 系统语音
-  language: 'zh-cn'
+  language: 'zh-cn',
+  //  内部路由前缀
+  routePrefix: ''
 }

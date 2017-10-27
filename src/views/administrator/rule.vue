@@ -4,7 +4,10 @@
       <mu-float-button icon="add" class="mall-btn-success" />
     </div>
     <div class="app-content">
-      <mu-table :selectable="false" :showCheckbox="false" :fixedHeader="true">
+      <mu-table
+        :selectable="false"
+        :showCheckbox="false"
+        :fixedHeader="true">
         <mu-thead>
           <mu-tr>
             <mu-th>用户组ID</mu-th>

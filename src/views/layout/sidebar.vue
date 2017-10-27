@@ -166,7 +166,7 @@
           {
             name: '管理员',
             open: false,
-            path: '/administrator'
+            path: '/administrator/list'
           },
           {
             name: '管理组',
@@ -341,7 +341,7 @@
           this.$refs.thirdMenu.style.display = 'none'
         }, 500)
       },
-      // 鼠标移入三级惨淡
+      // 鼠标移入三级菜单
       thirdMouseEnter () {
         if (this.autoCloseSecondMenu) {
           clearTimeout(this.autoCloseSecondMenu)

@@ -1,5 +1,5 @@
 export default {
-  setToken: ({commit}, token) => {
-    commit('setToken', token)
+  setUserInfo: ({commit}, data) => {
+    commit('setUserInfo', data)
   }
 }

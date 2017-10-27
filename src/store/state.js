@@ -1,4 +1,4 @@
 export default {
-  // Token
-  token: ''
+  // 用户信息
+  userInfo: {}
 }

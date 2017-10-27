@@ -13,6 +13,8 @@ Vue.use(MuseUi)
 // 导入接口api
 import Api from '@api/plugin'
 Vue.use(Api)
+import Utils from '@utils'
+Vue.use(Utils)
 // 加载store
 import store from '@store'
 // 加载animate.css

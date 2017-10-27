@@ -10,10 +10,10 @@
     mounted () {
     },
     created () {
-      this.$toast('测试弹窗toast', (r) => {
-        console.log('回调了')
-      })
-//      console.log(new Vue())
+      this.$utils.loading()
+      setTimeout(() => {
+        this.$utils.closeLoading()
+      }, 3000)
 //      this
 //        .$api
 //        .sign

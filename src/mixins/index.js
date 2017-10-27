@@ -1,44 +1,60 @@
 import config from '@config'
+import Cookie from 'js-cookie'
 export default {
   methods: {
     /**
-     * toast提示
-     * @param message 提示信息
-     * @param time 显示时长
-     * @param callback 关闭之后的回调函数
+     * 清除token
      */
-    $toast (message = '', time = 3, callback) {
-      let _time = 3000
-      let _callback = callback
-      if (typeof time === 'function') {
-        _callback = time
-      }
-      if (typeof time === 'number') {
-        _time = parseInt(Number(time) * 1000)
-      }
-      let data = {
-        message: message,
-        callback: _callback
-      }
-      this.$store.dispatch('toast', data)
-      setTimeout(() => {
-        this.$store.dispatch('closeToast')
-      }, _time)
+    clearToken () {
+      Cookie.remove('t')
     },
     /**
-     * 多语言处理
-     * @param msg
+     * 设置token
+     * @param token
      */
-    $lang (msg = '') {
-      let lang = config.language
-      let language = require(`@config/lang/${lang}`)
-      if (language.default) {
-        language = language.default
+    setToken (token) {
+      Cookie.set('t', token)
+    },
+    /**
+     * 获取token
+     * @returns {*}
+     */
+    getToken () {
+      return Cookie.get('t')
+    },
+    /**
+     * 检测一个元素是否是某个数组的元素
+     * @param ele
+     * @param array
+     * @returns {boolean}
+     */
+    inArray (ele, array) {
+      if ((array instanceof Array) !== true) {
+        throw new Error(this.$lang('第二个参数的类型必须是数组!'))
       }
-      if (!language[msg]) {
-        return msg
+      return array.indexOf(ele) > -1
+    },
+    /**
+     * 路由跳转 函数
+     * @param path
+     * @param type 跳转方式, false: 内部路由, true: 外部url
+     */
+    jump (path, type = false) {
+      if (typeof path === 'object') {
+        this.$router.push(path)
+      } else {
+        if (type) {
+          window.location.href = path
+        } else {
+          // 因为线上多目录的问题,在这里统一添加一个路由前缀
+          if (path.indexOf('/') === 0) {
+            path = `${config.routePrefix}${path}`
+          } else {
+            path = `${config.routePrefix}/${path}`
+          }
+          this.$router.push(path)
+        }
       }
-      return language[msg]
     },
     /**
      * 判断一个对象是否为空对象 `{}`

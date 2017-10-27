@@ -7,12 +7,9 @@ let instance = axios.create({
   baseURL: config.baseUri
 })
 let headers = {
-  // 'Accept': '*/*',
-  // 'Accept': 'application/json',
-  // 'Content-Type': 'application/x-www-form-urlencoded',
   'Content-Type': 'application/json',
   'X-Requested-With': 'XMLHttpRequest',
-  'Token': ''
+  'Token': $vue.getToken()
 }
 /**
  * @purpose http POST 请求
@@ -23,9 +20,10 @@ let headers = {
 export function post (path = '', data = {}, type = 'json') {
   let url = _getApi(path)
   if (!url) {
+    $vue.$utils.closeLoading()
     return new Promise((resolve, reject) => {
-      reject(new Error(
-        'Parameter [path] cannot is empty'))
+      $vue.$utils.toast($vue.$lang('参数[path]不可为空!'))
+      reject(new Error($vue.$lang('参数[path]不可为空!')))
     })
   }
   if (type === 'formData') {
@@ -43,30 +41,37 @@ export function post (path = '', data = {}, type = 'json') {
         }
       }]
     }).then(r => {
+      $vue.$utils.closeLoading()
       if (r.status === 200) {
         if (typeof r.data === 'undefined' ||
           r.data === '' ||
           $vue.isEmptyObject(r.data) ||
           !r.data) {
-          reject(new Error('Error returning data format. Response is empty!'))
-          return
+          $vue.$utils.toast($vue.$lang('服务器响应数据格式错误或为空!'))
+          reject(new Error($vue.$lang('服务器响应数据格式错误或为空!')))
+          return false
         }
         if (typeof r.data.code === 'undefined') {
-          reject(new Error('服务器未响应状态码'))
+          $vue.$utils.toast($vue.$lang('服务器未响应状态码'))
+          reject(new Error($vue.$lang('服务器未响应状态码')))
           return false
         }
         if ((typeof r.data.status !== 'undefined' &&
             parseInt(r.data.status) !== 10000) ||
           (typeof r.data.code !== 'undefined' &&
             parseInt(r.data.code) !== 10000)) {
+          $vue.$utils.toast(r.data.message)
           reject(new Error(r.data.message))
           return false
         }
         resolve(r.data)
       } else {
+        $vue.$utils.toast($vue.$lang('网络不给力,稍后再试!'))
         reject(new Error('请求错误: ', r))
       }
     }).catch(e => {
+      $vue.$utils.closeLoading()
+      $vue.$utils.toast($vue.$lang('网络不给力,稍后再试!'))
       reject(new Error('请求错误: ', e))
     })
   })
@@ -79,41 +84,45 @@ export function post (path = '', data = {}, type = 'json') {
 export function get (path = '', data = {}) {
   let url = _getApi(path)
   if (!url) {
+    $vue.$utils.closeLoading()
     return new Promise((resolve, reject) => {
-      reject(new Error('Parameter [path] cannot is empty'))
+      $vue.$utils.toast($vue.$lang('参数[path]不可为空!'))
+      reject(new Error($vue.$lang('参数[path]不可为空!')))
     })
   }
   return new Promise((resolve, reject) => {
     instance.get(url, {params: data}, {
       headers: headers
     }).then(r => {
+      $vue.$utils.closeLoading()
       if (r.status === 200) {
         if (typeof r.data === 'undefined' ||
           r.data === '' ||
           $vue.isEmptyObject(r.data) ||
           !r.data) {
-          console.warn(
-            'Error returning data format. Response is empty!',
-            url)
-          reject(new Error('Error returning data format. Response is empty!'))
-          return
-        }
-        if (typeof r.data.code === 'undefined') {
-          reject(new Error('服务器未响应状态码'))
+          $vue.$utils.toast($vue.$lang('服务器响应数据格式错误或为空!'))
+          reject(new Error($vue.$lang('服务器响应数据格式错误或为空!')))
           return false
         }
-        if ((typeof r.data.status !== 'undefined' &&
-            parseInt(r.data.status) !== 10000) ||
-          (typeof r.data.code !== 'undefined' &&
-            parseInt(r.data.code) !== 10000)) {
+        if (typeof r.data.code === 'undefined') {
+          $vue.$utils.toast($vue.$lang('服务器未响应状态码'))
+          reject(new Error($vue.$lang('服务器未响应状态码')))
+          return false
+        }
+        if (typeof r.data.code !== 'undefined' &&
+            parseInt(r.data.code) !== 10000) {
+          $vue.$utils.toast(r.data.message)
           reject(new Error(r.data.message))
           return false
         }
         resolve(r.data)
       } else {
+        $vue.$utils.toast($vue.$lang('网络不给力,请稍后再试!'))
         reject(new Error('请求错误: ', r))
       }
     }).catch(e => {
+      $vue.$utils.closeLoading()
+      $vue.$utils.toast($vue.$lang('网络不给力,请稍后再试!'))
       reject(new Error('请求错误: ', e))
     })
   })
@@ -125,7 +134,8 @@ export function get (path = '', data = {}) {
  */
 function _getApi (path) {
   if (!path) {
-    throw new Error(`Api '${path}' is not found!`)
+    $vue.$utils.toast($vue.$lang(`Api "${path}" 未定义!`))
+    throw new Error($vue.$lang(`Api "${path}" 未定义!`))
   }
   let api = require('@config/api')
   if (api.default) {
