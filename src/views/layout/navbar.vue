@@ -50,16 +50,20 @@
     },
     methods: {
       close (idx) {
+        let jump = false
         if (idx === 0 && this.tabs.length === 1) {
           return false
         }
         if (this.tabs[idx].active) {
-          this.jump(this.tabs[this.tabs.length - 1].path)
+          jump = true
         }
         this.tabs =
           this.tabs.filter((item, index) => {
             return idx !== index
           })
+        if (jump) {
+          this.jump(this.tabs[this.tabs.length - 1].path)
+        }
       },
       createTabs (route) {
         let hasEle = false
