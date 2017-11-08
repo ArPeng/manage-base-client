@@ -1,6 +1,6 @@
 # total_control_ele
 
-> 使用ele-ui来重新大家总控
+> 使用ele-ui来重新搭建
 
 ## Build Setup
 
