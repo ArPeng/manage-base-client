@@ -1,32 +1,31 @@
 <template>
-  <div class="body">
-    <div class="body-header">
-      <div class="title">{{$lang('控制台')}}</div>
-      <ui-user-info></ui-user-info>
-    </div>
-    <div class="body-content">
-        <div class="container">
-          <div
-            class="item"
-            @click="$router.push('/administrator')">
-            <div class="an-mall-icon icon">&#xe6c4;</div>
-            <div class="name">管理员</div>
+  <el-container>
+    <el-header>
+      <div class="sub-title">控制台</div>
+      <ui-user-info>
+      </ui-user-info>
+    </el-header>
+    <el-main>
+      <ul>
+        <li @click="jump({name: 'permission'})">
+          <div class="item-content">
+            <div class="an-mall-icon icon">&#xe606;</div>
+            <div class="title">权限管理</div>
           </div>
-        </div>
-    </div>
-  </div>
+        </li>
+      </ul>
+    </el-main>
+  </el-container>
 </template>
 <script>
-  import uiUserInfo from './userInfo.vue'
+  import uiUserInfo from '@components/userInfo.vue'
   export default {
     components: {
       uiUserInfo
     },
-    name: 'dashboard',
     data () {
-      return {
-      }
+      return {}
     }
   }
 </script>
-<style scoped lang="stylus" src="@styl/dashboard/index.styl"></style>
+<style scoped lang="sass" src="@sass/dashboard/index.sass"></style>

@@ -1,7 +1,34 @@
 import config from '@config'
 import Cookie from 'js-cookie'
+import Vue from 'vue'
+const $vue = new Vue()
 export default {
   methods: {
+    $lang (message = '') {
+      return message
+    },
+    /**
+     * login加载
+     * 参数参考: http://element-cn.eleme.io/#/zh-CN/component/loading
+     * @param target
+     * @param fullScreen
+     * @param lock
+     * @param background
+     * @returns {*}
+     */
+    loading (target = '', fullScreen = true, lock = true, background = '') {
+      let options = {}
+      if (target) {
+        options.target = target
+        fullScreen = false
+      }
+      options.fullscreen = fullScreen
+      if (background) {
+        options.background = background
+      }
+      options.lock = lock
+      return $vue.$loading.service(options)
+    },
     /**
      * 清除token
      */
@@ -30,7 +57,7 @@ export default {
      */
     inArray (ele, array) {
       if ((array instanceof Array) !== true) {
-        throw new Error(this.$lang('第二个参数的类型必须是数组!'))
+        throw new Error('第二个参数的类型必须是数组!')
       }
       return array.indexOf(ele) > -1
     },
@@ -40,8 +67,14 @@ export default {
      * @param type 跳转方式, false: 内部路由, true: 外部url
      */
     jump (path, type = false) {
+      if (typeof path === 'number' ||
+      path < 0) {
+        this.$router.go(path)
+        return false
+      }
       if (typeof path === 'object') {
         this.$router.push(path)
+        return false
       } else {
         if (type) {
           window.location.href = path
@@ -53,6 +86,7 @@ export default {
             path = `${config.routePrefix}/${path}`
           }
           this.$router.push(path)
+          return false
         }
       }
     },

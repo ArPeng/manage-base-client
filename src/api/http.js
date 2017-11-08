@@ -1,8 +1,9 @@
 import axios from 'axios'
 import config from '@config'
 import Vue from 'vue'
-const $vue = new Vue()
 import qs from 'qs'
+const $vue = new Vue()
+const loading = $vue.loading()
 let instance = axios.create({
   baseURL: config.baseUri
 })
@@ -20,9 +21,9 @@ let headers = {
 export function post (path = '', data = {}, type = 'json') {
   let url = _getApi(path)
   if (!url) {
-    $vue.$utils.closeLoading()
+    loading.close()
     return new Promise((resolve, reject) => {
-      $vue.$utils.toast($vue.$lang('参数[path]不可为空!'))
+      this.$message.error($vue.$lang('参数[path]不可为空!'))
       reject(new Error($vue.$lang('参数[path]不可为空!')))
     })
   }
@@ -41,18 +42,18 @@ export function post (path = '', data = {}, type = 'json') {
         }
       }]
     }).then(r => {
-      $vue.$utils.closeLoading()
+      loading.close()
       if (r.status === 200) {
         if (typeof r.data === 'undefined' ||
           r.data === '' ||
           $vue.isEmptyObject(r.data) ||
           !r.data) {
-          $vue.$utils.toast($vue.$lang('服务器响应数据格式错误或为空!'))
+          this.$message.error($vue.$lang('服务器响应数据格式错误或为空!'))
           reject(new Error($vue.$lang('服务器响应数据格式错误或为空!')))
           return false
         }
         if (typeof r.data.code === 'undefined') {
-          $vue.$utils.toast($vue.$lang('服务器未响应状态码'))
+          this.$message.error($vue.$lang('服务器未响应状态码!'))
           reject(new Error($vue.$lang('服务器未响应状态码')))
           return false
         }
@@ -66,12 +67,12 @@ export function post (path = '', data = {}, type = 'json') {
         }
         resolve(r.data)
       } else {
-        $vue.$utils.toast($vue.$lang('网络不给力,稍后再试!'))
+        this.$message.error($vue.$lang('网络不给力,稍后再试!'))
         reject(new Error('请求错误: ', r))
       }
     }).catch(e => {
-      $vue.$utils.closeLoading()
-      $vue.$utils.toast($vue.$lang('网络不给力,稍后再试!'))
+      loading.close()
+      this.$message.error($vue.$lang('网络不给力,稍后再试!'))
       reject(new Error('请求错误: ', e))
     })
   })
@@ -84,9 +85,9 @@ export function post (path = '', data = {}, type = 'json') {
 export function get (path = '', data = {}) {
   let url = _getApi(path)
   if (!url) {
-    $vue.$utils.closeLoading()
+    loading.close()
     return new Promise((resolve, reject) => {
-      $vue.$utils.toast($vue.$lang('参数[path]不可为空!'))
+      this.$message.error($vue.$lang('参数[path]不可为空!'))
       reject(new Error($vue.$lang('参数[path]不可为空!')))
     })
   }
@@ -94,18 +95,18 @@ export function get (path = '', data = {}) {
     instance.get(url, {params: data}, {
       headers: headers
     }).then(r => {
-      $vue.$utils.closeLoading()
+      loading.close()
       if (r.status === 200) {
         if (typeof r.data === 'undefined' ||
           r.data === '' ||
           $vue.isEmptyObject(r.data) ||
           !r.data) {
-          $vue.$utils.toast($vue.$lang('服务器响应数据格式错误或为空!'))
+          this.$message.error($vue.$lang('服务器响应数据格式错误或为空!'))
           reject(new Error($vue.$lang('服务器响应数据格式错误或为空!')))
           return false
         }
         if (typeof r.data.code === 'undefined') {
-          $vue.$utils.toast($vue.$lang('服务器未响应状态码'))
+          this.$message.error($vue.$lang('服务器未响应状态码!'))
           reject(new Error($vue.$lang('服务器未响应状态码')))
           return false
         }
@@ -117,11 +118,13 @@ export function get (path = '', data = {}) {
         }
         resolve(r.data)
       } else {
+        this.$message.error($vue.$lang('网络不给力,请稍后再试!'))
         $vue.$utils.toast($vue.$lang('网络不给力,请稍后再试!'))
         reject(new Error('请求错误: ', r))
       }
     }).catch(e => {
-      $vue.$utils.closeLoading()
+      loading.close()
+      this.$message.error($vue.$lang('网络不给力,请稍后再试!'))
       $vue.$utils.toast($vue.$lang('网络不给力,请稍后再试!'))
       reject(new Error('请求错误: ', e))
     })
@@ -134,7 +137,7 @@ export function get (path = '', data = {}) {
  */
 function _getApi (path) {
   if (!path) {
-    $vue.$utils.toast($vue.$lang(`Api "${path}" 未定义!`))
+    this.$message.error($vue.$lang(`Api "${path}" 未定义!`))
     throw new Error($vue.$lang(`Api "${path}" 未定义!`))
   }
   let api = require('@config/api')

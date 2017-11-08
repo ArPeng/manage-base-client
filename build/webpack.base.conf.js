@@ -1,8 +1,8 @@
-var path = require('path')
-var fs = require('fs')
-var utils = require('./utils')
-var config = require('../config')
-var vueLoaderConfig = require('./vue-loader.conf')
+'use strict'
+const path = require('path')
+const utils = require('./utils')
+const config = require('../config')
+const vueLoaderConfig = require('./vue-loader.conf')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -10,7 +10,7 @@ function resolve (dir) {
 
 module.exports = {
   entry: {
-    app: './src/app.js'
+    app: './src/main.js'
   },
   output: {
     path: config.build.assetsRoot,
@@ -25,8 +25,8 @@ module.exports = {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
       '@styles': resolve('src/styles'),
+      '@sass': resolve('src/styles/sass'),
       '@api': resolve('src/api'),
-      '@styl': resolve('src/styles/stylus'),
       '@css': resolve('src/styles/css'),
       '@router': resolve('src/router'),
       '@utils': resolve('src/utils'),
@@ -34,13 +34,11 @@ module.exports = {
       '@views': resolve('src/views'),
       '@store': resolve('src/store'),
       '@assets': resolve('src/assets'),
-      '@vendor': resolve('src/vendor'),
       '@filter': resolve('src/filter'),
       '@config': resolve('src/config'),
       '@directive': resolve('src/directive'),
       '@components': resolve('src/views/components')
-    },
-    symlinks: false
+    }
   },
   module: {
     rules: [
@@ -61,7 +59,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'),resolve('node_modules/vue-auxiliary')]
+        include: [resolve('src'), resolve('test')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

@@ -1,11 +1,11 @@
 <template>
-  <!--<transition name="fade-in" appear>-->
+  <transition  name="el-fade-in-linear">
     <router-view></router-view>
-  <!--</transition>-->
+  </transition>
 </template>
 
 <script>
-  export default {
-    name: 'app'
-  }
+export default {
+  name: 'app'
+}
 </script>

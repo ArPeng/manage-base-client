@@ -1,0 +1,39 @@
+body
+  >.el-container
+    width: 100%
+    height: 100%
+    .el-menu
+      height: 100%
+    >.sidebar
+      width: 200px
+      &.el-menu--collapse
+        width: 64px
+    &.is-vertical
+
+    >.el-container
+      width: calc(100% - 200px)
+      >header
+        background-color: #eef1f6
+        padding: 0
+        .breadcrumb-box
+          display: flex
+          float: left
+          height: 100%
+          padding-left: 10px
+          align-items: center
+          width: 25%
+          overflow: hidden
+        .hamburger-icon
+          height: 50px
+          width: 50px
+          float: left
+          display: flex
+          align-items: center
+          justify-content: center
+          font-size: 1.5rem
+          color: #48576a
+          cursor: pointer
+          transform: rotate(0deg)
+          transition: transform 0.3s
+          &.mini
+            transform: rotate(90deg)
