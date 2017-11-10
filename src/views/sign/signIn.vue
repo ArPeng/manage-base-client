@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="content">
-      <div class="box" ref="loading">
+      <div class="box" ref="box">
         <div class="box-header">
           <span class="title">管理系统-登录</span>
         </div>
@@ -45,6 +45,7 @@
       return {
         sign: '',
         password: '',
+        token: this.getToken(),
         images: [
           require('@assets/signIn/sign_in_1.jpg'),
           require('@assets/signIn/sign_in_2.jpg'),
@@ -84,13 +85,13 @@
           })
           return false
         }
-        let loading = this.loading(this.refs.loading)
+        this.showLoading(this.$refs.box)
         this
           .$api
           .sign
           .signByPassword(this.sign, this.password)
           .then(r => {
-            loading.close()
+            this.closeLoading()
             this.setToken(r.token)
             this.jump({
               name: 'dashboard'
@@ -100,7 +101,7 @@
               type: 'success'
             })
           }).catch(() => {
-            loading.close()
+            this.closeLoading()
           })
       },
       /**
@@ -117,6 +118,14 @@
       }
     },
     created () {
+      if (this.token) {
+        this
+          .$api
+          .sign
+          .clearToken(() => {
+            this.clearToken()
+          })
+      }
       this.slider()
     }
   }

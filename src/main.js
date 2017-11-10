@@ -15,6 +15,8 @@ import store from '@store'
 import '@sass/common'
 // 导入接口api
 import Api from '@api/plugin'
+// 导入权限验证
+import '@/auth'
 Vue.use(Api)
 Vue.mixin(Mixins)
 Vue.use(ElementUI)

@@ -1,14 +1,23 @@
 import config from '@config'
 import Cookie from 'js-cookie'
-import Vue from 'vue'
-const $vue = new Vue()
+import {Loading} from 'element-ui'
+let loadingResult = null
 export default {
   methods: {
     $lang (message = '') {
       return message
     },
     /**
-     * login加载
+     * 关闭loading
+     */
+    closeLoading () {
+      // Loading.service().close()
+      if (loadingResult) {
+        loadingResult.close()
+      }
+    },
+    /**
+     * 开启loading
      * 参数参考: http://element-cn.eleme.io/#/zh-CN/component/loading
      * @param target
      * @param fullScreen
@@ -16,7 +25,7 @@ export default {
      * @param background
      * @returns {*}
      */
-    loading (target = '', fullScreen = true, lock = true, background = '') {
+    showLoading (target = '', fullScreen = true, lock = true, background = '') {
       let options = {}
       if (target) {
         options.target = target
@@ -27,7 +36,8 @@ export default {
         options.background = background
       }
       options.lock = lock
-      return $vue.$loading.service(options)
+      loadingResult = Loading.service(options)
+      return loadingResult
     },
     /**
      * 清除token

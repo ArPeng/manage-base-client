@@ -1,14 +1,42 @@
 <template>
   <el-breadcrumb separator-class="el-icon-arrow-right">
-    <el-breadcrumb-item style="line-height: 20px" :to="{ path: '/' }">控制台</el-breadcrumb-item>
-    <el-breadcrumb-item style="line-height: 20px">活动管理</el-breadcrumb-item>
-    <el-breadcrumb-item style="line-height: 20px">活动列表</el-breadcrumb-item>
+    <template v-for="breadcrumb in breadcrumbs">
+      <el-breadcrumb-item style="line-height: 20px" :to="{ name: breadcrumb.name }">
+        {{breadcrumb.title}}
+      </el-breadcrumb-item>
+    </template>
   </el-breadcrumb>
 </template>
 <script>
   export default {
     data () {
-      return {}
+      return {
+        breadcrumbs: []
+      }
+    },
+    watch: {
+      $route (routes) {
+        this.createBreadcrumbs(routes.matched)
+      }
+    },
+    methods: {
+      createBreadcrumbs (routes) {
+        console.log(routes)
+        this.breadcrumbs = []
+        this.breadcrumbs.push({
+          title: '控制台',
+          name: 'dashboard'
+        })
+        routes.some((route, idx) => {
+          this.breadcrumbs.push({
+            title: route.meta.title,
+            name: route.name
+          })
+        })
+      }
+    },
+    created () {
+      this.createBreadcrumbs(this.$route.matched)
     }
   }
 </script>

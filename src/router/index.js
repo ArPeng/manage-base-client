@@ -28,6 +28,9 @@ export default new Router({
     {
       path: '/permission',
       name: 'permission',
+      meta: {
+        title: '权限管理'
+      },
       component: layout,
       // redirect: '/permission/administrator/list',
       children: [
