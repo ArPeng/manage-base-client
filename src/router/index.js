@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import layout from '@components/layout'
+// 权限管理
+import permission from './permission'
 // import permission from './permission'
 const _import = file => () => import('@views/' + file + '.vue')
 
@@ -25,22 +26,6 @@ export default new Router({
       },
       component: _import('sign/signIn')
     },
-    {
-      path: '/permission',
-      name: 'permission',
-      meta: {
-        title: '权限管理'
-      },
-      component: layout,
-      // redirect: '/permission/administrator/list',
-      children: [
-        {
-          path: 'administrator',
-          name: 'permission.administrator.list',
-          redirect: '/permission/administrator/list',
-          component: _import('permission/administrator/list')
-        }
-      ]
-    }
+    permission
   ]
 })

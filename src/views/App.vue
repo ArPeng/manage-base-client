@@ -1,7 +1,7 @@
 <template>
-  <transition  name="el-fade-in-linear">
+  <!--<transition  name="el-fade-in-linear">-->
     <router-view></router-view>
-  </transition>
+  <!--</transition>-->
 </template>
 
 <script>

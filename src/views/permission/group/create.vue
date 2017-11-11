@@ -1,0 +1,11 @@
+<template>
+  <div>创建管理组</div>
+</template>
+<script>
+  export default {
+    date () {
+      return {}
+    }
+  }
+</script>
+<style scoped lang="sass"></style>

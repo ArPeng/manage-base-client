@@ -11,7 +11,7 @@
         <div class="breadcrumb-box">
           <breadcrumb></breadcrumb>
         </div>
-        <tags></tags>
+        <!--<tags></tags>-->
         <ui-user-info color="rgb(72, 87, 106)"></ui-user-info>
       </el-header>
       <el-main>
@@ -24,14 +24,14 @@
 <script>
   import {mapGetters} from 'vuex'
   import uiMenu from '@components/menu.vue'
-  import tags from '@components/tags.vue'
+//  import tags from '@components/tags.vue'
   import breadcrumb from '@components/breadcrumb.vue'
   import uiUserInfo from '@components/userInfo.vue'
   export default {
     components: {
       uiUserInfo,
       breadcrumb,
-      tags,
+//      tags,
       uiMenu
     },
     computed: {

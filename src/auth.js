@@ -1,3 +1,6 @@
+/**
+ * 权限以及登录验证
+ */
 import Vue from 'vue'
 import router from '@router'
 import WhiteList from '@config/whiteList'
@@ -51,7 +54,8 @@ let _auth = (match, next) => {
   const $vue = new Vue()
   isLoading = setTimeout(() => {
     $vue.showLoading()
-  }, 500)
+  }, 1000)
+  // 发送验证请求
   $vue
     .$api
     .sign

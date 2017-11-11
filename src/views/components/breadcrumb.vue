@@ -1,5 +1,6 @@
 <template>
-  <el-breadcrumb separator-class="el-icon-arrow-right">
+  <!--<el-breadcrumb separator-class="el-icon-arrow-right">-->
+  <el-breadcrumb separator="/">
     <template v-for="breadcrumb in breadcrumbs">
       <el-breadcrumb-item style="line-height: 20px" :to="{ name: breadcrumb.name }">
         {{breadcrumb.title}}
@@ -28,10 +29,12 @@
           name: 'dashboard'
         })
         routes.some((route, idx) => {
-          this.breadcrumbs.push({
-            title: route.meta.title,
-            name: route.name
-          })
+          if (route.meta.breadcrumb) {
+            this.breadcrumbs.push({
+              title: route.meta.title,
+              name: route.name
+            })
+          }
         })
       }
     },
