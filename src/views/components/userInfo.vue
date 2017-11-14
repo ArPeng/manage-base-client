@@ -4,9 +4,9 @@
     :style="{color:color}"
     @click="open = !open">
     <div class="avatar">
-      <img :src="require('@assets/defaultAvatar.jpg')" />
+      <img :src="userInfo.avatar" :onerror="`javascript:this.src='${require('@assets/defaultAvatar.jpg')}'`" />
     </div>
-    <div class="username">杨陈鹏</div>
+    <div class="username">{{userInfo.name}}</div>
     <div class="an-mall-icon triangle icon-up1" :class="{open: open}"></div>
     <transition name="el-zoom-in-top">
       <div
@@ -16,7 +16,7 @@
         v-show="open">
         <div
           class="user-info-item"
-          @click="jump({path: 'sign_in'})">
+          @click="jump({name: 'signIn'})">
           <div class="an-mall-icon icon" >&#xe7ec;</div>
           <div class="text">退出</div>
         </div>
@@ -25,12 +25,16 @@
   </div>
 </template>
 <script>
+  import {mapGetters} from 'vuex'
   export default {
     props: {
       color: {
         type: String,
         default: '#ffffff'
       }
+    },
+    computed: {
+      ...mapGetters(['userInfo'])
     },
     data () {
       return {

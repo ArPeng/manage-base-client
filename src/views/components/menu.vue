@@ -15,9 +15,9 @@
         <el-menu-item
           index="1-1"
           @click="jump({name:'permission.administrator.list'})">列表</el-menu-item>
-        <el-menu-item
-          index="1-2"
-          @click="jump({name:'permission.administrator.create'})">添加</el-menu-item>
+        <!--<el-menu-item-->
+          <!--index="1-2"-->
+          <!--@click="jump({name:'permission.administrator.create'})">添加</el-menu-item>-->
       </el-menu-item-group>
     </el-submenu>
     <el-submenu index="2">
@@ -29,9 +29,9 @@
         <el-menu-item
           index="2-1"
           @click="jump({name:'permission.group.list'})">列表</el-menu-item>
-        <el-menu-item
-          index="2-2"
-          @click="jump({name:'permission.group.create'})">添加</el-menu-item>
+        <!--<el-menu-item-->
+          <!--index="2-2"-->
+          <!--@click="jump({name:'permission.group.create'})">添加</el-menu-item>-->
       </el-menu-item-group>
     </el-submenu>
     <el-submenu index="3">
@@ -43,9 +43,9 @@
         <el-menu-item
           index="3-1"
           @click="jump({name:'permission.rule.list'})">列表</el-menu-item>
-        <el-menu-item
-          index="3-2"
-          @click="jump({name:'permission.rule.create'})">添加</el-menu-item>
+        <!--<el-menu-item-->
+          <!--index="3-2"-->
+          <!--@click="jump({name:'permission.rule.create'})">添加</el-menu-item>-->
       </el-menu-item-group>
     </el-submenu>
   </el-menu>

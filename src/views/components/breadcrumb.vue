@@ -22,7 +22,6 @@
     },
     methods: {
       createBreadcrumbs (routes) {
-        console.log(routes)
         this.breadcrumbs = []
         this.breadcrumbs.push({
           title: '控制台',
