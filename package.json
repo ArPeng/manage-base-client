@@ -21,6 +21,7 @@
     "sass": "^1.0.0-beta.3",
     "sass-loader": "^6.0.6",
     "vue": "^2.5.2",
+    "vue-material-input": "^1.2.0",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },
