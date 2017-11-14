@@ -15,7 +15,10 @@
         </div>
       </el-col>
       <el-col :span="8">
-        <material-input @input="r => name = r">请输入管理员姓名</material-input>
+        <material-input
+          v-model="name"
+          :value="name"
+          >{{name?name:'请输入管理员姓名'}}</material-input>
       </el-col>
     </el-row>
     <el-row>
@@ -25,7 +28,10 @@
         </div>
       </el-col>
       <el-col :span="8">
-        <material-input @input="r => email = r">请输入管理员邮箱</material-input>
+        <material-input
+          v-model="email"
+          :value="email"
+          >{{email?email:'请输入管理员邮箱'}}</material-input>
       </el-col>
     </el-row>
     <el-row>
@@ -35,7 +41,10 @@
         </div>
       </el-col>
       <el-col :span="8">
-        <material-input @input="r => mobile = r">请输入管理员手机号码</material-input>
+        <material-input
+          v-model="mobile"
+          :value="mobile"
+          >{{mobile?mobile:'请输入管理员手机号码'}}</material-input>
       </el-col>
     </el-row>
     <el-row>
@@ -45,7 +54,8 @@
         </div>
       </el-col>
       <el-col :span="8">
-        <material-input @input="r => password = r">请输入管理员登录密码</material-input>
+        <material-input
+          v-model="password">请输入管理员登录密码</material-input>
       </el-col>
     </el-row>
     <el-row>
@@ -63,32 +73,54 @@
     components: {
       MaterialInput
     },
-    date () {
+    data () {
       return {
         name: '',
         mobile: '',
         email: '',
-        password: ''
+        password: '',
+        uuid: ''
       }
     },
     methods: {
       submit () {
+        let data = {
+          name: this.name,
+          mobile: this.mobile,
+          email: this.email
+        }
+        if (this.password) {
+          data.password = this.password
+        }
         this
           .$api
           .user
-          .create(
-            this.name,
-            this.mobile,
-            this.email,
-            this.password
-          ).then(r => {
+          .update(this.uuid, data).then(r => {
             this.$message({
-              message: '创建成功',
+              message: '修改成功',
               type: 'success'
             })
             this.jump(-1)
           })
       }
+    },
+    created () {
+      if (this.$route.params.uuid) {
+        this.uuid = this.$route.params.uuid
+      } else {
+        this.$message.error('参数错误')
+        this.jump(-1)
+        return false
+      }
+      this
+        .$api
+        .user
+        .info(this.uuid)
+        .then(r => {
+          this.name = r.name
+          this.mobile = r.mobile
+          this.email = r.email
+        })
     }
   }
 </script>

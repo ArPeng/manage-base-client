@@ -70,7 +70,6 @@ export function post (path = '', data = {}, type = 'json') {
         reject(new Error('请求错误: ', r))
       }
     }).catch(e => {
-      console.log(e)
       $vue.closeLoading()
       $vue.$message.error($vue.$lang('网络不给力,稍后再试!2'))
       reject(new Error('请求错误: ', e))
@@ -81,8 +80,10 @@ export function post (path = '', data = {}, type = 'json') {
  * @purpose http GET 请求
  * @param path
  * @param data
+ * @param type 参数类型, ?:表示正常get参数, /:表示符合后端特点的get参数类型  '例如/a/b'
  */
-export function get (path = '', data = {}) {
+export function get (path = '', data = {}, type = '?') {
+  let _data = {}
   let url = _getApi(path)
   if (!url) {
     $vue.closeLoading()
@@ -91,8 +92,20 @@ export function get (path = '', data = {}) {
       reject(new Error($vue.$lang('参数[path]不可为空!')))
     })
   }
+  if (type === '/') {
+    let param = ''
+    for (let i in data) {
+      param += `/${data[i]}`
+    }
+    if (url.lastIndexOf('/') === (url.length - 1)) {
+      url = url.substr(0, url.length - 1)
+    }
+    url += param
+  } else if (type === '?') {
+    _data = data
+  }
   return new Promise((resolve, reject) => {
-    instance.get(url, {params: data}, {
+    instance.get(url, {params: _data}, {
       headers: headers
     }).then(r => {
       $vue.closeLoading()

@@ -11,6 +11,10 @@ export default {
     // 创建管理员 POST
     create: '/user.create',
     // 获取管理员列表 GET
-    items: '/user.list'
+    items: '/user.list',
+    // 获取用户信息 GET
+    info: '/user.info',
+    // 获取用户信息 POST
+    update: '/user.update'
   }
 }

@@ -4,6 +4,7 @@
 import Vue from 'vue'
 import router from '@router'
 import WhiteList from '@config/whiteList'
+import Store from '@store'
 let isLoading = null
 /**
  * 全局路由前置钩子
@@ -76,12 +77,14 @@ let _auth = (match, next) => {
         return false
       }
       if (r.info.status === 2) {
-        $vue.$message.error(r.message)
+        $vue.$message.error('您的账号已被禁用,请联系管理员!')
         next({
           name: 'signIn'
         })
         return false
       }
+
+      Store.dispatch('setUserInfo', r.info)
       next()
     })
 }

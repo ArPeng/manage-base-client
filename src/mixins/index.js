@@ -11,6 +11,7 @@ export default {
      * 关闭loading
      */
     closeLoading () {
+      // console.log(loadingResult)
       // Loading.service().close()
       if (loadingResult) {
         loadingResult.close()

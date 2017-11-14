@@ -11,7 +11,7 @@ export default {
   path: '/permission',
   name: 'permission',
   meta: {
-    breadcrumb: true,
+    breadcrumb: false,
     title: '权限管理'
   },
   component: layout,
@@ -20,13 +20,13 @@ export default {
       path: 'administrator',
       name: 'permission.administrator',
       meta: {
-        breadcrumb: false,
+        breadcrumb: true,
         title: '管理员'
       },
       component: secondRouteView,
       children: [
         {
-          path: 'list',
+          path: 'list/:page(\\d+)?',
           name: 'permission.administrator.list',
           meta: {
             breadcrumb: true,
@@ -42,6 +42,15 @@ export default {
             title: '添加管理员'
           },
           component: _import('permission/administrator/create')
+        },
+        {
+          path: 'update/:uuid',
+          name: 'permission.administrator.update',
+          meta: {
+            breadcrumb: true,
+            title: '修改管理员'
+          },
+          component: _import('permission/administrator/update')
         }
       ]
     },
@@ -49,7 +58,7 @@ export default {
       path: 'group',
       name: 'permission.group',
       meta: {
-        breadcrumb: false,
+        breadcrumb: true,
         title: '管理组'
       },
       component: secondRouteView,
@@ -78,7 +87,7 @@ export default {
       path: 'rule',
       name: 'permission.rule',
       meta: {
-        breadcrumb: false,
+        breadcrumb: true,
         title: '权限'
       },
       component: secondRouteView,

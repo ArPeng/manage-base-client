@@ -1,5 +1,5 @@
 <template>
-  <div class="body"  @keyup.enter="submit">
+  <div class="body" @keyup.enter="submit">
     <div class="slider">
       <div class="slider-item">
         <template v-for="(img,i) in images">
