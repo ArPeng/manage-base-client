@@ -67,6 +67,21 @@ export function info (uuid) {
 }
 
 /**
+ * @purpose 删除一个管理员
+ * @param uuid
+ * @returns {*}
+ */
+export function deleteUser (uuid) {
+  if (!uuid) {
+    $vue.$message.error($vue.$lang('缺少参数[UUID]'))
+    return _return($vue.$lang('缺少参数[UUID]'))
+  }
+  return http
+    .post('user.delete', {
+      uuid: uuid
+    }).then(r => r.data)
+}
+/**
  * $purpose 修改管理员
  * @param uuid
  * @param data

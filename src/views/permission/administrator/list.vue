@@ -56,7 +56,8 @@
               })">编辑</el-button>
             <el-button
               size="mini"
-              type="danger">删除</el-button>
+              type="danger"
+              @click="deleteUser(scope.row.uuid)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -98,6 +99,30 @@
       }
     },
     methods: {
+      /**
+       * 删除一个管理员
+       */
+      deleteUser (uuid) {
+        this.$confirm('您正在进行危险操作！请确认是否继续删除?', '警告', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.showLoading()
+          this
+            .$api
+            .user
+            .deleteUser(uuid)
+            .then(r => {
+              this.closeLoading()
+              this.$message({
+                message: '删除成功',
+                type: 'success'
+              })
+              this.getData()
+            })
+        })
+      },
       /**
        * 页码改变事件
        */

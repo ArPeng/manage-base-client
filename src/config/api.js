@@ -15,6 +15,8 @@ export default {
     // 获取用户信息 GET
     info: '/user.info',
     // 获取用户信息 POST
-    update: '/user.update'
+    update: '/user.update',
+    // 删除管理员 POST
+    delete: '/user.delete'
   }
 }

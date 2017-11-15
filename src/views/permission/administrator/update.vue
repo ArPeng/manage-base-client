@@ -61,7 +61,7 @@
     <el-row>
       <el-col :span="8" :offset="3">
         <div class="buttons">
-          <el-button type="primary" @click="submit">确认创建</el-button>
+          <el-button type="primary" @click="submit">确认修改</el-button>
         </div>
       </el-col>
     </el-row>

@@ -4,12 +4,14 @@ import Vue from 'vue'
 import qs from 'qs'
 const $vue = new Vue()
 let instance = axios.create({
-  baseURL: config.baseUri
+  baseURL: config.baseUri,
+  headers: {
+    Token: $vue.getToken()
+  }
 })
 let headers = {
   'Content-Type': 'application/json',
-  'X-Requested-With': 'XMLHttpRequest',
-  'Token': $vue.getToken()
+  'X-Requested-With': 'XMLHttpRequest'
 }
 /**
  * @purpose http POST 请求
@@ -106,7 +108,9 @@ export function get (path = '', data = {}, type = '?') {
   }
   return new Promise((resolve, reject) => {
     instance.get(url, {params: _data}, {
-      headers: headers
+      headers: {
+        Token: 'aAAAAAA'
+      }
     }).then(r => {
       $vue.closeLoading()
       if (r.status === 200) {
