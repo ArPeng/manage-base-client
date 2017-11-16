@@ -1,17 +1,27 @@
 <template>
+  <div >
+    <template v-for="two_menu in two_menus">
+      <h2 v-if="two_menu.children.length <= 1" :name="two_menu">小于1</h2>
+    </template>
+  </div>
 </template>
 <script>
   export default {
     data () {
       return {
-        param: '测试参数' // 这里定义初始值, 如果不在vue内部可使用let关键词定义初始值
+        two_menus: []
       }
     },
     created () {
-      // 如果url带有test参数则取值test参数
-      if (this.$route.param.test) {
-        this.param = this.$route.param.test
-      }
+      window.alert('aaa')
+      setTimeout(() => {
+        this.two_menus.push({
+          children: [1, 2, 3, 4]
+        })
+        this.two_menus.push({
+          children: [1]
+        })
+      }, 2000)
     }
   }
 </script>

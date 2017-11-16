@@ -3,7 +3,7 @@
     <el-row>
       <el-col :span="8" :offset="3">
         <el-alert
-          title="注意: 手机号码和邮箱请至少填写一个,密码有8位以上的数组和字母组成(可包含'_'且不区分大小写)。邮箱或密码可用作登录使用。"
+          title="注意: 手机号码和邮箱请至少填写一个,密码有8位以上的数组和字母组成(可包含'_'且不区分大小写)。邮箱或手机号可用作登录使用。"
           type="info"
           show-icon></el-alert>
       </el-col>
@@ -63,7 +63,7 @@
     components: {
       MaterialInput
     },
-    date () {
+    data () {
       return {
         name: '',
         mobile: '',

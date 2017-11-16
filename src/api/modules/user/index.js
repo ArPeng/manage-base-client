@@ -94,6 +94,20 @@ export function update (uuid, data) {
       data: data
     }).then(r => r.data)
 }
+
+/**
+ * @purpose 禁用/解禁管理员
+ * @param uuid uuid
+ * @param type 1: 解禁,2: 禁用
+ * @returns {Promise.<TResult>}
+ */
+export function isDisable (uuid, type) {
+  return http
+    .post('user.isDisable', {
+      uuid: uuid,
+      type: type
+    }).then(r => r.data)
+}
 /**
  * 获取管理员列表
  * @param page

@@ -56,8 +56,21 @@
               })">编辑</el-button>
             <el-button
               size="mini"
+              type="primary">授权</el-button>
+            <el-button
+              size="mini"
               type="danger"
               @click="deleteUser(scope.row.uuid)">删除</el-button>
+            <el-button
+              size="mini"
+              type="warning"
+              v-if="scope.row.status === 1"
+              @click="isDisable(scope.row.uuid,2)">禁用</el-button>
+            <el-button
+              size="mini"
+              type="success"
+              v-if="scope.row.status === 2"
+              @click="isDisable(scope.row.uuid, 1)">解禁</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -99,6 +112,20 @@
       }
     },
     methods: {
+      isDisable (uuid, type) {
+        let auto = setTimeout(() => {
+          this.showLoading()
+        }, 500)
+        this
+          .$api
+          .user
+          .isDisable(uuid, type)
+          .then(r => {
+            this.closeLoading()
+            clearTimeout(auto)
+            this.getData()
+          })
+      },
       /**
        * 删除一个管理员
        */
