@@ -22,6 +22,65 @@ export function create (data) {
     .post('rule.create', data)
     .then(r => r.data)
 }
+
+/**
+ * @purpose 通过ID获取单挑数据
+ * @param id
+ * @returns {Promise.<TResult>}
+ */
+export function getRuleInfoById (id) {
+  return http
+    .get('rule.getRuleInfoById', {
+      id: id
+    }).then(r => r.data)
+}
+/**
+ * @purpose 修改权限
+ * @param data
+ * @returns {*}
+ */
+export function update (data) {
+  if (!data.id) {
+    return _return($vue.$lang('缺少ID'))
+  }
+  return http
+    .post('rule.update', data)
+    .then(r => r.data)
+}
+
+/**
+ * @purpose 删除权限
+ * @param id 可删除多条 1,2,3,4
+ * @returns {Promise.<TResult>}
+ */
+export function deleteRules (id) {
+  return http
+    .post('rule.delete', {
+      id: id
+    })
+    .then(r => r.data)
+}
+
+/**
+ * @purpose 获取无限极格式的全部数据
+ * @returns {Promise.<TResult>}
+ */
+export function infinite () {
+  return http
+    .get('rule.infinite')
+    .then(r => r.data)
+}
+/**
+ * @purpose 通过pid获取权限列表
+ * @param pid
+ * @returns {Promise.<TResult>}
+ */
+export function getListByPid (pid = 0) {
+  return http
+    .get('rule.getListByPid', {
+      pid: pid
+    }).then(r => r.data)
+}
 /**
  * 验证失败时返回的错误信息
  * @param msg 错误提示

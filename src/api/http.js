@@ -68,12 +68,12 @@ export function post (path = '', data = {}, type = 'json') {
         }
         resolve(r.data)
       } else {
-        $vue.$message.error($vue.$lang('网络不给力,稍后再试!1'))
+        $vue.$message.error($vue.$lang('网络不给力,稍后再试!'))
         reject(new Error('请求错误: ', r))
       }
     }).catch(e => {
       $vue.closeLoading()
-      $vue.$message.error($vue.$lang('网络不给力,稍后再试!2'))
+      $vue.$message.error($vue.$lang('网络不给力,稍后再试!'))
       reject(new Error('请求错误: ', e))
     })
   })

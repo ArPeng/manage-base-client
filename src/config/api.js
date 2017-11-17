@@ -29,6 +29,10 @@ export default {
     // 删除权限 POST
     delete: '/rule.delete',
     // 通过pid获取权限列表 GET
-    getListByPid: '/rule.get_list_by_pid'
+    getListByPid: '/rule.get_list_by_pid',
+    // 获取无限极格式的数据
+    infinite: '/rule.infinite',
+    // 通过ID获取单条权限信息
+    getRuleInfoById: '/rule.get_rule_info_by_id'
   }
 }

@@ -17,9 +17,12 @@ import '@sass/common'
 import Api from '@api/plugin'
 // 导入权限验证
 import '@/auth'
+// 导入复制组件
+import VueClipboard from 'vue-clipboard2'
 Vue.use(Api)
 Vue.mixin(Mixins)
 Vue.use(ElementUI)
+Vue.use(VueClipboard)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

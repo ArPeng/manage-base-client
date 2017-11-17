@@ -1,12 +1,12 @@
 <template>
   <div class="main" @keyup.enter="submit">
     <!--<el-row>-->
-      <!--<el-col :span="8" :offset="3">-->
-        <!--<el-alert-->
-          <!--title="注意: 手机号码和邮箱请至少填写一个,密码有8位以上的数组和字母组成(可包含'_'且不区分大小写)。邮箱或手机号可用作登录使用。"-->
-          <!--type="info"-->
-          <!--show-icon></el-alert>-->
-      <!--</el-col>-->
+    <!--<el-col :span="8" :offset="3">-->
+    <!--<el-alert-->
+    <!--title="注意: 手机号码和邮箱请至少填写一个,密码有8位以上的数组和字母组成(可包含'_'且不区分大小写)。邮箱或手机号可用作登录使用。"-->
+    <!--type="info"-->
+    <!--show-icon></el-alert>-->
+    <!--</el-col>-->
     <!--</el-row>-->
     <el-row>
       <el-col :span="3">
@@ -15,17 +15,17 @@
         </div>
       </el-col>
       <el-col :span="4">
-      <el-select
-        v-model="createData.pid"
-        v-loading="parentLoading"
-        class="mt"
-        placeholder="请选择">
-        <el-option
-          :key="0"
-          label="├ 无父级"
-          :value="0"></el-option>
-        <create-infinite :items="rules"></create-infinite>
-      </el-select>
+        <el-select
+          v-model="createData.pid"
+          v-loading="parentLoading"
+          class="mt"
+          placeholder="请选择">
+          <el-option
+            :key="0"
+            label="├ 无父级"
+            :value="0"></el-option>
+          <create-infinite :this-id="Number(createData.id)" :items="rules"></create-infinite>
+        </el-select>
       </el-col>
     </el-row>
     <el-row>
@@ -55,8 +55,8 @@
       </el-col>
       <el-col :span="8">
         <material-input
-        v-model.trim="createData.name"
-        >权限名称将用于显示,必填</material-input>
+          v-model.trim="createData.name"
+        >{{createData.name ?createData.name:'权限名称将用于显示,必填'}}</material-input>
       </el-col>
     </el-row>
     <el-row>
@@ -67,8 +67,8 @@
       </el-col>
       <el-col :span="8">
         <material-input
-        v-model.trim="createData.identification"
-        >权限名称将用于显示,必填</material-input>
+          v-model.trim="createData.identification"
+        >{{createData.identification?createData.identification:'权限名称将用于显示,必填'}}</material-input>
       </el-col>
     </el-row>
     <el-row>
@@ -79,8 +79,8 @@
       </el-col>
       <el-col :span="8">
         <material-input
-        v-model.trim.trim="createData.address"
-        >默认使用标识路由,外部路由时使用,选填</material-input>
+          v-model.trim.trim="createData.address"
+        >{{createData.address?createData.address:'默认使用标识路由,外部路由时使用,选填'}}</material-input>
       </el-col>
     </el-row>
     <el-row>
@@ -91,8 +91,8 @@
       </el-col>
       <el-col :span="8">
         <material-input
-        v-model.trim="createData.icon_class"
-        >图标的class类名,选填</material-input>
+          v-model.trim="createData.icon_class"
+        >{{createData.icon_class?createData.icon_class:'图标的class类名,选填'}}</material-input>
       </el-col>
     </el-row>
     <el-row>
@@ -103,8 +103,8 @@
       </el-col>
       <el-col :span="8">
         <material-input
-        v-model.trim="createData.icon_family"
-        >默认(an-mall-icon),选填</material-input>
+          v-model.trim="createData.icon_family"
+        >{{createData.icon_family?createData.icon_family:'默认(an-mall-icon),选填'}}</material-input>
       </el-col>
     </el-row>
     <el-row>
@@ -112,7 +112,7 @@
         <div class="buttons">
           <el-button
             type="primary"
-            @click="submit">提交</el-button>
+            @click="submit">确认修改</el-button>
         </div>
       </el-col>
     </el-row>
@@ -130,6 +130,7 @@
       return {
         parentLoading: true,
         createData: {
+          id: '',
           pid: '',
           type: '',
           name: '',
@@ -147,11 +148,11 @@
         this
           .$api
           .rule
-          .create(this.createData)
+          .update(this.createData)
           .then(r => {
             this.closeLoading()
             this.$message({
-              message: '创建成功',
+              message: '修改成功',
               type: 'success'
             })
             this.jump({name: 'permission.rule.list'})
@@ -159,6 +160,8 @@
       }
     },
     created () {
+      this.createData.id = this.$route.params.id
+      // 获取父级分类
       this
         .$api
         .rule
@@ -169,6 +172,15 @@
           console.log(this.rules)
         }).catch(r => {
           this.parentLoading = false
+        })
+      // 获取数据
+      this.showLoading()
+      this
+        .$api
+        .rule
+        .getRuleInfoById(this.createData.id)
+        .then(r => {
+          this.createData = r
         })
     }
   }

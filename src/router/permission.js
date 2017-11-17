@@ -93,13 +93,22 @@ export default {
       component: secondRouteView,
       children: [
         {
-          path: 'list',
+          path: 'list/:pid(\\d+)?',
           name: 'permission.rule.list',
           meta: {
             breadcrumb: true,
             title: '权限列表'
           },
           component: _import('permission/rule/list')
+        },
+        {
+          path: 'update/:id(\\d+)',
+          name: 'permission.rule.update',
+          meta: {
+            breadcrumb: true,
+            title: '修改权限'
+          },
+          component: _import('permission/rule/update')
         },
         {
           path: 'create',
