@@ -15,7 +15,8 @@
         </div>
       </el-col>
       <el-col :span="8">
-        <material-input v-model.trim="name">请输入管理组名称</material-input>
+        <material-input
+          v-model.trim="name">{{name?name:'请输入管理组名称'}}</material-input>
       </el-col>
     </el-row>
     <el-row>
@@ -25,8 +26,7 @@
         </div>
       </el-col>
       <el-col :span="8">
-        <material-input
-          v-model.trim="descriptions">请输入描述</material-input>
+        <material-input  v-model.trim="descriptions">{{descriptions?descriptions:'请输入描述'}}</material-input>
       </el-col>
     </el-row>
     <el-row>
@@ -38,7 +38,9 @@
       <el-col :span="8">
         <div style="margin-top: 34px">
           <rules-tree
+            v-if="loaded"
             ref="rulesTree"
+            :checkedKeys="rules"
           ></rules-tree>
         </div>
       </el-col>
@@ -46,7 +48,7 @@
     <el-row>
       <el-col :span="8" :offset="3">
         <div class="buttons">
-          <el-button type="primary" @click="submit">确认创建</el-button>
+          <el-button type="primary" @click="submit">确认修改</el-button>
         </div>
       </el-col>
     </el-row>
@@ -62,37 +64,21 @@
     },
     data () {
       return {
-        showAuthorization: false,
+        loaded: false,
         name: '',
-        descriptions: ''
+        descriptions: '',
+        rules: [0],
+        id: 0
       }
     },
     methods: {
-      /**
-       *  删除权限
-       */
-      deleteRule (rule, idx) {
-        this.ruleKeys =
-          this.ruleKeys.filter((id) => {
-            if (id === rule.id) {
-              return false
-            }
-            return true
-          })
-        this.ruleNodes = this.ruleNodes.splice(idx, 1)
-      },
-      // 获取权限
-      getRules (keys, nodes) {
-        this.ruleKeys = keys
-        this.ruleNodes = nodes
-      },
-      /**
-       * 提交数据
-       * @returns {boolean}
-       */
       submit () {
         if (!this.name) {
           this.$message.error(this.$lang('请输入名称!'))
+          return false
+        }
+        if (!this.id) {
+          this.$message.error(this.$lang('缺少ID!'))
           return false
         }
         let rules = this.$refs.rulesTree.$refs.authorizationTree.getCheckedKeys()
@@ -104,18 +90,41 @@
         this
           .$api
           .group
-          .create({
+          .update({
+            id: this.id,
             rules: rules,
             name: this.name,
             descriptions: this.descriptions
           }).then(r => {
             this.$message({
-              message: '创建成功',
+              message: '修改成功',
               type: 'success'
             })
             this.jump(-1)
           })
       }
+    },
+    created () {
+      if (this.$route.params.id) {
+        this.id = this.$route.params.id
+      } else {
+        this.$message.error(this.$lang('参数错误!'))
+        this.jump(-1)
+        return false
+      }
+      this.showLoading()
+      this
+        .$api
+        .group
+        .getGroupInfoById(this.id)
+        .then(r => {
+          this.name = r.name
+          this.descriptions = r.descriptions
+          this.rules = r.rules.split(',')
+          this.loaded = true
+        }).catch(e => {
+          this.jump(-1)
+        })
     }
   }
 </script>

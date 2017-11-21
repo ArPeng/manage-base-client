@@ -16,7 +16,7 @@
       </el-col>
       <el-col :span="4">
       <el-select
-        v-model="createData.pid"
+        v-model.trim="createData.pid"
         v-loading="parentLoading"
         class="mt"
         placeholder="请选择">

@@ -2,7 +2,7 @@
 ---- 二级菜单路由视图
 --->
 <template>
-  <router-view></router-view>
+    <router-view></router-view>
 </template>
 <script>
   export default {

@@ -16,7 +16,7 @@
       </el-col>
       <el-col :span="8">
         <material-input
-          v-model="name"
+          v-model.trim="name"
           :value="name"
           >{{name?name:'请输入管理员姓名'}}</material-input>
       </el-col>
@@ -29,7 +29,7 @@
       </el-col>
       <el-col :span="8">
         <material-input
-          v-model="email"
+          v-model.trim="email"
           :value="email"
           >{{email?email:'请输入管理员邮箱'}}</material-input>
       </el-col>
@@ -42,7 +42,7 @@
       </el-col>
       <el-col :span="8">
         <material-input
-          v-model="mobile"
+          v-model.trim="mobile"
           :value="mobile"
           >{{mobile?mobile:'请输入管理员手机号码'}}</material-input>
       </el-col>
@@ -55,7 +55,7 @@
       </el-col>
       <el-col :span="8">
         <material-input
-          v-model="password">请输入管理员登录密码</material-input>
+          v-model.trim="password">请输入管理员登录密码</material-input>
       </el-col>
     </el-row>
     <el-row>

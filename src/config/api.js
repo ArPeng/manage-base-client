@@ -30,9 +30,23 @@ export default {
     delete: '/rule.delete',
     // 通过pid获取权限列表 GET
     getListByPid: '/rule.get_list_by_pid',
-    // 获取无限极格式的数据
+    // 获取无限极格式的数据 GET
     infinite: '/rule.infinite',
-    // 通过ID获取单条权限信息
+    // 通过ID获取单条权限信息 GET
     getRuleInfoById: '/rule.get_rule_info_by_id'
+  },
+  group: {
+    // 创建管理组 POST
+    create: '/group.create',
+    // 修改管理组 POST
+    update: '/group.update',
+    // 删除管理组 POST
+    delete: '/group.delete',
+    // 通过ID获取单条管理组 GET
+    getGroupInfoById: '/group.get_group_info_by_id',
+    // 获取管理组列表 GET
+    getList: '/group.get_list',
+    // 给用户组授权 POST
+    authorization: '/group.authorization'
   }
 }

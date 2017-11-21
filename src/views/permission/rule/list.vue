@@ -65,17 +65,17 @@
         <el-table-column label="操作">
           <template slot-scope="scope">
             <el-button
-              size="mini"
+              size="little"
               @click="jump({
                 name: 'permission.rule.update',
                 params: {id: scope.row.id}
               })">编辑</el-button>
             <el-button
-              size="mini"
+              size="little"
               type="danger"
               @click="deleteRule(scope.row.id)">删除</el-button>
             <el-button
-              size="mini"
+              size="little"
               v-if="scope.row.child_count > 0"
               @click="jump({
                 name: 'permission.rule.list',

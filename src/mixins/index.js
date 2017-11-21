@@ -4,6 +4,24 @@ import {Loading} from 'element-ui'
 let loadingResult = null
 export default {
   methods: {
+    /**
+     * @purpose 字符串截取
+     * @param str
+     * @param length
+     * @param ending
+     */
+    stringCut (str = '', length = 20, ending = '...') {
+      if (str.length <= length) {
+        return str
+      }
+      return str.substr(0, length) + ending
+    },
+    /**
+     * @purpose 多语言处理
+     * todo 暂时未设计完该功能
+     * @param message
+     * @returns {string}
+     */
     $lang (message = '') {
       return message
     },

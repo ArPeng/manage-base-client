@@ -55,7 +55,7 @@ let _auth = (match, next) => {
   const $vue = new Vue()
   isLoading = setTimeout(() => {
     $vue.showLoading()
-  }, 1000)
+  }, 500)
   // 发送验证请求
   $vue
     .$api

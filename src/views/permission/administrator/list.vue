@@ -49,25 +49,25 @@
         <el-table-column label="操作">
           <template slot-scope="scope">
             <el-button
-              size="mini"
+              size="little"
               @click="jump({
                 name: 'permission.administrator.update',
                 params: {uuid: scope.row.uuid}
               })">编辑</el-button>
             <el-button
-              size="mini"
+              size="little"
               type="primary">授权</el-button>
             <el-button
-              size="mini"
+              size="little"
               type="danger"
               @click="deleteUser(scope.row.uuid)">删除</el-button>
             <el-button
-              size="mini"
+              size="little"
               type="warning"
               v-if="scope.row.status === 1"
               @click="isDisable(scope.row.uuid,2)">禁用</el-button>
             <el-button
-              size="mini"
+              size="little"
               type="success"
               v-if="scope.row.status === 2"
               @click="isDisable(scope.row.uuid, 1)">解禁</el-button>

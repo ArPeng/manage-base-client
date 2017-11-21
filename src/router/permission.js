@@ -64,13 +64,22 @@ export default {
       component: secondRouteView,
       children: [
         {
-          path: 'list',
+          path: 'list/:page(\\d+)?',
           name: 'permission.group.list',
           meta: {
             breadcrumb: true,
             title: '管理组列表'
           },
           component: _import('permission/group/list')
+        },
+        {
+          path: 'update/:id(\\d+)',
+          name: 'permission.group.update',
+          meta: {
+            breadcrumb: true,
+            title: '修改管理组'
+          },
+          component: _import('permission/group/update')
         },
         {
           path: 'create',

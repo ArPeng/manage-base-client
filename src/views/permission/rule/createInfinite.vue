@@ -1,5 +1,5 @@
 <!--
---- 处理无限极分类的option选项
+--- 处理无限极分类的option选项 递归组件
 -->
 <template>
   <div>
@@ -28,12 +28,8 @@
   </div>
 </template>
 <script>
-  import createInfinite from './createInfinite.vue'
   export default {
-    name: 'create-infinite',
-    components: {
-      createInfinite
-    },
+    name: 'createInfinite',
     props: {
       level: {
         type: Number,
