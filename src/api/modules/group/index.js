@@ -99,6 +99,16 @@ export function authorization (id, rules) {
     })
     .then(r => r.data)
 }
+
+/**
+ * @purpose 获取所有用户组
+ * @returns {Promise.<TResult>}
+ */
+export function all () {
+  return http
+    .get('group.all')
+    .then(r => r.data)
+}
 /**
  * 验证失败时返回的错误信息
  * @param msg 错误提示

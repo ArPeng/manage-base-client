@@ -16,21 +16,22 @@ router.beforeEach((to, from, next) => {
       // 设置网页标题
       document.title = match.meta.title ? match.meta.title : match.name
       let token = $vue.getToken()
-      // 过滤免登录白名单
-      if ($vue.inArray(match.name, WhiteList)) {
-        next()
-      } else {
+      // // 过滤免登录白名单 todo 过滤白名单移动到后端验证之后,临时解决白名单内的路由获取不到用户信息,
+      // todo 待后面将白名单验证移动到后端验证,以保证每一个路由都要请求权限验证接口
+      // if ($vue.inArray(match.name, WhiteList)) {
+      //   next()
+      // } else {
         // todo 目前只验证登录, 这个地方应该有验证权限
-        if (!token) {
-          // 本地token不存在,直接跳转到登录界面
-          $vue.$message($vue.$lang('请登录'))
-          next({
-            name: 'signIn'
-          })
-        } else {
-          _auth(match, next)
-        }
+      if (!token) {
+        // 本地token不存在,直接跳转到登录界面
+        $vue.$message($vue.$lang('请登录'))
+        next({
+          name: 'signIn'
+        })
+      } else {
+        _auth(match, next)
       }
+      // }
     }
   })
 })
@@ -62,29 +63,35 @@ let _auth = (match, next) => {
     .sign
     .verificationToken()
     .then(r => {
-      if (r.status === 10004) {
-        $vue.$message.error('未找到令牌(Token)!')
-        next({
-          name: 'signIn'
-        })
-        return false
-      }
-      if (r.status === 10005) {
-        $vue.$message.error('登录已过期!')
-        next({
-          name: 'signIn'
-        })
-        return false
-      }
-      if (r.info.status === 2) {
-        $vue.$message.error('您的账号已被禁用,请联系管理员!')
-        next({
-          name: 'signIn'
-        })
-        return false
-      }
+      // todo 暂时在这个地方判断白名单
+      if ($vue.inArray(match.name, WhiteList)) {
+        Store.dispatch('setUserInfo', r.info)
+        next()
+      } else {
+        if (r.status === 10004) {
+          $vue.$message.error('未找到令牌(Token)!')
+          next({
+            name: 'signIn'
+          })
+          return false
+        }
+        if (r.status === 10005) {
+          $vue.$message.error('登录已过期!')
+          next({
+            name: 'signIn'
+          })
+          return false
+        }
+        if (r.info.status === 2) {
+          $vue.$message.error('您的账号已被禁用,请联系管理员!')
+          next({
+            name: 'signIn'
+          })
+          return false
+        }
 
-      Store.dispatch('setUserInfo', r.info)
-      next()
+        Store.dispatch('setUserInfo', r.info)
+        next()
+      }
     })
 }

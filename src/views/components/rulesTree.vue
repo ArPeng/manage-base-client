@@ -91,7 +91,8 @@
   }
 </script>
 <style lang="sass">
-  .el-checkbox
-    pointer-events: none
-    cursor: pointer
+  .el-tree
+    .el-checkbox
+      pointer-events: none
+      cursor: pointer
 </style>

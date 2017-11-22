@@ -121,6 +121,22 @@ export function items (page = 1, nums = 20) {
       num: nums
     }).then(r => r.data)
 }
+
+/**
+ * @purpose 用户授权接口
+ * @param uid
+ * @param groupId
+ * @param rules
+ * @returns {*}
+ */
+export function authorization (uid, groupId = '', rules = '') {
+  return http
+    .post('user.authorization', {
+      uid: uid,
+      group_id: groupId,
+      rules: rules
+    }).then(r => r.data)
+}
 /**
  * 验证失败时返回的错误信息
  * @param msg 错误提示

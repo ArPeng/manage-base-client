@@ -4,7 +4,6 @@
 <template>
   <el-dialog
     title="选择权限"
-    v-loading="true"
     :append-to-body="true"
     :show-close="false"
     width="400px"

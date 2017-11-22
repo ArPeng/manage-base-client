@@ -46,6 +46,13 @@
             <el-tag v-if="scope.row.status === 2" size="small" type="danger">禁用</el-tag>
           </template>
         </el-table-column>
+        <el-table-column
+          label="是否授权">
+          <template slot-scope="scope">
+            <el-tag v-if="scope.row.rules || scope.row.groups" size="small" type="success">已授权</el-tag>
+            <el-tag v-else size="small" type="danger">未授权</el-tag>
+          </template>
+        </el-table-column>
         <el-table-column label="操作">
           <template slot-scope="scope">
             <el-button
@@ -56,7 +63,8 @@
               })">编辑</el-button>
             <el-button
               size="little"
-              type="primary">授权</el-button>
+              type="primary"
+              @click="showAuthorization(scope.row.groups, scope.row.rules);actionUserId = scope.row.uid">授权</el-button>
             <el-button
               size="little"
               type="danger"
@@ -85,12 +93,22 @@
         </el-pagination>
       </div>
     </template>
+    <authorization
+      :default-groups="defaultGroups"
+      :default-rules="defaultRules"
+      @submit="authorization"
+      :show.sync="show"></authorization>
   </div>
 </template>
 <script>
+  import authorization from './authorization.vue'
   export default {
+    components: {
+      authorization
+    },
     data () {
       return {
+        show: false,
         // loading
         loading: false,
         // 页码
@@ -100,7 +118,13 @@
         // 数据总条数
         total: 0,
         // 列表数据
-        tableData: []
+        tableData: [],
+        // 当前操作管理员以及拥有的管理组
+        defaultGroups: [],
+        // 当前操作管理员以及拥有的额外权限
+        defaultRules: [],
+        // 当前操作的管理员UID
+        actionUserId: 0
       }
     },
     watch: {
@@ -112,6 +136,35 @@
       }
     },
     methods: {
+      // 给管理员授权
+      authorization (groups, rules) {
+        this.showLoading()
+        this
+          .$api
+          .user
+          .authorization(
+            this.actionUserId,
+            groups,
+            rules
+          ).then(r => {
+            this.getData()
+          })
+      },
+      /**
+       * 授权弹窗弹出之前的一些处理
+       */
+      showAuthorization (groups, rules) {
+        this.defaultGroups = []
+        this.defaultRules = []
+        if (groups) {
+          this.defaultGroups = groups.split(',')
+        }
+        if (rules) {
+          this.defaultRules = rules.split(',')
+        }
+        this.show = true
+      },
+      // 禁封或解禁管理员
       isDisable (uuid, type) {
         let auto = setTimeout(() => {
           this.showLoading()

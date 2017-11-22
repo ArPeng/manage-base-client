@@ -19,7 +19,9 @@ export default {
     // 删除管理员 POST
     delete: '/user.delete',
     // 禁用/解禁管理员
-    isDisable: '/user.is_disable'
+    isDisable: '/user.is_disable',
+    // 管理员授权接口
+    authorization: '/user.authorization'
   },
   rule: {
     // 创建权限 PSST
@@ -47,6 +49,8 @@ export default {
     // 获取管理组列表 GET
     getList: '/group.get_list',
     // 给用户组授权 POST
-    authorization: '/group.authorization'
+    authorization: '/group.authorization',
+    // 获取所有用户组 GET
+    all: '/group.all'
   }
 }

@@ -26,6 +26,22 @@ export default new Router({
       },
       component: _import('sign/signIn')
     },
-    permission
+    permission,
+    {
+      path: '/401',
+      name: '401',
+      meta: {
+        title: '无权限'
+      },
+      component: _import('errorPage/401')
+    },
+    {
+      path: '*',
+      name: '404',
+      meta: {
+        title: '未找到页面'
+      },
+      component: _import('errorPage/404')
+    }
   ]
 })

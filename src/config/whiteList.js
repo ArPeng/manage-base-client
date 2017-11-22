@@ -2,5 +2,7 @@
 export default [
   'test',
   'signIn',
-  '404'
+  '404',
+  '401',
+  'dashboard'
 ]

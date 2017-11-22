@@ -92,6 +92,7 @@
           .signByPassword(this.sign, this.password)
           .then(r => {
             this.closeLoading()
+            this.$store.dispatch('setUserInfo', r.info)
             this.setToken(r.token)
             this.jump({
               name: 'dashboard'
