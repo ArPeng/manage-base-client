@@ -59,6 +59,7 @@ export function clearToken () {
  * @private
  */
 function _return (msg = '') {
+  $vue.$message.error(msg)
   return new Promise((resolve, reject) => {
     reject(new Error(msg))
   })

@@ -52,5 +52,11 @@ export default {
     authorization: '/group.authorization',
     // 获取所有用户组 GET
     all: '/group.all'
+  },
+  verification: {
+    // 获取dashboard 菜单(一级菜单) GET
+    dashboard: '/verification.dashboard',
+    // 获取侧边栏菜单
+    sidebarMenu: '/verification.menu'
   }
 }

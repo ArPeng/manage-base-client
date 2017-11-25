@@ -18,20 +18,20 @@ router.beforeEach((to, from, next) => {
       let token = $vue.getToken()
       // // 过滤免登录白名单 todo 过滤白名单移动到后端验证之后,临时解决白名单内的路由获取不到用户信息,
       // todo 待后面将白名单验证移动到后端验证,以保证每一个路由都要请求权限验证接口
-      // if ($vue.inArray(match.name, WhiteList)) {
-      //   next()
-      // } else {
-        // todo 目前只验证登录, 这个地方应该有验证权限
-      if (!token) {
-        // 本地token不存在,直接跳转到登录界面
-        $vue.$message($vue.$lang('请登录'))
-        next({
-          name: 'signIn'
-        })
+      if ($vue.inArray(match.name, WhiteList)) {
+        next()
       } else {
-        _auth(match, next)
+        // todo 目前只验证登录, 这个地方应该有验证权限
+        if (!token) {
+          // 本地token不存在,直接跳转到登录界面
+          $vue.$message($vue.$lang('请登录'))
+          next({
+            name: 'signIn'
+          })
+        } else {
+          _auth(match, next)
+        }
       }
-      // }
     }
   })
 })

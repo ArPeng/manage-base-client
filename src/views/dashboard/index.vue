@@ -7,12 +7,20 @@
     </el-header>
     <el-main>
       <ul>
-        <li @click="jump({name: 'permission'})">
-          <div class="item-content">
-            <div class="an-mall-icon icon">&#xe606;</div>
-            <div class="title">权限管理</div>
-          </div>
-        </li>
+        <template v-for="item in menu">
+          <li @click="jump({name: item.identification})">
+            <div class="item-content">
+              <template v-if="item.icon_class">
+                <div
+                  :class="item.icon_family"
+                  class="icon">
+                  <span :class="item.icon_class"></span>
+                </div>
+              </template>
+              <div class="title">{{item.name}}</div>
+            </div>
+          </li>
+        </template>
       </ul>
     </el-main>
   </el-container>
@@ -24,9 +32,36 @@
       uiUserInfo
     },
     data () {
-      return {}
+      return {
+        menu: []
+      }
+    },
+    methods: {
+      // 跳转之前先获取侧边栏菜单
+//      getSidebar (identification, id) {
+//        let auto = setTimeout(() => {
+//          this.showLoading()
+//        }, 500)
+//        this
+//          .$api
+//          .verification
+//          .sidebarMenu(id)
+//          .then(r => {
+//            clearTimeout(auto)
+//            this.closeLoading()
+//          })
+//      }
     },
     created () {
+      // 获取dashboard菜单
+      this
+        .$api
+        .verification
+        .dashboard()
+        .then(r => {
+          this.menu = r
+          console.log(r)
+        })
     }
   }
 </script>
