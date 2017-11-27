@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import * as http from '@api/http'
+import {_return} from '@api/pretreatment'
 const $vue = new Vue()
-const Promise = require('es6-promise').Promise
 // group: {
 //   // 创建管理组
 //   create: '/group.create',
@@ -108,16 +108,4 @@ export function all () {
   return http
     .get('group.all')
     .then(r => r.data)
-}
-/**
- * 验证失败时返回的错误信息
- * @param msg 错误提示
- * @returns {Promise<any>}
- * @private
- */
-function _return (msg = '') {
-  $vue.$message.error(msg)
-  return new Promise((resolve, reject) => {
-    reject(new Error(msg))
-  })
 }

@@ -6,7 +6,7 @@
     text-color="#fff"
     class="sidebar"
     active-text-color="#409EFF">
-      <menu-loop :data="menu"></menu-loop>
+      <menu-loop :data="menu" :mini="mini"></menu-loop>
   </el-menu>
 </template>
 <script>

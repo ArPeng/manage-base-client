@@ -42,7 +42,7 @@
           label="图标">
           <template slot-scope="scope">
             <span v-if="scope.row.icon_class" :class="scope.row.icon_family">
-              <i :class="scope.row.icon_class"></i>
+              <span :class="scope.row.icon_class"></span>
             </span>
             <template v-else>无图标</template>
           </template>

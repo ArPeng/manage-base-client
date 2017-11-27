@@ -24,6 +24,17 @@
             <!--@click="jump({name:'permission.administrator.create'})">添加</el-menu-item>-->
         </el-submenu>
       </template>
+      <template v-else-if="level === 1 && mini">
+        <el-tooltip class="item" effect="dark" :content="item.name" placement="right">
+          <el-menu-item :index="index?`${index}-${idx}`:`${idx}`"
+                        @click="jump({name: item.identification})">
+              <i v-if="item.icon_class"
+                 :class="`${item.icon_family} ${item.icon_class}`"></i>
+              <i class="an-mall-icon icon-liebiao" v-else-if="level === 1"></i>
+            <span slot="title">{{item.name}}</span>
+          </el-menu-item>
+        </el-tooltip>
+      </template>
       <template v-else>
         <el-menu-item :index="index?`${index}-${idx}`:`${idx}`"
                       @click="jump({name: item.identification})">
@@ -40,6 +51,10 @@
   export default {
     name: 'menuLoop',
     props: {
+      mini: {
+        type: Boolean,
+        default: false
+      },
       // 菜单数据
       data: {
         type: Array,
@@ -65,12 +80,15 @@
     margin-right: 5px
     width: 24px
     text-align: center
-    font-size: 16px
+    font-size: 18px
   .el-menu--collapse
     .el-submenu__title
       span
         display: none
       i.el-submenu__icon-arrow
+        display: none
+    li.el-menu-item
+      >span
         display: none
     .el-submenu.is-opened
       .el-menu

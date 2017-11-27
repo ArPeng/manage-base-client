@@ -4,10 +4,7 @@ import Vue from 'vue'
 import qs from 'qs'
 const $vue = new Vue()
 let instance = axios.create({
-  baseURL: config.baseUri,
-  headers: {
-    Token: $vue.getToken()
-  }
+  baseURL: config.baseUri
 })
 let headers = {
   'Content-Type': 'application/json',
@@ -32,6 +29,7 @@ export function post (path = '', data = {}, type = 'json') {
     headers.Accept = '*/*'
     headers['Content-Type'] = 'application/x-www-form-urlencoded'
   }
+  instance.defaults.headers.common['Token'] = $vue.getToken()
   return new Promise((resolve, reject) => {
     instance.post(url, data, {
       headers: headers,
@@ -106,45 +104,43 @@ export function get (path = '', data = {}, type = '?') {
   } else if (type === '?') {
     _data = data
   }
+  instance.defaults.headers.common['Token'] = $vue.getToken()
   return new Promise((resolve, reject) => {
-    instance.get(url, {params: _data}, {
-      headers: {
-        Token: 'aAAAAAA'
-      }
-    }).then(r => {
-      $vue.closeLoading()
-      if (r.status === 200) {
-        if (typeof r.data === 'undefined' ||
-          r.data === '' ||
-          $vue.isEmptyObject(r.data) ||
-          !r.data) {
-          $vue.$message.error($vue.$lang('服务器响应数据格式错误或为空!'))
-          reject(new Error($vue.$lang('服务器响应数据格式错误或为空!')))
-          return false
+    instance.get(url, {params: _data})
+      .then(r => {
+        $vue.closeLoading()
+        if (r.status === 200) {
+          if (typeof r.data === 'undefined' ||
+            r.data === '' ||
+            $vue.isEmptyObject(r.data) ||
+            !r.data) {
+            $vue.$message.error($vue.$lang('服务器响应数据格式错误或为空!'))
+            reject(new Error($vue.$lang('服务器响应数据格式错误或为空!')))
+            return false
+          }
+          if (typeof r.data.code === 'undefined') {
+            $vue.$message.error($vue.$lang('服务器未响应状态码!'))
+            reject(new Error($vue.$lang('服务器未响应状态码')))
+            return false
+          }
+          if (typeof r.data.code !== 'undefined' &&
+              parseInt(r.data.code) !== 10000) {
+            $vue.$message.error(r.data.message)
+            reject(new Error(r.data.message))
+            return false
+          }
+          resolve(r.data)
+        } else {
+          $vue.$message.error($vue.$lang('网络不给力,请稍后再试!'))
+          $vue.$message.error($vue.$lang('网络不给力,请稍后再试!'))
+          reject(new Error('请求错误: ', r))
         }
-        if (typeof r.data.code === 'undefined') {
-          $vue.$message.error($vue.$lang('服务器未响应状态码!'))
-          reject(new Error($vue.$lang('服务器未响应状态码')))
-          return false
-        }
-        if (typeof r.data.code !== 'undefined' &&
-            parseInt(r.data.code) !== 10000) {
-          $vue.$message.error(r.data.message)
-          reject(new Error(r.data.message))
-          return false
-        }
-        resolve(r.data)
-      } else {
+      }).catch(e => {
+        $vue.closeLoading()
         $vue.$message.error($vue.$lang('网络不给力,请稍后再试!'))
         $vue.$message.error($vue.$lang('网络不给力,请稍后再试!'))
-        reject(new Error('请求错误: ', r))
-      }
-    }).catch(e => {
-      $vue.closeLoading()
-      $vue.$message.error($vue.$lang('网络不给力,请稍后再试!'))
-      $vue.$message.error($vue.$lang('网络不给力,请稍后再试!'))
-      reject(new Error('请求错误: ', e))
-    })
+        reject(new Error('请求错误: ', e))
+      })
   })
 }
 /**

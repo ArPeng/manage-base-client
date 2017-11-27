@@ -1,7 +1,7 @@
-import Vue from 'vue'
+import {_return} from '@api/pretreatment'
 import * as http from '@api/http'
+import Vue from 'vue'
 const $vue = new Vue()
-const Promise = require('es6-promise').Promise
 
 /**
  * 创建管理员
@@ -136,16 +136,4 @@ export function authorization (uid, groupId = '', rules = '') {
       group_id: groupId,
       rules: rules
     }).then(r => r.data)
-}
-/**
- * 验证失败时返回的错误信息
- * @param msg 错误提示
- * @returns {Promise<any>}
- * @private
- */
-function _return (msg = '') {
-  $vue.$message.error(msg)
-  return new Promise((resolve, reject) => {
-    reject(new Error(msg))
-  })
 }
