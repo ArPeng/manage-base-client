@@ -5,6 +5,7 @@
         type="primary"
         icon="el-icon-plus"
         size="small"
+        v-if="auth('permission.group.create')"
         @click="jump({name:'permission.group.create'})">添加</el-button>
     </div>
     <template>
@@ -50,6 +51,7 @@
           <template slot-scope="scope">
             <el-button
               size="little"
+              v-if="auth('permission.group.update')"
               @click="jump({
                 name: 'permission.group.update',
                 params: {id: scope.row.id}
@@ -57,10 +59,12 @@
             <el-button
               size="little"
               type="warning"
+              v-if="auth('permission.group.authorization')"
               @click="authorization(scope.row.rules);selectId = scope.row.id">权限分配</el-button>
             <el-button
               size="little"
               type="danger"
+              v-if="auth('permission.group.delete')"
               @click="deleteGroup(scope.row.id)">删除</el-button>
             <!--<el-button-->
               <!--size="little"-->

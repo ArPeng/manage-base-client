@@ -5,6 +5,7 @@
         type="primary"
         icon="el-icon-plus"
         size="small"
+        v-if="auth('permission.administrator.create')"
         @click="jump({name:'permission.administrator.create'})">添加</el-button>
     </div>
     <template>
@@ -58,27 +59,33 @@
             <el-button
               size="little"
               @click="jump({
-                name: 'permission.administrator.update',
-                params: {uuid: scope.row.uuid}
-              })">编辑</el-button>
+                  name: 'permission.administrator.update',
+                  params: {uuid: scope.row.uuid}
+                })"
+              v-if="auth('permission.administrator.update')">编辑</el-button>
             <el-button
               size="little"
               type="primary"
+              v-if="auth('permission.administrator.authorization')"
               @click="showAuthorization(scope.row.groups, scope.row.rules);actionUserId = scope.row.uid">授权</el-button>
             <el-button
               size="little"
               type="danger"
+              v-if="auth('permission.administrator.delete')"
               @click="deleteUser(scope.row.uuid)">删除</el-button>
-            <el-button
-              size="little"
-              type="warning"
-              v-if="scope.row.status === 1"
-              @click="isDisable(scope.row.uuid,2)">禁用</el-button>
-            <el-button
-              size="little"
-              type="success"
-              v-if="scope.row.status === 2"
-              @click="isDisable(scope.row.uuid, 1)">解禁</el-button>
+            <template
+              v-if="auth('permission.administrator.disable_or_enable')">
+              <el-button
+                size="little"
+                type="warning"
+                v-if="scope.row.status === 1"
+                @click="isDisable(scope.row.uuid,2)">禁用</el-button>
+              <el-button
+                size="little"
+                type="success"
+                v-if="scope.row.status === 2"
+                @click="isDisable(scope.row.uuid, 1)">解禁</el-button>
+            </template>
           </template>
         </el-table-column>
       </el-table>

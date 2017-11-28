@@ -25,7 +25,11 @@
         </el-submenu>
       </template>
       <template v-else-if="level === 1 && mini">
-        <el-tooltip class="item" effect="dark" :content="item.name" placement="right">
+        <el-tooltip
+          class="item"
+          effect="dark"
+          :content="item.name"
+          placement="right">
           <el-menu-item :index="index?`${index}-${idx}`:`${idx}`"
                         @click="jump({name: item.identification})">
               <i v-if="item.icon_class"

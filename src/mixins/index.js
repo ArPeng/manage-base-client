@@ -1,9 +1,14 @@
 import config from '@config'
 import Cookie from 'js-cookie'
 import {Loading} from 'element-ui'
+import Store from '@store'
 let loadingResult = null
 export default {
   methods: {
+    auth (permission) {
+      let _permission = Store.getters.permission
+      return this.inArray(permission, _permission)
+    },
     /**
      * @purpose 字符串截取
      * @param str

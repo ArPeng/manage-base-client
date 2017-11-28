@@ -11,6 +11,7 @@
         type="primary"
         icon="el-icon-plus"
         size="small"
+        v-if="auth('permission.rule.create')"
         @click="jump({name:'permission.rule.create'})">添加</el-button>
     </div>
     <template>
@@ -66,6 +67,7 @@
           <template slot-scope="scope">
             <el-button
               size="little"
+              v-if="auth('permission.rule.update')"
               @click="jump({
                 name: 'permission.rule.update',
                 params: {id: scope.row.id}
@@ -73,6 +75,7 @@
             <el-button
               size="little"
               type="danger"
+              v-if="auth('permission.rule.delete')"
               @click="deleteRule(scope.row.id)">删除</el-button>
             <el-button
               size="little"

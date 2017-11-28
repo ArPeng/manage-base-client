@@ -16,12 +16,10 @@ router.beforeEach((to, from, next) => {
       // 设置网页标题
       document.title = match.meta.title ? match.meta.title : match.name
       let token = $vue.getToken()
-      // // 过滤免登录白名单 todo 过滤白名单移动到后端验证之后,临时解决白名单内的路由获取不到用户信息,
-      // todo 待后面将白名单验证移动到后端验证,以保证每一个路由都要请求权限验证接口
+      // // 过滤免登录白名单 todo 过滤白名单移动到后端验证之后,临时解决白名单内的路由获取不到用户信息
       if ($vue.inArray(match.name, WhiteList)) {
         next()
       } else {
-        // todo 目前只验证登录, 这个地方应该有验证权限
         if (!token) {
           // 本地token不存在,直接跳转到登录界面
           $vue.$message($vue.$lang('请登录'))
@@ -56,18 +54,28 @@ let _auth = (match, next) => {
   const $vue = new Vue()
   isLoading = setTimeout(() => {
     $vue.showLoading()
-  }, 500)
+  }, 4000)
   // 发送验证请求
   $vue
     .$api
     .sign
-    .verificationToken()
+    .verification(match.name)
     .then(r => {
+      clearTimeout(isLoading)
+      $vue.closeLoading()
       // todo 暂时在这个地方判断白名单
       if ($vue.inArray(match.name, WhiteList)) {
         Store.dispatch('setUserInfo', r.info)
         next()
       } else {
+        // 权限不足
+        if (r.status === 10011) {
+          $vue.$message.error('权限不足,访问被拒绝!')
+          next({
+            name: '401'
+          })
+          return false
+        }
         if (r.status === 10004) {
           $vue.$message.error('未找到令牌(Token)!')
           next({
@@ -93,5 +101,10 @@ let _auth = (match, next) => {
         Store.dispatch('setUserInfo', r.info)
         next()
       }
+    })
+    .catch(e => {
+      clearTimeout(isLoading)
+      $vue.closeLoading()
+      throw new Error(e)
     })
 }

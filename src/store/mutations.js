@@ -14,5 +14,13 @@ export default {
    */
   setSidebarMenu: (state, data) => {
     state.sidebarMenu = data
+  },
+  /**
+   * @purpose 设置页面的按钮以及板块显示权限
+   * @param state
+   * @param data
+   */
+  setPermission: (state, data) => {
+    state.permission = data
   }
 }

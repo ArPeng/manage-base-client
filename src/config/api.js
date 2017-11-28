@@ -2,8 +2,8 @@ export default {
   sign: {
     // 登录 POST
     signByPassword: '/sign.by_password',
-    // 验证Token POST
-    verificationToken: '/sign.verification_token',
+    // 验证Token以及权限 POST
+    verification: '/sign.verification',
     // 退出时清除token POST
     clearToken: '/sign.clear_token'
   },
@@ -57,6 +57,8 @@ export default {
     // 获取dashboard 菜单(一级菜单) GET
     dashboard: '/verification.dashboard',
     // 获取侧边栏菜单
-    sidebarMenu: '/verification.menu'
+    sidebarMenu: '/verification.menu',
+    // 获取按钮以及展示权限
+    identification: '/verification.identification'
   }
 }

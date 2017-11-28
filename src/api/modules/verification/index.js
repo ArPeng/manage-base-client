@@ -12,6 +12,17 @@ export function dashboard () {
 }
 
 /**
+ * @purpose 获取按钮以及板块展示权限
+ * @param $identification
+ * @returns {Promise.<TResult>}
+ */
+export function identification ($identification) {
+  return http
+    .get('verification.identification', {
+      identification: $identification
+    }).then(r => r.data)
+}
+/**
  * @purpose 获取侧边栏菜单
  * @param identification
  * @returns {*}

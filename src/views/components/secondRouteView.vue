@@ -7,7 +7,12 @@
 <script>
   export default {
     data () {
-      return {}
+      return {
+        identification: ''
+      }
+    },
+    created () {
+      this.auth()
     }
   }
 </script>

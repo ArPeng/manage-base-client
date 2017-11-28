@@ -24,17 +24,19 @@ export function signByPassword (s = '', p = '') {
 }
 
 /**
- * 验证Token
+ * 验证Token 以及权限
+ * @param identification 路由name属性
  * @returns {*}
  */
-export function verificationToken () {
+export function verification (identification) {
   let token = $vue.getToken()
   if (!token) {
     return _return(new Error($vue.$lang('Token为空')))
   }
   return http
-    .post('sign.verificationToken', {
-      token: token
+    .post('sign.verification', {
+      token: token,
+      identification: identification
     }).then(r => r.data)
 }
 

@@ -60,7 +60,6 @@
         .dashboard()
         .then(r => {
           this.menu = r
-          console.log(r)
         })
     }
   }

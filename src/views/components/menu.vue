@@ -1,5 +1,6 @@
 <template>
   <el-menu
+    v-loading="loading"
     default-active="2"
     :collapse="mini"
     background-color="#324157"
@@ -23,15 +24,21 @@
     },
     data () {
       return {
-        menu: []
+        menu: [],
+        loading: false
       }
     },
     created () {
+      let autoLoading = setTimeout(() => {
+        this.loading = true
+      }, 3000)
       this
         .$api
         .verification
         .sidebarMenu(this.$route.matched[0].name)
         .then(r => {
+          clearTimeout(autoLoading)
+          this.loading = false
           this.menu = r
         })
     }

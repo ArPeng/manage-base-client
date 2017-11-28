@@ -90,12 +90,15 @@
     },
     created () {
       // 获取用户组列表
-      this.showLoading(this.$refs.authorizationToUser)
+      let autoLoading = setTimeout(() => {
+        this.showLoading(this.$refs.authorizationToUser)
+      }, 4000)
       this
         .$api
         .group
         .all()
         .then(r => {
+          clearTimeout(autoLoading)
           this.groups = r
         })
       if (this.defaultGroups.length > 0) {
