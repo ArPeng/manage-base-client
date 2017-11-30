@@ -18,10 +18,10 @@ export default {
   children: [
     {
       path: 'rules',
-      name: '权限相关',
+      name: 'setting.rules',
       meta: {
         breadcrumb: false,
-        title: ''
+        title: '权限相关'
       },
       component: secondRouteView,
       children: [

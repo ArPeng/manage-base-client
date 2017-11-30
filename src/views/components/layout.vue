@@ -2,7 +2,7 @@
   <el-container>
     <ui-menu :mini="sidebar.mini"></ui-menu>
     <el-container>
-      <el-header style="height: 50px">
+      <el-header style="height: 50px;">
         <div
           class="an-mall-icon hamburger-icon"
           @click="$store.dispatch('ToggleSidebar')"
@@ -13,9 +13,38 @@
         </div>
         <!--<tags></tags>-->
         <ui-user-info color="rgb(72, 87, 106)"></ui-user-info>
+        <el-tooltip class="item" effect="dark" content="返回上一页" placement="bottom">
+          <el-button
+            type="primary"
+            size="small"
+            class="pull-right"
+            icon="el-icon-back"
+            @click="jump(-1)"
+            style="margin: 9px 9px 0 0;"></el-button>
+        </el-tooltip>
+        <el-tooltip class="item" effect="dark" content="刷新" placement="bottom">
+          <el-button
+            type="primary"
+            size="small"
+            class="pull-right"
+            icon="el-icon-refresh"
+            @click="jump(0)"
+            style="margin: 9px 9px 0 0;"></el-button>
+        </el-tooltip>
+        <el-tooltip class="item" effect="dark" content="全屏" placement="bottom">
+          <el-button
+            type="primary"
+            size="small"
+            class="pull-right"
+            icon="el-icon-rank"
+            @click="screenfull"
+            style="margin: 9px 9px 0 0;"></el-button>
+        </el-tooltip>
       </el-header>
       <el-main>
-        <router-view></router-view>
+        <transition name="fade" mode="out-in">
+          <router-view></router-view>
+        </transition>
       </el-main>
       <!--<el-footer></el-footer>-->
     </el-container>
@@ -29,6 +58,7 @@
   import uiUserInfo from '@components/userInfo.vue'
   import api from '@api'
   import Store from '@store'
+  import ScreenFull from 'screenfull'
   export default {
     components: {
       uiUserInfo,
@@ -42,6 +72,18 @@
     data () {
       return {
         mini: false
+      }
+    },
+    methods: {
+      screenfull () {
+        if (!ScreenFull.enabled) {
+          this.$message({
+            message: '您的浏览器被禁用或不支持全屏!',
+            type: 'warning'
+          })
+          return false
+        }
+        ScreenFull.toggle()
       }
     },
     /**

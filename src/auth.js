@@ -5,11 +5,14 @@ import Vue from 'vue'
 import router from '@router'
 import WhiteList from '@config/whiteList'
 import Store from '@store'
+import NProgress from 'nprogress' // Progress 进度条
+import 'nprogress/nprogress.css'// Progress 进度条样式
 let isLoading = null
 /**
  * 全局路由前置钩子
  */
 router.beforeEach((to, from, next) => {
+  NProgress.start()
   const $vue = new Vue()
   to.matched.some((match, idx) => {
     if ((to.matched.length - 1) === idx) {
@@ -38,6 +41,7 @@ router.beforeEach((to, from, next) => {
  * 全局路由后置钩子
  */
 router.afterEach((to, from) => {
+  NProgress.done() // 结束Progress
   if (isLoading) {
     const $vue = new Vue()
     clearTimeout(isLoading)
