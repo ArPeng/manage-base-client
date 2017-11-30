@@ -60,5 +60,11 @@ export default {
     sidebarMenu: '/verification.menu',
     // 获取按钮以及展示权限
     identification: '/verification.identification'
+  },
+  configure: {
+    // 获取权限名单
+    ruleWhiteList: '/configure.rule_white_list',
+    // 设置权限白名单
+    setRuleWhiteList: '/configure.set_rule_white_list'
   }
 }

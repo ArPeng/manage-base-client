@@ -3,6 +3,5 @@ export default [
   'test',
   'signIn',
   '404',
-  '401',
-  'dashboard'
+  '401'
 ]

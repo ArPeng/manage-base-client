@@ -62,6 +62,7 @@ export function post (path = '', data = {}, type = 'json') {
             parseInt(r.data.code) !== 10000)) {
           $vue.$message.error(r.data.message)
           reject(new Error(r.data.message))
+          _result(r.data)
           return false
         }
         resolve(r.data)
@@ -127,6 +128,7 @@ export function get (path = '', data = {}, type = '?') {
               parseInt(r.data.code) !== 10000) {
             $vue.$message.error(r.data.message)
             reject(new Error(r.data.message))
+            _result(r.data)
             return false
           }
           resolve(r.data)
@@ -142,6 +144,24 @@ export function get (path = '', data = {}, type = '?') {
         reject(new Error('请求错误: ', e))
       })
   })
+}
+
+/**
+ * @purpose 处理返回code
+ * @private
+ */
+function _result (result) {
+  switch (result.code) {
+    case 10004: // 未找到token
+      $vue.jump('/sign_in', true)
+      break
+    case 10005: // token已过期
+      $vue.jump('/sign_in', true)
+      break
+    case 10011: // 权限不足
+      $vue.jump('/401')
+      break
+  }
 }
 /**
  * @purpose 获取api路径

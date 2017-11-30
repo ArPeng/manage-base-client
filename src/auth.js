@@ -16,7 +16,7 @@ router.beforeEach((to, from, next) => {
       // 设置网页标题
       document.title = match.meta.title ? match.meta.title : match.name
       let token = $vue.getToken()
-      // // 过滤免登录白名单 todo 过滤白名单移动到后端验证之后,临时解决白名单内的路由获取不到用户信息
+      // 若在免登录白名单只能则不用进行请求验证
       if ($vue.inArray(match.name, WhiteList)) {
         next()
       } else {
@@ -77,7 +77,7 @@ let _auth = (match, next) => {
           return false
         }
         if (r.status === 10004) {
-          $vue.$message.error('未找到令牌(Token)!')
+          $vue.$message.error('请登录!')
           next({
             name: 'signIn'
           })

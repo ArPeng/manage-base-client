@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 // 权限管理
 import permission from './permission'
+// 系统设置
+import setting from './setting'
 // import permission from './permission'
 const _import = file => () => import('@views/' + file + '.vue')
 
@@ -10,6 +12,8 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   routes: [
+    permission,
+    setting,
     {
       path: '/',
       name: 'dashboard',
@@ -26,7 +30,6 @@ export default new Router({
       },
       component: _import('sign/signIn')
     },
-    permission,
     {
       path: '/401',
       name: '401',

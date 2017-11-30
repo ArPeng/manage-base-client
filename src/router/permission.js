@@ -3,6 +3,7 @@
  * meta字段说明:
  *  title: 作为网页标题使用
  *  breadcrumb: 是否显示在面包屑导航上面
+ *  disableBreadcrumb: 在面包屑导航上面点击是否会跳转
  */
 import layout from '@components/layout'
 import secondRouteView from '@components/secondRouteView'
@@ -20,7 +21,7 @@ export default {
       path: 'administrator',
       name: 'permission.administrator',
       meta: {
-        breadcrumb: true,
+        breadcrumb: false,
         title: '管理员'
       },
       component: secondRouteView,
@@ -58,7 +59,7 @@ export default {
       path: 'group',
       name: 'permission.group',
       meta: {
-        breadcrumb: true,
+        breadcrumb: false,
         title: '管理组'
       },
       component: secondRouteView,
@@ -96,7 +97,7 @@ export default {
       path: 'rule',
       name: 'permission.rule',
       meta: {
-        breadcrumb: true,
+        breadcrumb: false,
         title: '权限'
       },
       component: secondRouteView,

@@ -143,13 +143,11 @@
     },
     methods: {
       submit () {
-        this.showLoading()
         this
           .$api
           .rule
           .create(this.createData)
           .then(r => {
-            this.closeLoading()
             this.$message({
               message: '创建成功',
               type: 'success'

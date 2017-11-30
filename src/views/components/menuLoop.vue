@@ -96,6 +96,8 @@
         display: none
     .el-submenu.is-opened
       .el-menu
+        span
+          display: block
         .el-submenu__title
           span
             display: block
