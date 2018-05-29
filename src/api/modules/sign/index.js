@@ -5,21 +5,21 @@ const $vue = new Vue()
 
 /**
  * 通过密码登录
- * @param s
- * @param p
+ * @param sign  手机号码或邮箱
+ * @param password 密码
  * @returns {*}
  */
-export function signByPassword (s = '', p = '') {
-  if (!s) {
+export function signByPassword (sign = '', password = '') {
+  if (!sign) {
     return _return($vue.$lang('手机号码或邮箱不能为空!'))
   }
-  if (!s) {
+  if (!password) {
     return _return($vue.$lang('密码不能为空!'))
   }
   return http
     .post('sign.signByPassword', {
-      sign: s,
-      password: p
+      sign: sign,
+      password: password
     }).then(r => r.data)
 }
 

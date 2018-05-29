@@ -7,7 +7,7 @@ import * as http from '@api/http'
  */
 export function dashboard () {
   return http
-    .get('verification.dashboard')
+    .get('rule.dashboard')
     .then(r => r.data)
 }
 
@@ -18,7 +18,7 @@ export function dashboard () {
  */
 export function identification ($identification) {
   return http
-    .get('verification.identification', {
+    .get('rule.identification', {
       identification: $identification
     }).then(r => r.data)
 }
@@ -32,7 +32,7 @@ export function sidebarMenu (identification) {
     return _return('缺少ID')
   }
   return http
-    .get('verification.sidebarMenu', {
+    .get('rule.sidebarMenu', {
       identification: identification
     }).then(r => r.data)
 }

@@ -13,7 +13,7 @@
     <div class="content">
       <div class="box" ref="box">
         <div class="box-header">
-          <span class="title">管理系统-登录</span>
+          <span class="title">欢乐中国-系统管理控制台</span>
         </div>
         <div class="box-body">
           <el-input

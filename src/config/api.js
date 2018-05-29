@@ -24,7 +24,7 @@ export default {
     authorization: '/user.authorization'
   },
   rule: {
-    // 创建权限 PSST
+    // 创建权限 POST
     create: '/rule.create',
     // 修改权限 POST
     update: '/rule.update',
@@ -35,7 +35,13 @@ export default {
     // 获取无限极格式的数据 GET
     infinite: '/rule.infinite',
     // 通过ID获取单条权限信息 GET
-    getRuleInfoById: '/rule.get_rule_info_by_id'
+    getRuleInfoById: '/rule.get_rule_info_by_id',
+    // 获取dashboard 菜单(一级菜单) GET
+    dashboard: '/rule.dashboard',
+    // 获取侧边栏菜单 GET
+    sidebarMenu: '/rule.menu',
+    // 获取按钮以及展示权限 GET
+    identification: '/rule.identification'
   },
   group: {
     // 创建管理组 POST
@@ -53,18 +59,18 @@ export default {
     // 获取所有用户组 GET
     all: '/group.all'
   },
-  verification: {
-    // 获取dashboard 菜单(一级菜单) GET
-    dashboard: '/verification.dashboard',
-    // 获取侧边栏菜单
-    sidebarMenu: '/verification.menu',
-    // 获取按钮以及展示权限
-    identification: '/verification.identification'
-  },
+  // verification: {
+  //   // 获取dashboard 菜单(一级菜单) GET
+  //   dashboard: '/verification.dashboard',
+  //   // 获取侧边栏菜单
+  //   sidebarMenu: '/verification.menu',
+  //   // 获取按钮以及展示权限
+  //   identification: '/verification.identification'
+  // },
   configure: {
-    // 获取权限名单
+    // 获取权限名单 GET
     ruleWhiteList: '/configure.rule_white_list',
-    // 设置权限白名单
+    // 设置权限白名单 POST
     setRuleWhiteList: '/configure.set_rule_white_list'
   }
 }

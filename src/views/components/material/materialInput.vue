@@ -13,7 +13,6 @@
         :disabled="disabled"
         :autoComplete="autoComplete"
         :required="required"
-        :value="currentValue"
         @focus="handleMdFocus"
         @blur="handleMdBlur"
         @input="handleModelInput">
@@ -28,7 +27,6 @@
         :disabled="disabled"
         :autoComplete="autoComplete"
         :required="required"
-        :value="currentValue"
         @focus="handleMdFocus"
         @blur="handleMdBlur"
         @input="handleModelInput">
@@ -48,7 +46,6 @@
         :minlength="minlength"
         :maxlength="maxlength"
         :required="required"
-        :value="currentValue"
         @focus="handleMdFocus"
         @blur="handleMdBlur"
         @input="handleModelInput">
@@ -65,7 +62,6 @@
         :max="max"
         :min="min"
         :required="required"
-        :value="currentValue"
         @focus="handleMdFocus"
         @blur="handleMdBlur"
         @input="handleModelInput">
@@ -80,7 +76,6 @@
         :disabled="disabled"
         :autoComplete="autoComplete"
         :required="required"
-        :value="currentValue"
         @focus="handleMdFocus"
         @blur="handleMdBlur"
         @input="handleModelInput">
@@ -97,7 +92,6 @@
         :minlength="minlength"
         :maxlength="maxlength"
         :required="required"
-        :value="currentValue"
         @focus="handleMdFocus"
         @blur="handleMdBlur"
         @input="handleModelInput">
