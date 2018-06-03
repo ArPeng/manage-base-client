@@ -120,7 +120,7 @@
 </template>
 <script>
   import MaterialInput from '@components/material/materialInput'
-  import createInfinite from './createInfinite.vue'
+  import createInfinite from '../../components/createInfinite.vue'
   export default {
     components: {
       MaterialInput,

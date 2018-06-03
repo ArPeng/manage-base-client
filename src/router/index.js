@@ -4,6 +4,8 @@ import Router from 'vue-router'
 import permission from './permission'
 // 系统设置
 import setting from './setting'
+// 系统基础数据设置
+import basic from './basic'
 // import permission from './permission'
 const _import = file => () => import('@views/' + file + '.vue')
 
@@ -13,6 +15,7 @@ export default new Router({
   mode: 'history',
   routes: [
     permission,
+    basic,
     setting,
     {
       path: '/',

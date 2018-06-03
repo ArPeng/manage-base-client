@@ -13,7 +13,7 @@
     <div class="content">
       <div class="box" ref="box">
         <div class="box-header">
-          <span class="title">欢乐中国-系统管理控制台</span>
+          <span class="title">V奢-应用后台管理系统</span>
         </div>
         <div class="box-body">
           <el-input

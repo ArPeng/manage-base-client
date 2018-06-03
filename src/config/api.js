@@ -72,5 +72,19 @@ export default {
     ruleWhiteList: '/configure.rule_white_list',
     // 设置权限白名单 POST
     setRuleWhiteList: '/configure.set_rule_white_list'
+  },
+  category: {
+    // 创建分类
+    create: '/category.create',
+    // 分类列表
+    items: '/category.items',
+    // 无限极分类数据
+    infinite: '/category.infinite',
+    // 删除分类
+    delete: '/category.delete',
+    // 通过ID修改分类
+    updateById: '/category.update_by_id',
+    // 通过ID获取单条数据
+    infoById: '/category.info_by_id'
   }
 }

@@ -6,5 +6,6 @@ export default {
   // 系统语音
   language: 'zh-cn',
   //  内部路由前缀
-  routePrefix: ''
+  routePrefix: '',
+  imageUrl: 'http://image.admin.com/'
 }

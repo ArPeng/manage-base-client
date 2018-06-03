@@ -22,6 +22,80 @@ export default {
       return str.substr(0, length) + ending
     },
     /**
+     * @purpose Toast
+     * @param message
+     * @param type
+     * @param callback
+     */
+    toast (message = '', type = 'success', callback = null) {
+      switch (type) {
+        case 'error':
+          this.$message({
+            message: message,
+            type: 'error',
+            onClose: () => {
+              if (typeof type === 'function') {
+                type()
+              } else if (typeof callback === 'function') {
+                callback()
+              }
+            }
+          })
+          break
+        case 'success':
+          this.$message({
+            message: message,
+            type: 'success',
+            onClose: () => {
+              if (typeof type === 'function') {
+                type()
+              } else if (typeof callback === 'function') {
+                callback()
+              }
+            }
+          })
+          break
+        case 'warning':
+          this.$message({
+            message: message,
+            type: 'warning',
+            onClose: () => {
+              if (typeof type === 'function') {
+                type()
+              } else if (typeof callback === 'function') {
+                callback()
+              }
+            }
+          })
+          break
+        case 'notice':
+          this.$message({
+            message: message,
+            onClose: () => {
+              if (typeof type === 'function') {
+                type()
+              } else if (typeof callback === 'function') {
+                callback()
+              }
+            }
+          })
+          break
+        default:
+          this.$message({
+            message: message,
+            type: 'success',
+            onClose: () => {
+              if (typeof type === 'function') {
+                type()
+              } else if (typeof callback === 'function') {
+                callback()
+              }
+            }
+          })
+          break
+      }
+    },
+    /**
      * @purpose 多语言处理
      * todo 暂时未设计完该功能
      * @param message
