@@ -65,7 +65,7 @@
           if ((i + 1) < level) {
             string += string
           } else if (i === level) {
-//            if (idx === (this.items.length - 1) && this.items.length > 1) {
+           // if (idx === (this.items.length - 1) && this.items.length > 1) {
             if (idx === (this.items.length - 1)) {
               string += '└ '
             } else {

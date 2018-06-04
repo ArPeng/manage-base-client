@@ -86,5 +86,17 @@ export default {
     updateById: '/category.update_by_id',
     // 通过ID获取单条数据
     infoById: '/category.info_by_id'
+  },
+  attribute: {
+    // 获取属性列表
+    items: '/attribute.items',
+    // 创建属性
+    create: '/attribute.create',
+    // 删除属性
+    del: '/attribute.delete',
+    // 添加属性值
+    createAttach: '/attribute.create.attach',
+    // 删除属性值
+    delAttach: '/attribute.delete.attach'
   }
 }

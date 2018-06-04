@@ -69,7 +69,7 @@ export default {
           name: 'basic.attribute.items',
           meta: {
             breadcrumb: true,
-            title: '分类列表'
+            title: '属性列表'
           },
           component: _import('basic/attribute/items')
         }
