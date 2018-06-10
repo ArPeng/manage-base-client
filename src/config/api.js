@@ -74,29 +74,59 @@ export default {
     setRuleWhiteList: '/configure.set_rule_white_list'
   },
   category: {
-    // 创建分类
+    // 创建分类 POST
     create: '/category.create',
-    // 分类列表
+    // 分类列表 GET
     items: '/category.items',
-    // 无限极分类数据
+    // 无限极分类数据 GET
     infinite: '/category.infinite',
-    // 删除分类
+    // 删除分类 POST
     delete: '/category.delete',
-    // 通过ID修改分类
+    // 通过ID修改分类 POST
     updateById: '/category.update_by_id',
-    // 通过ID获取单条数据
+    // 通过ID获取单条数据 GET
     infoById: '/category.info_by_id'
   },
   attribute: {
-    // 获取属性列表
+    // 获取属性列表 GET
     items: '/attribute.items',
-    // 创建属性
+    // 创建属性 POSt
     create: '/attribute.create',
-    // 删除属性
+    // 删除属性 POST
     del: '/attribute.delete',
-    // 添加属性值
+    // 添加属性值 POST
     createAttach: '/attribute.create.attach',
-    // 删除属性值
-    delAttach: '/attribute.delete.attach'
+    // 删除属性值 POST
+    delAttach: '/attribute.delete.attach',
+    // 排序 POST
+    sort: '/attribute.sort'
+  },
+  goods: {
+    // 添加商品 POST
+    create: '/goods.create',
+    // 获取商品列表 GET
+    items: '/goods.items',
+    // 通过ID获取单条记录 GET
+    infoById: '/goods.info_by_id',
+    // 编辑商品 POST
+    edit: '/goods.edit',
+    // 通过ID更新商品状态
+    status: 'goods.status'
+  },
+  brand: {
+    // 添加商品 POST
+    create: '/brand.create',
+    // 编辑品牌 POST
+    edit: '/brand.edit',
+    // 删除品牌 POSt
+    del: '/brand.delete',
+    // 对品牌排序 POST
+    sort: '/brand.sort',
+    // 获取品牌列表 GET
+    items: '/brand.items',
+    // 获取单条品牌数据 GET
+    infoById: '/brand.info_by_id',
+    // 发布商品时获取品牌 GET
+    itemByCreateGoods: '/brand.item_by_create_goods'
   }
 }

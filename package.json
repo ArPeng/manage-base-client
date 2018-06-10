@@ -23,11 +23,13 @@
     "sass": "^1.0.0-beta.3",
     "sass-loader": "^6.0.6",
     "screenfull": "^3.3.2",
+    "store": "^2.0.12",
     "vue": "^2.5.2",
     "vue-clipboard2": "^0.0.8",
     "vue-material-input": "^1.2.0",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "wangeditor": "^3.1.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

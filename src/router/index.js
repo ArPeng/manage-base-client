@@ -6,6 +6,8 @@ import permission from './permission'
 import setting from './setting'
 // 系统基础数据设置
 import basic from './basic'
+// 商品管理
+import goods from './goods'
 // import permission from './permission'
 const _import = file => () => import('@views/' + file + '.vue')
 
@@ -17,6 +19,7 @@ export default new Router({
     permission,
     basic,
     setting,
+    goods,
     {
       path: '/',
       name: 'dashboard',

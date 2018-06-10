@@ -121,7 +121,7 @@ export default {
           component: _import('permission/rule/update')
         },
         {
-          path: 'create',
+          path: 'create/:pid(\\d+)?',
           name: 'permission.rule.create',
           meta: {
             breadcrumb: true,

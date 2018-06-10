@@ -56,3 +56,14 @@ export function delAttach (id) {
     .post('attribute.delAttach', {id: id})
     .then(r => r.data)
 }
+
+/**
+ * @purpose 属性排序
+ * @param sort
+ * @returns {Promise<T>}
+ */
+export function sort (sort) {
+  return http
+    .post('attribute.sort', sort)
+    .then(r => r.data)
+}

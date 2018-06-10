@@ -80,14 +80,14 @@ let _auth = (match, next) => {
           })
           return false
         }
-        if (r.status === 10004) {
+        if (r.status === 10003) {
           $vue.$message.error('请登录!')
           next({
             name: 'signIn'
           })
           return false
         }
-        if (r.status === 10005) {
+        if (r.status === 10004) {
           $vue.$message.error('登录已过期!')
           next({
             name: 'signIn'

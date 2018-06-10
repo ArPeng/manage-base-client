@@ -4,25 +4,52 @@
 <template>
   <div>
     <template v-if="items.length > 0" v-for="item,idx in items">
-      <el-option
-        :key="item.id"
-        :disabled="disabled || item.id === thisId"
-        :label="levelString(level, idx) + item.name"
-        :value="item.id"></el-option>
-      <template v-if="item.id === thisId">
-        <create-infinite
-          :disabled="true"
-          v-if="item.children && item.children.length > 0"
-          :items="item.children"
-          :level="level + 1"></create-infinite>
+      <template v-if="selectLast">
+        <el-option
+          :key="item.id"
+          :select-last="selectLast"
+          :disabled="item.children && item.children.length > 0"
+          :label="levelString(level, idx) + item.name"
+          :value="item.id"></el-option>
+        <template v-if="item.id === thisId">
+          <create-infinite
+            :select-last="selectLast"
+            :disabled="item.children && item.children.length > 0"
+            v-if="item.children && item.children.length > 0"
+            :items="item.children"
+            :level="level + 1"></create-infinite>
+        </template>
+        <template v-else>
+          <create-infinite
+            :select-last="selectLast"
+            :disabled="item.children && item.children.length > 0"
+            :this-id="thisId"
+            v-if="item.children && item.children.length > 0"
+            :items="item.children"
+            :level="level + 1"></create-infinite>
+        </template>
       </template>
       <template v-else>
-        <create-infinite
-          :disabled="disabled"
-          :this-id="thisId"
-          v-if="item.children && item.children.length > 0"
-          :items="item.children"
-          :level="level + 1"></create-infinite>
+        <el-option
+          :key="item.id"
+          :disabled="disabled || item.id === thisId"
+          :label="levelString(level, idx) + item.name"
+          :value="item.id"></el-option>
+        <template v-if="item.id === thisId">
+          <create-infinite
+            :disabled="true"
+            v-if="item.children && item.children.length > 0"
+            :items="item.children"
+            :level="level + 1"></create-infinite>
+        </template>
+        <template v-else>
+          <create-infinite
+            :disabled="disabled"
+            :this-id="thisId"
+            v-if="item.children && item.children.length > 0"
+            :items="item.children"
+            :level="level + 1"></create-infinite>
+        </template>
       </template>
     </template>
   </div>
@@ -47,6 +74,10 @@
         default: () => {
           return []
         }
+      },
+      selectLast: {
+        type: Boolean,
+        default: false
       }
     },
     methods: {
@@ -80,7 +111,7 @@
       return {}
     },
     created () {
-      console.log('disabled:', this.disabled)
+      // console.log('disabled:', this.disabled)
     }
   }
 </script>

@@ -155,7 +155,7 @@
               message: '修改成功',
               type: 'success'
             })
-            this.jump({name: 'permission.rule.list'})
+            this.jump(-1)
           })
       }
     },

@@ -2,9 +2,17 @@ import config from '@config'
 import Cookie from 'js-cookie'
 import {Loading} from 'element-ui'
 import Store from '@store'
+import storage from 'store'
 let loadingResult = null
 export default {
   methods: {
+    /**
+     * @purpose 获取本地缓存
+     * @returns {*}
+     */
+    storage () {
+      return storage
+    },
     auth (permission) {
       let _permission = Store.getters.permission
       return this.inArray(permission, _permission)
@@ -165,7 +173,8 @@ export default {
      */
     inArray (ele, array) {
       if ((array instanceof Array) !== true) {
-        throw new Error('第二个参数的类型必须是数组!')
+        return false
+        // throw new Error('第二个参数的类型必须是数组!')
       }
       return array.indexOf(ele) > -1
     },

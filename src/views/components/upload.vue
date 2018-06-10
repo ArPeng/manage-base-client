@@ -3,6 +3,7 @@
     :title="'请上传'+limitWidth+'×'+limitHeight+'的图片'"
     :visible.sync="selfShow"
     :close-on-click-modal="false"
+    style="z-index: 100"
     :width="(limitWidth + 40) + 'px'">
       <el-upload
         :headers="{
@@ -17,7 +18,7 @@
           width: limitWidth + 'px',
           height: limitHeight + 'px',
         }"
-        action="/api/upload.image"
+        action="/api/upload.thumb"
         :before-upload="beforeUpload"
         :on-change="onChange"
         :on-success="onSuccess"
@@ -25,7 +26,7 @@
         :on-progress="onProgress"
         :show-file-list="false">
         <div class="success">上传成功</div>
-        <div class="error">上传失败</div>
+        <div class="error">{{errorMessage}}</div>
         <img class="img" v-if="imageUrl" :src="imageUrl" alt="">
         <i class="el-icon-plus uploader-icon" v-else></i>
         <div class="progress" v-if="percent > 0">
@@ -82,7 +83,8 @@ export default {
       image: '',
       disabledSubmit: true,
       percent: 0,
-      uploadStatus: ''
+      uploadStatus: '',
+      errorMessage: '上传失败'
     }
   },
   methods: {
@@ -97,6 +99,7 @@ export default {
     // 服务器响应成功的回调
     onSuccess (response, file, fileList) {
       if (response.code !== 10000) {
+        this.errorMessage = response.message
         this.imageUrl = ''
         this.image = ''
         this.disabledSubmit = true
@@ -164,9 +167,8 @@ export default {
         justify-content: center
     .success,.error
       width: 100%
-      height: 40px
+      padding: 10px
       background-color: #09bb07
-      line-height: 40px
       color: #ffffff
       text-align: center
       display: none

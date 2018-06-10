@@ -152,7 +152,7 @@
               message: '创建成功',
               type: 'success'
             })
-            this.jump({name: 'permission.rule.list'})
+            this.jump(-1)
           })
       }
     },
@@ -168,6 +168,9 @@
         }).catch(r => {
           this.parentLoading = false
         })
+      if (this.$route.params.pid) {
+        this.createData.pid = this.$route.params.pid
+      }
     }
   }
 </script>

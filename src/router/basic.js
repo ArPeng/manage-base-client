@@ -74,6 +74,44 @@ export default {
           component: _import('basic/attribute/items')
         }
       ]
+    },
+    {
+      path: 'brand',
+      name: 'basic.brand',
+      meta: {
+        breadcrumb: false,
+        title: '品牌管理'
+      },
+      component: secondRouteView,
+      children: [
+        {
+          path: 'items/:page(\\d)?',
+          name: 'basic.brand.items',
+          meta: {
+            breadcrumb: true,
+            title: '品牌列表'
+          },
+          component: _import('basic/brand/items')
+        },
+        {
+          path: 'edit/:id(\\d)',
+          name: 'basic.brand.edit',
+          meta: {
+            breadcrumb: true,
+            title: '编辑品牌'
+          },
+          component: _import('basic/brand/edit')
+        },
+        {
+          path: 'create',
+          name: 'basic.brand.create',
+          meta: {
+            breadcrumb: true,
+            title: '新增品牌'
+          },
+          component: _import('basic/brand/create')
+        }
+      ]
     }
   ]
 }

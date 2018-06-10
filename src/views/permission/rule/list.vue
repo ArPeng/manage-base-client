@@ -12,7 +12,7 @@
         icon="el-icon-plus"
         size="small"
         v-if="auth('permission.rule.create')"
-        @click="jump({name:'permission.rule.create'})">添加</el-button>
+        @click="jump({name:'permission.rule.create', params: {pid: pid}})">添加</el-button>
     </div>
     <template>
       <el-table
@@ -22,7 +22,6 @@
         <el-table-column
           label="名称">
           <template slot-scope="scope">
-
             <el-button
               type="text"
               v-if="scope.row.child_count > 0"

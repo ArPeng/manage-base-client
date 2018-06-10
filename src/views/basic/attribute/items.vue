@@ -6,10 +6,32 @@
       size="small"
       @click="createAttribute"
       v-if="auth('basic.attribute.create')">新增</el-button>
+    <el-button
+      type="primary"
+      icon="el-icon-sort"
+      size="small"
+      @click="sort"
+      v-if="auth('basic.attribute.sort')">排序</el-button>
     <div>
       <template v-for="item in items">
         <div class="attribute-item">
-          <div class="title">{{item.name}}</div>
+          <div class="title">
+            <el-input
+              size="mini"
+              type="number"
+              v-if="auth('basic.attribute.sort')"
+              v-model.trim="item.sort"
+              style="width: 60px;text-align: center"></el-input>
+            <span style="margin-left: .5rem">{{item.name}}</span>
+            <div class="action">
+              <el-button
+                v-if="auth('basic.attribute.delete')"
+                type="danger"
+                @click="deleteAttribute(item.id)"
+                icon="el-icon-delete"
+                size="small"></el-button>
+            </div>
+          </div>
           <div class="attribute-content">
             <template v-for="attach in item.attach">
               <el-tag
@@ -52,6 +74,43 @@ export default {
     }
   },
   methods: {
+    /**
+     *  删除属性
+     */
+    deleteAttribute (id) {
+      this.$confirm('确定要删除吗?删除之后不可恢复!', '警告', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.showLoading()
+        this
+          .$api
+          .attribute
+          .del(id)
+          .then(r => {
+            this.toast('删除成功')
+            this.getData()
+          })
+      })
+    },
+    /**
+     * 排序
+     */
+    sort () {
+      let sort = []
+      this.items.map(item => {
+        sort.push({id: item.id, sort: item.sort})
+      })
+      this.showLoading()
+      this
+        .$api
+        .attribute
+        .sort(sort)
+        .then(r => {
+          this.getData()
+        })
+    },
     // 创建属性
     createAttribute () {
       this.$prompt('请输入属性名称', '提示', {
@@ -131,6 +190,11 @@ export default {
   }
 }
 </script>
+<style lang="sass">
+  .title
+    input
+      text-align: center
+</style>
 <style scoped lang="sass">
   .attribute-item
     width: 100%
@@ -147,6 +211,12 @@ export default {
       align-items: center
       font-size: 1rem
       background-color: #ebebeb
+      .action
+        display: flex
+        flex: 1
+        height: 100%
+        justify-content: flex-end
+        align-items: center
     .attribute-content
       width: 100%
       height: auto
