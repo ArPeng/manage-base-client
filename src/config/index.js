@@ -7,5 +7,5 @@ export default {
   language: 'zh-cn',
   //  内部路由前缀
   routePrefix: '',
-  imageUrl: 'http://image.admin.com/'
+  imageUrl: 'http://img.dcr0.cn/'
 }
