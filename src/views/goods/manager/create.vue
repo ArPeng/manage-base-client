@@ -259,7 +259,7 @@
       <el-col :span="18" :offset="3">
         <div class="buttons">
           <el-button type="primary" style="margin-left: 1rem" @click="submit">保存</el-button>
-          <!--<el-button type="default" @click="save">保存草稿</el-button>-->
+          <el-button type="default" @click="clearLocalData">清空</el-button>
         </div>
       </el-col>
     </el-row>
@@ -624,30 +624,93 @@
           price: '0.00',
           brand: 0
         }
-        this.editor.txt.clear()
+        if (this.editor) {
+          this.editor.txt.clear()
+        }
         this.goodsAttribute = []
         this.checkedAttribute = []
+      },
+      /**
+       * 清空本地缓存数据以及表单数据
+       */
+      clearLocalData () {
+        this.$confirm('确定要清空吗', '警告', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.resetGoodsData()
+        })
+      },
+      start () {
+        // 自动保存 十秒钟保存一次
+        this.autoSave = setInterval(() => {
+          this.storage().set('goodsData', this.goodsData)
+        }, 10000)
+        this.showLoading()
+        this.getAttribute()
+        this.getCategory()
+        this.getBrand()
+      },
+      // 检测本地是否有缓存数据
+      checkLocalData (data) {
+        if (data.article) {
+          return true
+        }
+        if (data.attribute.length > 0) {
+          return true
+        }
+        if (data.attribute_attach.length > 0) {
+          return true
+        }
+        if (data.brand > 0) {
+          return true
+        }
+        if (data.category) {
+          return true
+        }
+        if (data.images.length > 0) {
+          return true
+        }
+        if (data.parameter.langth > 0) {
+          return true
+        }
+        if (Number(data.price) > 0) {
+          return true
+        }
+        if (data.stock > 0) {
+          return true
+        }
+        if (data.thumb) {
+          return true
+        }
+        if (data.title) {
+          return true
+        }
       }
     },
-    created () {
+    mounted () {
       let data = this.storage().get('goodsData')
-      if (data) {
-        if (data.article.indexOf(this.imageUrl) < 0) {
-          data.article = data.article.split('src="').join('src="' + this.imageUrl)
-        }
-        this.initContent = data.article
-        this.goodsData = data
+      if (!this.isEmptyObject(data) && this.checkLocalData(data)) {
+        this.$confirm('检测到上次编辑数据,是否要载入', '温馨提示', {
+          confirmButtonText: '载入',
+          cancelButtonText: '不载入',
+          type: 'warning'
+        }).then(() => {
+          this.start()
+          if (data.article.indexOf(this.imageUrl) < 0) {
+            data.article = data.article.split('src="').join('src="' + this.imageUrl)
+          }
+          this.initContent = data.article
+          this.goodsData = data
+        }).catch(() => {
+          this.resetGoodsData()
+          this.start()
+        })
       } else {
         this.resetGoodsData()
+        this.start()
       }
-      // 自动保存 十秒钟保存一次
-      this.autoSave = setInterval(() => {
-        this.storage().set('goodsData', this.goodsData)
-      }, 10000)
-      this.showLoading()
-      this.getAttribute()
-      this.getCategory()
-      this.getBrand()
     },
     beforeDestroy () {
       clearInterval(this.autoSave)

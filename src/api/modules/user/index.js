@@ -9,22 +9,27 @@ const $vue = new Vue()
  * @param mobile
  * @param email
  * @param password
+ * @param username
  * @returns {*}
  */
-export function create (name, mobile, email, password) {
+export function create (name, mobile, email, password, username) {
   if (!name) {
     $vue.$message.error($vue.$lang('请输入管理员姓名!'))
     return _return($vue.$lang('请输入管理员姓名!'))
   }
-  if (!mobile && !email) {
-    $vue.$message.error($vue.$lang('邮箱或手机号码必须填有一个!'))
-    return _return($vue.$lang('邮箱或手机号码必须填有一个!'))
+  if (!username) {
+    $vue.$message.error($vue.$lang('请输入密码!'))
+    return _return($vue.$lang('请输入密码!'))
   }
   if (!password) {
     $vue.$message.error($vue.$lang('请输入密码!'))
     return _return($vue.$lang('请输入密码!'))
   }
   /*eslint-disable */
+  if (!(/^[a-zA-Z\d_]{6,}$/).test(username)) {
+    $vue.$message.error($vue.$lang('用户名格式错误,6位以上,数字与字母的组合!'))
+    return _return($vue.$lang('用户名格式错误!'))
+  }
   if (mobile &&
     !(/^1[3|4|5|6|7|8]\d{9}$/).test(mobile)) {
     $vue.$message.error($vue.$lang('手机号码格式错误!'))
@@ -46,7 +51,8 @@ export function create (name, mobile, email, password) {
       name: name,
       mobile: mobile,
       email: email,
-      password
+      password,
+      username: username
     }).then(r => r.data)
 }
 

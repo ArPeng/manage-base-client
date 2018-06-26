@@ -71,7 +71,19 @@ export default {
     // 获取权限名单 GET
     ruleWhiteList: '/configure.rule_white_list',
     // 设置权限白名单 POST
-    setRuleWhiteList: '/configure.set_rule_white_list'
+    setRuleWhiteList: '/configure.set_rule_white_list',
+    // 设置应用swiper POST
+    setAppSwiper: '/configure.set_app_swiper',
+    // 获取应用swiper GET
+    getAppSwiper: '/configure.get_app_swiper',
+    // 设置应用首页的分类展示 POST
+    setAppBlockItem: '/configure.set_app_block_item',
+    // 获取应用首页的分类展示 GET
+    getAppBlockItem: '/configure.get_app_block_item',
+    // 设置应用首页要展示的品牌 post
+    setAppBrand: '/configure.set_app_brand',
+    // 获取应用首页要展示的品牌 post
+    getAppBrand: '/configure.get_app_brand'
   },
   category: {
     // 创建分类 POST

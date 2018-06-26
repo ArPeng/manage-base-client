@@ -29,6 +29,12 @@
           </template>
         </el-table-column>
         <el-table-column
+          label="用户名">
+          <template slot-scope="scope">
+            <span>{{scope.row.username}}</span>
+          </template>
+        </el-table-column>
+        <el-table-column
           label="手机号">
           <template slot-scope="scope">
             <span>{{scope.row.mobile}}</span>

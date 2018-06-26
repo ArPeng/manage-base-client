@@ -18,7 +18,7 @@
         <div class="box-body">
           <el-input
             v-model.trim="sign"
-            placeholder="手机号码/邮箱">
+            placeholder="用户名/手机号码/邮箱">
             <i slot="prefix"  class="el-input__icon an-mall-icon icon-username"></i>
           </el-input>
           <el-input
@@ -62,21 +62,23 @@
       submit () {
         if (!this.sign) {
           this.$message({
-            message: '手机号码或邮箱不能为空',
+            message: '登录账号不能为空!',
             type: 'error'
           })
           return false
         }
         /*eslint-disable */
-        if (!(/^1[3|4|5|6|7|8]\d{9}$/).test(this.sign) &&
-          !(/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/)
-            .test(this.sign)) {
-          this.$message({
-            message: '手机号码或邮箱格式错误',
-            type: 'error'
-          })
-          return false
-        }
+        // if (!(/^1[3|4|5|6|7|8]\d{9}$/).test(this.sign) &&
+        //   !(/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/)
+        //     .test(this.sign) &&
+        //   !(/^[a-zA-Z\\d_]{6,}$/).test(this.sign)
+        // ) {
+        //   this.$message({
+        //     message: '用户名或手机号码或邮箱格式错误',
+        //     type: 'error'
+        //   })
+        //   return false
+        // }
         /*eslint-enable */
         if (!this.password) {
           this.$message({

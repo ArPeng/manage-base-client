@@ -9,6 +9,8 @@ import basic from './basic'
 // 商品管理
 import goods from './goods'
 // import permission from './permission'
+// 应用设置
+import settingApp from './setting.app'
 const _import = file => () => import('@views/' + file + '.vue')
 
 Vue.use(Router)
@@ -20,6 +22,7 @@ export default new Router({
     basic,
     setting,
     goods,
+    settingApp,
     {
       path: '/',
       name: 'dashboard',

@@ -208,6 +208,21 @@ export default {
       }
     },
     /**
+     * @purpose 获取配置
+     * @param path
+     */
+    config (path) {
+      let _config = config
+      if (path.indexOf('.') < 0) {
+        return _config[path]
+      }
+      path = path.split('.')
+      path.forEach(item => {
+        _config = _config[item]
+      })
+      return _config
+    },
+    /**
      * 判断一个对象是否为空对象 `{}`
      * @param obj
      * @returns {boolean}

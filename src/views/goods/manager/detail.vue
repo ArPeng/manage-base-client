@@ -63,7 +63,7 @@
               商品价格:
             </div>
             <div class="box">
-              {{Number(goods.price).toFixed(2)}}元
+              {{(Number(goods.price) / 100).toFixed(2)}}元
             </div>
           </div>
           <div class="item">
@@ -155,7 +155,7 @@
               <p style="width: 100%;font-weight: bold;">编号: {{attach.number}}</p>
             </div>
             <div class="box">
-              <p style="width: 100%;font-weight: bold;">价格: {{Number(attach.number).toFixed(2)}}元</p>
+              <p style="width: 100%;font-weight: bold;">价格: {{(Number(attach.price) / 100).toFixed(2)}}元</p>
             </div>
             <div class="box">
               <p style="width: 100%;font-weight: bold;">库存: {{attach.stock}}</p>
@@ -241,7 +241,10 @@
     }
   }
 </script>
-
+<style lang="sass">
+  .content img
+    max-width: 100%
+</style>
 <style scoped lang="sass">
   .detail
     width: 100%

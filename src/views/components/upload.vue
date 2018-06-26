@@ -122,7 +122,7 @@ export default {
     },
     // 上传时的回调
     onProgress (e) {
-      this.percent = e.percent
+      this.percent = Number(e.percent).toFixed(2)
     },
     // 上传失败的回调
     onError (error, file, fileList) {

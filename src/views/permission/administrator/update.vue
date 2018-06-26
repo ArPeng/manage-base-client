@@ -24,6 +24,18 @@
     <el-row>
       <el-col :span="3">
         <div class="field">
+          用户名
+        </div>
+      </el-col>
+      <el-col :span="8">
+        <material-input
+          :disabled="true"
+          >{{username}}</material-input>
+      </el-col>
+    </el-row>
+    <el-row>
+      <el-col :span="3">
+        <div class="field">
           邮箱
         </div>
       </el-col>
@@ -79,7 +91,8 @@
         mobile: '',
         email: '',
         password: '',
-        uuid: ''
+        uuid: '',
+        username: ''
       }
     },
     methods: {
@@ -120,6 +133,7 @@
           this.name = r.name
           this.mobile = r.mobile
           this.email = r.email
+          this.username = r.username
         })
     }
   }

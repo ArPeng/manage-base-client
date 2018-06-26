@@ -617,6 +617,13 @@
           if (r.article.indexOf(this.imageUrl) < 0) {
             r.article = r.article.split('src="').join('src="' + this.imageUrl)
           }
+          r.price = (Number(r.price) / 100).toFixed(2)
+          if ((r.attribute_attach instanceof Array) && r.attribute_attach.length > 0) {
+            r.attribute_attach = r.attribute_attach.map(attach => {
+              attach.price = (Number(attach.price) / 100).toFixed(2)
+              return attach
+            })
+          }
           this.goodsData = r
           this.editor.txt.html(r.article)
           this.getAttribute()

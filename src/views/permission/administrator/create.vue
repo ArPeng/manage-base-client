@@ -21,6 +21,16 @@
     <el-row>
       <el-col :span="3">
         <div class="field">
+          用户名
+        </div>
+      </el-col>
+      <el-col :span="8">
+        <material-input @input="r => username = r">请输入登录用户名</material-input>
+      </el-col>
+    </el-row>
+    <el-row>
+      <el-col :span="3">
+        <div class="field">
           邮箱
         </div>
       </el-col>
@@ -68,7 +78,8 @@
         name: '',
         mobile: '',
         email: '',
-        password: ''
+        password: '',
+        username: ''
       }
     },
     methods: {
@@ -80,7 +91,8 @@
             this.name,
             this.mobile,
             this.email,
-            this.password
+            this.password,
+            this.username
           ).then(r => {
             this.$message({
               message: '创建成功',
