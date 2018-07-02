@@ -76,7 +76,7 @@ export default {
     },
     {
       path: 'agent',
-      name: 'setting.app.agetn',
+      name: 'setting.app.agent',
       meta: {
         breadcrumb: false,
         title: '代理商设置'
@@ -91,6 +91,26 @@ export default {
             title: '升级配置'
           },
           component: _import('setting/app/agent/index')
+        }
+      ]
+    },
+    {
+      path: 'customer',
+      name: 'setting.app.customer',
+      meta: {
+        breadcrumb: false,
+        title: '客服设置'
+      },
+      component: secondRouteView,
+      children: [
+        {
+          path: 'upgrade',
+          name: 'setting.app.customer.wechat',
+          meta: {
+            breadcrumb: true,
+            title: '客服微信'
+          },
+          component: _import('setting/app/customer/wechat')
         }
       ]
     }

@@ -91,7 +91,11 @@ export default {
     // 设置代理商升级配置 post
     setAgentUpgrade: '/configure.set_agent_upgrade',
     // 获取代理商升级配置 get
-    getAgentUpgrade: '/configure.get_agent_upgrade'
+    getAgentUpgrade: '/configure.get_agent_upgrade',
+    // 设置客服微信 post
+    setCustomerWechat: '/configure.set_customer_wechat',
+    // 获取客服微信
+    getCustomerWechat: '/configure.get_customer_wechat'
   },
   category: {
     // 创建分类 POST

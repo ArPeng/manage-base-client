@@ -127,3 +127,23 @@ export function getAgentUpgrade () {
     .get('configure.getAgentUpgrade')
     .then(r => r.data)
 }
+
+/**
+ * @purpose 设置客服微信
+ * @param options
+ * @returns {Promise<T>}
+ */
+export function setCustomerWechat (options) {
+  return http
+    .post('configure.setCustomerWechat', options)
+    .then(r => r.data)
+}
+/**
+ * @purpose 获取客服微信
+ * @returns {Promise<T>}
+ */
+export function getCustomerWechat () {
+  return http
+    .post('configure.getCustomerWechat')
+    .then(r => r.data)
+}
