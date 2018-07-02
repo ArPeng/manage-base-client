@@ -85,3 +85,45 @@ export function getAppBrand () {
     .get('configure.getAppBrand')
     .then(r => r.data)
 }
+
+/**
+ * @purpose 设置分销比例
+ * @param options
+ * @returns {Promise<T>}
+ */
+export function setDistributionRatio (options) {
+  return http
+    .post('configure.setDistributionRatio', options)
+    .then(r => r.data)
+}
+
+/**
+ * @purpose 获取分销比例
+ * @returns {*}
+ */
+export function getDistributionRatio () {
+  return http
+    .get('configure.getDistributionRatio')
+    .then(r => r.data)
+}
+
+/**
+ * @purpose 设置代理商升级配置
+ * @param options
+ * @returns {Promise<T>}
+ */
+export function setAgentUpgrade (options) {
+  return http
+    .post('configure.setAgentUpgrade', options)
+    .then(r => r.data)
+}
+
+/**
+ * @purpose  获取代理商升级配置
+ * @returns {*}
+ */
+export function getAgentUpgrade () {
+  return http
+    .get('configure.getAgentUpgrade')
+    .then(r => r.data)
+}

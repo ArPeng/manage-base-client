@@ -82,8 +82,16 @@ export default {
     getAppBlockItem: '/configure.get_app_block_item',
     // 设置应用首页要展示的品牌 post
     setAppBrand: '/configure.set_app_brand',
-    // 获取应用首页要展示的品牌 post
-    getAppBrand: '/configure.get_app_brand'
+    // 获取应用首页要展示的品牌 get
+    getAppBrand: '/configure.get_app_brand',
+    // 设置分销比例 post
+    setDistributionRatio: '/configure.set_distribution_ratio',
+    // 获取分销比例 get
+    getDistributionRatio: '/configure.get_distribution_ratio',
+    // 设置代理商升级配置 post
+    setAgentUpgrade: '/configure.set_agent_upgrade',
+    // 获取代理商升级配置 get
+    getAgentUpgrade: '/configure.get_agent_upgrade'
   },
   category: {
     // 创建分类 POST

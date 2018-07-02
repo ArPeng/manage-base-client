@@ -3,7 +3,7 @@
     <el-row>
       <el-col :span="12" :offset="3">
         <el-alert
-          title="注意: 展示图片必须是700x530的大小,且不能超过500kb,且只能是jpg格式,否则会上传失败!"
+          title="注意: 展示图片必须是600x200的大小,且不能超过500kb,且只能是jpg格式,否则会上传失败!"
           type="info"
           show-icon></el-alert>
       </el-col>
@@ -40,8 +40,8 @@
       </el-col>
     </el-row>
     <ui-upload
-      :limit-width="700"
-      :limit-height="350"
+      :limit-width="600"
+      :limit-height="200"
       :limit-size="500"
       @image="getImage"
       :show.sync="showUpload"></ui-upload>
@@ -166,7 +166,7 @@
         background-color: #f4f4f4
     .image
       width: 300px
-      height: 150px
+      height: 100px
       background-color: #ffffff
       cursor: pointer
       &:hover
