@@ -147,7 +147,7 @@ export default {
       imageUrl: config.imageUrl,
       items: [],
       page: 1,
-      size: 50,
+      size: 20,
       total: 1
     }
   },
@@ -184,7 +184,7 @@ export default {
      */
     currentPage (page) {
       this.jump({
-        name: 'goods.manager.item.' + this.status,
+        name: 'goods.manager.items.' + this.status,
         params: {
           page: page
         }
@@ -209,7 +209,6 @@ export default {
     }
   },
   created () {
-    console.log(this.status)
     if (this.$route.params.page) {
       this.page = Number(this.$route.params.page)
     }
