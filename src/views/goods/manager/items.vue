@@ -216,4 +216,7 @@ export default {
   }
 }
 </script>
-<style scoped></style>
+<style scoped lang="sass">
+  .el-pagination
+    padding: 2px 0 !important
+</style>

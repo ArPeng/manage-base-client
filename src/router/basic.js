@@ -36,7 +36,7 @@ export default {
           component: _import('basic/category/items')
         },
         {
-          path: 'create/:pid(\\d)?',
+          path: 'create/:pid(\\d+)?',
           name: 'basic.category.create',
           meta: {
             breadcrumb: true,
@@ -85,7 +85,7 @@ export default {
       component: secondRouteView,
       children: [
         {
-          path: 'items/:page(\\d)?',
+          path: 'items/:page(\\d+)?',
           name: 'basic.brand.items',
           meta: {
             breadcrumb: true,
@@ -94,7 +94,7 @@ export default {
           component: _import('basic/brand/items')
         },
         {
-          path: 'edit/:id(\\d)',
+          path: 'edit/:id(\\d+)',
           name: 'basic.brand.edit',
           meta: {
             breadcrumb: true,
@@ -110,6 +110,26 @@ export default {
             title: '新增品牌'
           },
           component: _import('basic/brand/create')
+        }
+      ]
+    },
+    {
+      path: 'express',
+      name: 'basic.express',
+      meta: {
+        breadcrumb: false,
+        title: '快递公司'
+      },
+      component: secondRouteView,
+      children: [
+        {
+          path: 'items/:page(\\d+)?',
+          name: 'basic.express.items',
+          meta: {
+            breadcrumb: true,
+            title: '列表'
+          },
+          component: _import('basic/express/items')
         }
       ]
     }

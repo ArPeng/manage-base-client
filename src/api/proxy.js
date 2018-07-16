@@ -10,7 +10,7 @@ export default new Proxy({}, {
       if (key === 'install') {
         return null
       }
-      return require(`@api/modules/${key}/index.js`)
+      return require(`@api/modules/${key}.js`)
     } catch (e) {
       console.error(e)
     }

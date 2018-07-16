@@ -24,13 +24,13 @@
         <el-form label-position="left">
           <el-form-item>
             <el-input v-model.trim="ratio.member.first" style="width: 250px">
-              <template slot="prepend">一级会员</template>
+              <template slot="prepend">上级会员</template>
               <template slot="append">%</template>
             </el-input>
           </el-form-item>
           <el-form-item>
             <el-input v-model.trim="ratio.member.second" style="width: 250px;">
-              <template slot="prepend">二级会员</template>
+              <template slot="prepend">上上级会员</template>
               <template slot="append">%</template>
             </el-input>
           </el-form-item>
@@ -40,13 +40,45 @@
         <el-form label-position="left">
           <el-form-item>
             <el-input v-model.trim="ratio.agent.first" style="width: 250px">
-              <template slot="prepend">一级代理商</template>
+              <template slot="prepend">上级代理商</template>
               <template slot="append">%</template>
             </el-input>
           </el-form-item>
           <el-form-item>
             <el-input v-model.trim="ratio.agent.second" style="width: 250px;">
-              <template slot="prepend">二级代理商</template>
+              <template slot="prepend">上上级代理商</template>
+              <template slot="append">%</template>
+            </el-input>
+          </el-form-item>
+        </el-form>
+      </el-col>
+      <el-col :span="12" :offset="3">
+        <el-form label-position="left">
+          <el-form-item>
+            <el-input v-model.trim="ratio.purchase_agent_member.first" style="width: 400px">
+              <template slot="prepend">购买代理商上级会员</template>
+              <template slot="append">%</template>
+            </el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-input v-model.trim="ratio.purchase_agent_member.second" style="width: 400px;">
+              <template slot="prepend">购买代理商上上级会员</template>
+              <template slot="append">%</template>
+            </el-input>
+          </el-form-item>
+        </el-form>
+      </el-col>
+      <el-col :span="12" :offset="3">
+        <el-form label-position="left">
+          <el-form-item>
+            <el-input v-model.trim="ratio.purchase_agent_agent.first" style="width: 400px">
+              <template slot="prepend">购买代理商上级代理商</template>
+              <template slot="append">%</template>
+            </el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-input v-model.trim="ratio.purchase_agent_agent.second" style="width: 400px;">
+              <template slot="prepend">购买代理商上上级代理商</template>
               <template slot="append">%</template>
             </el-input>
           </el-form-item>
@@ -69,6 +101,14 @@ export default {
           second: 0
         },
         agent: {
+          first: 0,
+          second: 0
+        },
+        purchase_agent_member: {
+          first: 0,
+          second: 0
+        },
+        purchase_agent_agent: {
           first: 0,
           second: 0
         }
@@ -130,7 +170,7 @@ export default {
   .el-col
     margin: 1rem 0 1rem 12.5%
     padding: 1rem
-    background-color: #f4f4f4
+    background-color: #ffffff
     border-radius: 5px
     position: relative
 </style>

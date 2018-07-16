@@ -64,7 +64,7 @@
   .el-col
     margin: 1rem 0 1rem 12.5%
     padding: 1rem
-    background-color: #f4f4f4
+    background-color: #ffffff
     border-radius: 5px
     position: relative
 </style>

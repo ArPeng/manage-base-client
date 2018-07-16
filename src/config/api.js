@@ -152,5 +152,21 @@ export default {
     infoById: '/brand.info_by_id',
     // 发布商品时获取品牌 GET
     itemByCreateGoods: '/brand.item_by_create_goods'
+  },
+  order: {
+    // 获取订单列表 get
+    items: '/order.items',
+    // 订单发货 post
+    deliverGoods: '/order.deliver.goods'
+  },
+  express: {
+    // 获取快递公司列表 get
+    items: '/express.items',
+    // 设置默认发货快递公司 post
+    setDefault: '/express.set.default',
+    // 获取默认发货快递公司 get
+    getDefault: '/express.get.default',
+    // 搜索快递公司
+    search: '/express.search'
   }
 }
