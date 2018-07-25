@@ -157,7 +157,9 @@ export default {
     // 获取订单列表 get
     items: '/order.items',
     // 订单发货 post
-    deliverGoods: '/order.deliver.goods'
+    deliverGoods: '/order.deliver.goods',
+    // 获取订单详情
+    detailById: '/order.detail.by.id'
   },
   express: {
     // 获取快递公司列表 get

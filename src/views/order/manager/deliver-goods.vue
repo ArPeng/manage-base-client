@@ -112,6 +112,8 @@ export default {
       this.selfShow = val
       if (val) {
         this.getDefaultExpress()
+      } else {
+        this.form.express_no = ''
       }
     },
     selfShow (val) {
@@ -181,7 +183,7 @@ export default {
         .deliverGoods(this.form)
         .then(r => {
           this.toast('发货成功!')
-          this.$parent.getItems()
+          this.$emit('success', true)
           this.$emit('update:show', false)
         })
     }

@@ -30,3 +30,16 @@ export function deliverGoods (options) {
     .post('order.deliverGoods', options)
     .then(r => r.data)
 }
+
+/**
+ * @purpose 获取订单详情
+ * @param id
+ * @returns {*}
+ */
+export function detailById (id) {
+  return http
+    .get('order.detailById', {
+      id: id
+    })
+    .then(r => r.data)
+}

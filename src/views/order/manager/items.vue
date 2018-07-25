@@ -1,13 +1,25 @@
 <template>
   <div class="items">
+    <el-row>
+      <el-col :span="8">
+        <el-input placeholder="搜索" v-model="kw">
+          <el-select v-model="searchType" slot="prepend" style="width: 150px">
+            <el-option label="订单ID" :value="1"></el-option>
+            <el-option label="用户昵称" :value="2"></el-option>
+            <el-option label="用户手机号码" :value="3"></el-option>
+          </el-select>
+          <el-button slot="append" icon="el-icon-search">搜索</el-button>
+        </el-input>
+      </el-col>
+    </el-row>
     <el-table
       :data="items"
-      style="width: 100%">
+      style="width: 100%;margin-top: 1rem">
       <el-table-column
         width="50px"
         label="头像">
         <template slot-scope="scope">
-          <img :src="scope.row.avatar" style="width: 30px;height: 30px" />
+          <img :src="scope.row.avatar" style="width: 30px;height: 30px;border-radius: 50%" />
         </template>
       </el-table-column>
       <el-table-column
@@ -41,7 +53,7 @@
         </template>
       </el-table-column>
       <el-table-column
-        v-if="inArray(status,[3,7])"
+        v-if="inArray(status,[3,7,99])"
         :show-overflow-tooltip="true"
         label="快递公司">
         <template slot-scope="scope">
@@ -49,7 +61,7 @@
         </template>
       </el-table-column>
       <el-table-column
-        v-if="inArray(status,[3,7])"
+        v-if="inArray(status,[3,7,99])"
         :show-overflow-tooltip="true"
         label="快递单号">
         <template slot-scope="scope">
@@ -57,6 +69,7 @@
         </template>
       </el-table-column>
       <el-table-column
+        v-if="inArray(status,[2,3,7,99])"
         :show-overflow-tooltip="true"
         label="支付时间">
         <template slot-scope="scope">
@@ -64,7 +77,7 @@
         </template>
       </el-table-column>
       <el-table-column
-        v-if="inArray(status,[2,3,7])"
+        v-if="inArray(status,[2,3,7,99])"
         :show-overflow-tooltip="true"
         label="支付单号">
         <template slot-scope="scope">
@@ -72,7 +85,7 @@
         </template>
       </el-table-column>
       <el-table-column
-        v-if="inArray(status,[2,3,7])"
+        v-if="inArray(status,[2,3,7,99])"
         :show-overflow-tooltip="true"
         label="支付方式">
         <template slot-scope="scope">
@@ -80,7 +93,7 @@
         </template>
       </el-table-column>
       <el-table-column
-        v-if="inArray(status,[2,3,7])"
+        v-if="inArray(status,[2,3,7,99])"
         :show-overflow-tooltip="true"
         label="支付金额(元)">
         <template slot-scope="scope">
@@ -95,11 +108,19 @@
         </template>
       </el-table-column>
       <el-table-column
-        v-if="status === 4"
+        v-if="inArray(status, [4,99])"
         :show-overflow-tooltip="true"
         label="取消原因">
         <template slot-scope="scope">
           <span>{{scope.row.cancel_reason}}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
+        v-if="status === 99"
+        :show-overflow-tooltip="true"
+        label="订单状态">
+        <template slot-scope="scope">
+          <span>{{statusText[scope.row.status]}}</span>
         </template>
       </el-table-column>
       <el-table-column
@@ -110,8 +131,13 @@
             <el-button
               size="little"
               type="primary"
+              v-if="auth('order.manager.deliver.goods')"
               @click="showDeliverGoods = true; order_id = scope.row.id;order_no = scope.row.order_no">发货</el-button>
           </template>
+          <el-button
+            size="little"
+            type="success"
+            @click="showDetail = true; order_id = scope.row.id;order_no = scope.row.order_no">详情</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -126,16 +152,23 @@
       </el-pagination>
     </div>
     <ui-deliver-goods
+      @success="getItems"
       :show.sync="showDeliverGoods"
       :order-id="order_id"
       :order-no="order_no"></ui-deliver-goods>
+    <ui-detail
+      :show.sync="showDetail"
+      :order-no="order_no"
+      :order-id="order_id"></ui-detail>
   </div>
 </template>
 <script>
 import uiDeliverGoods from './deliver-goods'
+import uiDetail from './detail'
 export default {
   components: {
-    uiDeliverGoods
+    uiDeliverGoods,
+    uiDetail
   },
   props: {
     status: {
@@ -145,6 +178,9 @@ export default {
   },
   data () {
     return {
+      kw: '',
+      searchType: 1,
+      showDetail: false,
       order_no: '',
       order_id: 0,
       showDeliverGoods: false,
@@ -152,6 +188,15 @@ export default {
       size: 40,
       total: 0,
       items: [],
+      statusText: {
+        1: '待付款',
+        2: '待发货',
+        3: '待收货',
+        4: '订单取消',
+        5: '订单删除',
+        6: '交易关闭',
+        7: '交易完成'
+      },
       pay_type: {
         1: '微信',
         2: '支付宝'
