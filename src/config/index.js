@@ -7,6 +7,6 @@ export default {
   language: 'zh-cn',
   //  内部路由前缀
   routePrefix: '',
-  imageUrl: process.env.NODE_ENV === 'production' ? 'http://img.dcr0.cn/' : 'http://image.admin.com/'
+  imageUrl: process.env.NODE_ENV === 'production' ? 'http://img.chen.cas.cx/' : 'http://image.admin.com/'
   // imageUrl: 'http://image.admin.com/'
 }
