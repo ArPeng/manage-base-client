@@ -27,7 +27,7 @@ export default {
       component: secondRouteView,
       children: [
         {
-          path: 'items/99/:page(\\d)?',
+          path: 'items/99/:page(\\d+)?',
           name: 'goods.manager.items.99',
           meta: {
             breadcrumb: true,
@@ -37,7 +37,7 @@ export default {
           component: _import('goods/manager/items')
         },
         {
-          path: 'items/2/:page(\\d)?',
+          path: 'items/2/:page(\\d+)?',
           name: 'goods.manager.items.2',
           meta: {
             breadcrumb: true,
@@ -47,7 +47,7 @@ export default {
           component: _import('goods/manager/items')
         },
         {
-          path: 'items/1/:page(\\d)?',
+          path: 'items/1/:page(\\d+)?',
           name: 'goods.manager.items.1',
           meta: {
             breadcrumb: true,
@@ -57,7 +57,7 @@ export default {
           component: _import('goods/manager/items')
         },
         {
-          path: 'items/3/:page(\\d)?',
+          path: 'items/3/:page(\\d+)?',
           name: 'goods.manager.items.3',
           meta: {
             breadcrumb: true,

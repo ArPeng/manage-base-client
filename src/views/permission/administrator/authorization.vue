@@ -14,7 +14,7 @@
         </el-col>
         <el-col :span="20">
           <div class="item-content">
-            <el-checkbox-group v-model="selectedGroups">
+            <el-checkbox-group v-model.trim="selectedGroups">
               <template v-for="item in groups">
                 <el-checkbox class="group-item" size="mini" :label="String(item.id)">{{item.name}}</el-checkbox>
               </template>

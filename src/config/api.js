@@ -170,5 +170,47 @@ export default {
     getDefault: '/express.get.default',
     // 搜索快递公司
     search: '/express.search'
+  },
+  withdraw: {
+    // 获取提现申请列表
+    items: '/admin.financial.withdraw.items',
+    // 确认转账
+    confirm: '/admin.financial.withdraw.confirm',
+    // 拒绝申请
+    refused: '/admin.financial.withdraw.refused'
+  },
+  refund: {
+    // 获取退款列表
+    items: '/admin.financial.refund.items',
+    // 同意退款
+    agree: '/admin.financial.refund.agree',
+    // 拒绝退款
+    refuse: '/admin.financial.refund.refuse'
+  },
+  statistical: {
+    // 注册统计
+    memberRegister: '/admin.member.statistical.register',
+    // 注册走势
+    todayRegisterMovements: '/admin.member.today.register.movements'
+  },
+  activity: {
+    // 搜索商品
+    searchGoods: '/admin.activity.search.goods',
+    // 添加商品到新品
+    newProductAdd: '/admin.activity.new-product.add',
+    // 获取新品列表
+    newProductItems: '/admin.activity.new.product.items',
+    // 从新品中移出一个商品
+    newProductRemove: '/admin.activity.new.product.remove',
+    // 添加特价商品时搜索商品
+    searchGoodsForSpecial: '/admin.activity.search.goods.for.special',
+    // 添加一个特价商品
+    addSpecialOfferGoods: '/admin.activity.add.special.offer.goods',
+    // 获取特价商品列表
+    specialOfferGoodsItems: '/admin.activity.special.offer.goods.items',
+    // 将商品从特价中移出
+    specialOfferGoodsRemove: '/admin.activity.special.offer.goods.remove',
+    // 编辑特价商品
+    specialOfferGoodsEdit: '/admin.activity.special.offer.goods.edit'
   }
 }

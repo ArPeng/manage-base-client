@@ -9,111 +9,52 @@
       <!--</el-col>-->
     <!--</el-row>-->
     <el-row>
-      <el-col :span="3">
-        <div class="field">
-          父级
-        </div>
-      </el-col>
-      <el-col :span="4">
-      <el-select
-        v-model.trim="createData.pid"
-        v-loading="parentLoading"
-        class="mt"
-        placeholder="请选择">
-        <el-option
-          :key="0"
-          label="├ 无父级"
-          :value="0"></el-option>
-        <create-infinite :items="rules"></create-infinite>
-      </el-select>
-      </el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="3">
-        <div class="field">
-          类型
-        </div>
-      </el-col>
-      <el-col :span="4">
-        <el-select
-          v-model.trim="createData.type"
-          class="mt"
-          placeholder="权限类型,必选"
-          :change-on-select="true">
-          <el-option :key="1" label="菜单" :value="1"></el-option>
-          <el-option :key="2" label="路由类的功能性按钮" :value="2"></el-option>
-          <el-option :key="3" label="非路由类的功能性按钮" :value="3"></el-option>
-          <el-option :key="4" label="展示类权限" :value="4"></el-option>
-        </el-select>
-      </el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="3">
-        <div class="field">
-          权限名称
-        </div>
-      </el-col>
       <el-col :span="8">
-        <material-input
-        v-model.trim="createData.name"
-        >权限名称将用于显示,必填</material-input>
-      </el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="3">
-        <div class="field">
-          权限标识
-        </div>
-      </el-col>
-      <el-col :span="8">
-        <material-input
-        v-model.trim="createData.identification"
-        >权限名称将用于显示,必填</material-input>
-      </el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="3">
-        <div class="field">
-          路由地址
-        </div>
-      </el-col>
-      <el-col :span="8">
-        <material-input
-        v-model.trim.trim="createData.address"
-        >默认使用标识路由,外部路由时使用,选填</material-input>
-      </el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="3">
-        <div class="field">
-          字体图标
-        </div>
-      </el-col>
-      <el-col :span="8">
-        <material-input
-        v-model.trim="createData.icon_class"
-        >图标的class类名,选填</material-input>
-      </el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="3">
-        <div class="field">
-          图标Family
-        </div>
-      </el-col>
-      <el-col :span="8">
-        <material-input
-        v-model.trim="createData.icon_family"
-        >默认(an-mall-icon),选填</material-input>
-      </el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="8" :offset="3">
-        <div class="buttons">
-          <el-button
-            type="primary"
-            @click="submit">提交</el-button>
-        </div>
+        <el-form>
+          <el-form-item label="父级" label-width="120px">
+            <el-select
+              v-model.trim="createData.pid"
+              v-loading="parentLoading"
+              placeholder="请选择">
+              <el-option
+                :key="0"
+                label="├ 无父级"
+                :value="0"></el-option>
+              <create-infinite :items="rules"></create-infinite>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="类型" label-width="120px">
+            <el-select
+              v-model.trim="createData.type"
+              placeholder="权限类型,必选"
+              :change-on-select="true">
+              <el-option :key="1" label="菜单" :value="1"></el-option>
+              <el-option :key="2" label="路由类的功能性按钮" :value="2"></el-option>
+              <el-option :key="3" label="非路由类的功能性按钮" :value="3"></el-option>
+              <el-option :key="4" label="展示类权限" :value="4"></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="权限名称" label-width="120px">
+            <el-input v-model.trim="createData.name" auto-complete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="权限标识" label-width="120px">
+            <el-input v-model.trim="createData.identification" auto-complete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="路由地址" label-width="120px">
+            <el-input v-model.trim="createData.address" auto-complete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="字体图标" label-width="120px">
+            <el-input v-model.trim="createData.icon_class" auto-complete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="图标Family" label-width="120px">
+            <el-input v-model.trim="createData.icon_family" auto-complete="off"></el-input>
+          </el-form-item>
+          <el-form-item label-width="120px">
+            <el-button
+              type="primary"
+              @click="submit">提交</el-button>
+          </el-form-item>
+        </el-form>
       </el-col>
     </el-row>
   </div>

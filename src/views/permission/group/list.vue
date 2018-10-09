@@ -18,7 +18,7 @@
         <!--label="头像">-->
         <!--<template slot-scope="scope">-->
         <!--<img-->
-        <!--style="height: 32pxwidth: 32px"-->
+        <!--style="height: 32px;width: 32px"-->
         <!--:src="scope.row.avatar"-->
         <!--:onerror="`javascript:this.src='${require('@assets/defaultAvatar.jpg')}'`" />-->
         <!--</template>-->
@@ -64,7 +64,7 @@
             <el-button
               size="little"
               type="danger"
-              v-if="auth('permission.group.delete')"
+              v-if="auth('permission.group.delete') && scope.row.id !== 1"
               @click="deleteGroup(scope.row.id)">删除</el-button>
             <!--<el-button-->
               <!--size="little"-->

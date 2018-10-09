@@ -7,6 +7,30 @@ let loadingResult = null
 export default {
   methods: {
     /**
+     * @purpose 获取日期
+     * @returns String
+     */
+    getDate (split = '-') {
+      let date = new Date()
+      let year = date.getFullYear()
+      let month = date.getMonth()
+      let day = date.getDate()
+      return `${year}${split}${month}${split}${day}`
+    },
+    /**
+     * @purpose 获取日期加时间
+     * @param split
+     * @returns {string}
+     */
+    getDateTime (split = '-') {
+      let _date = this.getDate(split)
+      let date = new Date()
+      let hour = date.getHours()
+      let minutes = date.getMinutes()
+      let seconds = date.getSeconds()
+      return `${_date} ${hour}:${minutes}:${seconds}`
+    },
+    /**
      * @purpose 获取本地缓存
      * @returns {*}
      */

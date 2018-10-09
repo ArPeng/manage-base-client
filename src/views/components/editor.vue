@@ -41,7 +41,7 @@ export default {
     editor.customConfig.onchange = (html) => {
       this.$emit('update:content', html)
     }
-    editor.customConfig.uploadImgServer = '/api/upload.image.article'
+    editor.customConfig.uploadImgServer = '/api/club.upload.image.article'
     editor.customConfig.uploadImgHeaders = {
       'token': this.getToken()
     }

@@ -8,73 +8,29 @@
           show-icon></el-alert>
       </el-col>
     </el-row>
-    <el-row>
-      <el-col :span="3">
-        <div class="field">
-          姓名
-        </div>
-      </el-col>
-      <el-col :span="8">
-        <material-input
-          v-model.trim="name"
-          :value="name"
-          >{{name?name:'请输入管理员姓名'}}</material-input>
-      </el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="3">
-        <div class="field">
-          用户名
-        </div>
-      </el-col>
-      <el-col :span="8">
-        <material-input
-          :disabled="true"
-          >{{username}}</material-input>
-      </el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="3">
-        <div class="field">
-          邮箱
-        </div>
-      </el-col>
-      <el-col :span="8">
-        <material-input
-          v-model.trim="email"
-          :value="email"
-          >{{email?email:'请输入管理员邮箱'}}</material-input>
-      </el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="3">
-        <div class="field">
-          手机号码
-        </div>
-      </el-col>
-      <el-col :span="8">
-        <material-input
-          v-model.trim="mobile"
-          :value="mobile"
-          >{{mobile?mobile:'请输入管理员手机号码'}}</material-input>
-      </el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="3">
-        <div class="field">
-          登录密码
-        </div>
-      </el-col>
-      <el-col :span="8">
-        <material-input
-          v-model.trim="password">请输入管理员登录密码</material-input>
-      </el-col>
-    </el-row>
+
     <el-row>
       <el-col :span="8" :offset="3">
-        <div class="buttons">
-          <el-button type="primary" @click="submit">确认修改</el-button>
-        </div>
+        <el-form>
+          <el-form-item label="姓名">
+            <el-input v-model.trim="name" auto-complete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="用户名">
+            <el-input v-model.trim="username" auto-complete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="邮箱">
+            <el-input v-model.trim="email" auto-complete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="手机号码">
+            <el-input v-model.trim="mobile" auto-complete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="登录密码">
+            <el-input v-model.trim="password" placeholder="密码不修改可不填写" auto-complete="off"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="submit">确定修改</el-button>
+          </el-form-item>
+        </el-form>
       </el-col>
     </el-row>
   </div>

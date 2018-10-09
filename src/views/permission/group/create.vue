@@ -9,45 +9,21 @@
       <!--</el-col>-->
     <!--</el-row>-->
     <el-row>
-      <el-col :span="3">
-        <div class="field">
-          名称
-        </div>
-      </el-col>
       <el-col :span="8">
-        <material-input v-model.trim="name">请输入管理组名称</material-input>
-      </el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="3">
-        <div class="field">
-          描述
-        </div>
-      </el-col>
-      <el-col :span="8">
-        <material-input
-          v-model.trim="descriptions">请输入描述</material-input>
-      </el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="3">
-        <div class="field">
-          权限
-        </div>
-      </el-col>
-      <el-col :span="8">
-        <div style="margin-top: 34px">
-          <rules-tree
-            ref="rulesTree"
-          ></rules-tree>
-        </div>
-      </el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="8" :offset="3">
-        <div class="buttons">
-          <el-button type="primary" @click="submit">确认创建</el-button>
-        </div>
+        <el-form>
+          <el-form-item label="名称" label-width="120px">
+            <el-input v-model.trim="name" placeholder="请输入管理组名称" auto-complete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="描述" label-width="120px">
+            <el-input v-model.trim="descriptions" placeholder="请输入描述" auto-complete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="权限" label-width="120px">
+            <rules-tree ref="rulesTree"></rules-tree>
+          </el-form-item>
+          <el-form-item label-width="120px">
+            <el-button type="primary" @click="submit">确认创建</el-button>
+          </el-form-item>
+        </el-form>
       </el-col>
     </el-row>
   </div>

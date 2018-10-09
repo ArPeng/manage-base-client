@@ -143,6 +143,7 @@
     </el-table>
     <div class="pages">
       <el-pagination
+        background
         @size-change="()=>{}"
         @current-change="currentPage"
         :current-page.sync="page"
@@ -195,7 +196,11 @@ export default {
         4: '订单取消',
         5: '订单删除',
         6: '交易关闭',
-        7: '交易完成'
+        7: '交易完成',
+        8: '已签收',
+        9: '待受理',
+        10: '退款成功(交易关闭)',
+        11: '退款中'
       },
       pay_type: {
         1: '微信',
