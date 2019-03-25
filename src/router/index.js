@@ -6,19 +6,7 @@ import permission from './permission'
 import setting from './setting'
 // 系统基础数据设置
 import basic from './basic'
-// 商品管理
-import goods from './goods'
-// import permission from './permission'
-// 应用设置
-import settingApp from './setting.app'
-// 订单管理
-import order from './order'
-// 财务管理
-import financial from './financial'
-// 统计
-import statistical from './statistical'
-// 活动管理
-import activity from './activity'
+import video from './video'
 const _import = file => () => import('@views/' + file + '.vue')
 Vue.use(Router)
 
@@ -28,12 +16,7 @@ export default new Router({
     permission,
     basic,
     setting,
-    goods,
-    settingApp,
-    order,
-    financial,
-    statistical,
-    activity,
+    video,
     {
       path: '/',
       name: 'dashboard',

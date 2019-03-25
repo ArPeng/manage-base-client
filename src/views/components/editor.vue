@@ -1,17 +1,31 @@
 <template>
   <div>
-    <div ref="toolbar" class="toolbar"></div>
+    <div ref="toolbar" class="toolbar">
+      <div
+        @click="showUpload = true"
+        class="w-e-menu"
+        style="z-index:91;">
+        <i class="w-e-icon-image"></i>
+      </div>
+    </div>
     <div
       ref="editor"
       v-html="initContent"
       class="editor"
       :style="{height: height + 'px'}"></div>
+    <ui-upload-many
+      @images="getImages"
+      :show.sync="showUpload"></ui-upload-many>
   </div>
 </template>
 <script>
 import Editor from 'wangeditor'
 import config from '@config'
+import uiUploadMany from '@components/upload-many'
 export default {
+  components: {
+    uiUploadMany
+  },
   name: 'wangEditor',
   props: {
     content: {
@@ -29,19 +43,27 @@ export default {
   },
   data () {
     return {
+      showUpload: false,
       editorContent: '',
-      imageUrl: config.imageUrl
+      imageUrl: config.imageUrl,
+      editor: null
     }
   },
   methods: {
+    getImages (images) {
+      images.map(img => {
+        this.editor.txt.append(`<p style="text-align: center;"><img src="${this.imageUrl + img}" style="max-width:100%;"><br></p>`)
+      })
+    }
   },
   mounted () {
     let editor = new Editor(this.$refs.toolbar, this.$refs.editor)
+    this.editor = editor
     this.$emit('update:editor', editor)
     editor.customConfig.onchange = (html) => {
       this.$emit('update:content', html)
     }
-    editor.customConfig.uploadImgServer = '/api/club.upload.image.article'
+    editor.customConfig.uploadImgServer = '/api/upload.image.article'
     editor.customConfig.uploadImgHeaders = {
       'token': this.getToken()
     }
@@ -67,7 +89,7 @@ export default {
       'justify',  // 对齐方式
       'quote',  // 引用
       // 'emoticon',  // 表情
-      'image',  // 插入图片
+      // 'image',  // 插入图片
       // 'table',  // 表格
       // 'video',  // 插入视频
       // 'code',  // 插入代码
@@ -92,6 +114,7 @@ export default {
     border: 1px solid #ccc
   .editor
     border-top: none
+    background-color: #ffffff
     p
       text-align: center !important
 </style>

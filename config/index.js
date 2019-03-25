@@ -7,8 +7,8 @@ const path = require('path')
 module.exports = {
   build: {
     env: require('./prod.env'),
-    index: path.resolve(__dirname, '../dist/index.html'),
-    assetsRoot: path.resolve(__dirname, '../dist'),
+    index: path.resolve(__dirname, '../../client-admin-build/index.html'),
+    assetsRoot: path.resolve(__dirname, '../../client-admin-build'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     productionSourceMap: true,
@@ -26,16 +26,24 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: process.env.PORT || 8083,
+    host: '127.0.0.1',
+    port: process.env.PORT || 8200,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://admin.api.admin.com/',
+        target: 'http://admin.api.video.com/',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
+        }
+      },
+      '/cdn': {
+        target: 'http://cdn.video.com/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/cdn': ''
         }
       }
     },

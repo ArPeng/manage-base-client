@@ -212,5 +212,22 @@ export default {
     specialOfferGoodsRemove: '/admin.activity.special.offer.goods.remove',
     // 编辑特价商品
     specialOfferGoodsEdit: '/admin.activity.special.offer.goods.edit'
+  },
+  upload: {
+    // 检查文件md5值
+    checkVideoMd5: '/upload.video.check.md5'
+  },
+  album: {
+    // 获取图库资源列表
+    items: '/admin.album.items'
+  },
+  video: {
+    // 获取带转码的视频列表
+    transcoding: '/video.transcoding',
+    // 获取视频列表
+    items: '/video.items',
+    // 截取视频指定时间的图片并设置为封面
+    screenshotsAndSaveToTheCover: '/video.screenshots.and.save.to.the.cover'
   }
+
 }

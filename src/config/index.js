@@ -7,7 +7,8 @@ export default {
   language: 'zh-cn',
   //  内部路由前缀
   routePrefix: '',
-  imageUrl: 'http://img.chen.cas.cx/'
+  cdn: '/cdn',
+  imageUrl: 'http://v-she-image.oss-cn-beijing.aliyuncs.com/'
   // imageUrl: process.env.NODE_ENV === 'production' ? 'http://img.chen.cas.cx/' : 'http://image.admin.com/'
   // imageUrl: 'http://image.admin.com/'
 }

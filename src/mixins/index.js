@@ -6,6 +6,88 @@ import storage from 'store'
 let loadingResult = null
 export default {
   methods: {
+
+    /**
+     * @purpose 秒数格式化
+     * @param value
+     * @returns {string}
+     */
+    formatSeconds (value) {
+      var secondTime = parseInt(value)// 秒
+      var minuteTime = 0// 分
+      var hourTime = 0// 小时
+      if (secondTime > 60) { // 如果秒数大于60，将秒数转换成整数
+        // 获取分钟，除以60取整数，得到整数分钟
+        minuteTime = parseInt(secondTime / 60)
+        // 获取秒数，秒数取佘，得到整数秒数
+        secondTime = parseInt(secondTime % 60)
+        // 如果分钟大于60，将分钟转换成小时
+        if (minuteTime > 60) {
+          // 获取小时，获取分钟除以60，得到整数小时
+          hourTime = parseInt(minuteTime / 60)
+          // 获取小时后取佘的分，获取分钟除以60取佘的分
+          minuteTime = parseInt(minuteTime % 60)
+        }
+      }
+      var result = ''
+      if (secondTime > 10) {
+        result = secondTime
+      } else if (secondTime === 0) {
+        result = '00'
+      } else if (secondTime < 10) {
+        result = '0' + secondTime
+      } else {
+        result = secondTime
+      }
+      if (minuteTime === 0) {
+        result = '00:' + result
+      } else if (minuteTime >= 10) {
+        result = minuteTime + ':' + result
+      } else {
+        result = '0' + minuteTime + ':' + result
+      }
+      if (hourTime === 0) {
+        result = '00:' + result
+      } else if (hourTime >= 10) {
+        result = hourTime + ':' + result
+      } else {
+        result = '0' + hourTime + ':' + result
+      }
+      return result
+    },
+    /**
+     * @introduction: 剪切URL路径，组装需要规格的图片地址 目前只支持阿里云OSS
+     * @date: 2015-03-26 12：58
+     * @param:url String 图片地址
+     * @param:width Number 图片宽度
+     * @param:height Number 图片高度
+     * @returns {*}
+     */
+    cutImg (url, width = 500, height = 500, type = 1) {
+      switch (parseInt(type)) {
+        case 1 :
+          if (parseInt(width) && parseInt(height)) {
+            // 按比例裁剪 ?x-oss-process=image/resize,m_pad,h_500,w_500,color_ffffff
+            url = url + '?x-oss-process=image/resize,m_pad,w_' + width + ',h_' + height + ',color_ffffff' // '/quality,q_100'
+          }
+          break
+        case 2 :
+          // 按照宽度缩放
+          if (parseInt(width)) {
+            url = url + '?x-oss-process=image/resize,w_' + width
+          }
+          break
+        case 3 :
+          // 按照高度缩放
+          if (parseInt(height)) {
+            url = url + '?x-oss-process=image/resize,h_' + height
+          }
+          break
+        default:
+          return url
+      }
+      return url
+    },
     /**
      * @purpose 获取日期
      * @returns String
