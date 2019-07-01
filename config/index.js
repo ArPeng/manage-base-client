@@ -33,17 +33,10 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://admin.api.video.com/',
+        target: 'http://admin-api.duoanpay.com/',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
-        }
-      },
-      '/cdn': {
-        target: 'http://cdn.video.com/',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/cdn': ''
         }
       }
     },

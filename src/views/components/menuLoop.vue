@@ -2,7 +2,7 @@
 ---- 该组件用户菜单的递归循环
 --->
 <template>
-  <div>
+  <div class="sidebar-box">
     <template v-for="item,idx in data">
       <template v-if="item.child && item.child.length > 0">
         <el-submenu :index="index?`${index}-${idx}`:`${idx}`">
@@ -103,4 +103,11 @@
             display: block
           i.el-submenu__icon-arrow
             display: block
+</style>
+<style lang="sass">
+  .sidebar-box
+    width: 100%
+    height: 100%
+    overflow-x: hidden
+    overflow-y: auto
 </style>

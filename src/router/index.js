@@ -6,7 +6,8 @@ import permission from './permission'
 import setting from './setting'
 // 系统基础数据设置
 import basic from './basic'
-import video from './video'
+import layout from '@components/layout'
+import secondRouteView from '@components/secondRouteView'
 const _import = file => () => import('@views/' + file + '.vue')
 Vue.use(Router)
 
@@ -16,14 +17,30 @@ export default new Router({
     permission,
     basic,
     setting,
-    video,
     {
       path: '/',
-      name: 'dashboard',
+      name: 'home',
       meta: {
         title: '控制台'
       },
-      component: _import('dashboard/index')
+      component: layout,
+      children: [
+        {
+          path: '/home.main',
+          name: 'home.main',
+          meta: {
+            title: ''
+          },
+          component: secondRouteView,
+          children: [
+            {
+              path: '/dashboard',
+              name: 'dashboard',
+              component: _import('dashboard/index')
+            }
+          ]
+        }
+      ]
     },
     {
       path: '/sign_in',

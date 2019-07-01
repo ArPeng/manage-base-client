@@ -2,6 +2,8 @@
 export default [
   'test',
   'signIn',
+  'home',
+  'home.main',
   '404',
   '401'
 ]
