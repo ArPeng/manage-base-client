@@ -13,12 +13,23 @@
         size="small"
         v-if="auth('permission.rule.create')"
         @click="jump({name:'permission.rule.create', params: {pid: pid}})">添加</el-button>
+      <el-button
+        type="primary"
+        @click="sort"
+        v-if="auth('permission.rule.sort')"
+        size="small">排序</el-button>
     </div>
     <template>
       <el-table
         v-loading="loading"
         :data="tableData"
         style="width: 100%">
+        <el-table-column
+          label="序号">
+          <template slot-scope="scope">
+            <el-input v-model="scope.row.sort" type="number" style="width: 100px; text-align: center"></el-input>
+          </template>
+        </el-table-column>
         <el-table-column
           label="名称">
           <template slot-scope="scope">
@@ -116,6 +127,28 @@
       }
     },
     methods: {
+      /**
+       * @purpose 菜单排序
+       */
+      sort () {
+        let data = []
+        this.tableData.map(item => {
+          data.push({id: item.id, sort: item.sort})
+        })
+        this.showLoading()
+        this
+          .$api
+          .rule
+          .sort(data)
+          .then(r => {
+            this.closeLoading()
+            this.$message({
+              message: '设置成功',
+              type: 'success'
+            })
+            this.getData()
+          })
+      },
       /**
        * 删除权限
        */

@@ -81,3 +81,14 @@ export function getListByPid (pid = 0) {
       pid: pid
     }).then(r => r.data)
 }
+
+/**
+ * @purpose 菜单排序
+ * @param data
+ * @returns {Q.Promise<any>}
+ */
+export function sort (data) {
+  return http
+    .post('rule.sort', data)
+    .then(r => r.data)
+}

@@ -41,7 +41,9 @@ export default {
     // 获取侧边栏菜单 GET
     sidebarMenu: '/rule.menu',
     // 获取按钮以及展示权限 GET
-    identification: '/rule.identification'
+    identification: '/rule.identification',
+    // 菜单排序
+    sort: '/rule.sort'
   },
   group: {
     // 创建管理组 POST
